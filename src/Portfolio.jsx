@@ -80,7 +80,7 @@ const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 const TITLES = ["Business / Data Analyt", "Aspiring Management Consultant", "Data-Driven Problem Solver", "Full Stack Developer", "Strategy & Analytics Enthusiast"];
 
 const STATS = [
-  { v: 9.4, s: "/10", l: "GPA", d: "Academic Excellence" },
+  { v: 8.9, s: "/10", l: "GPA", d: "Academic Excellence" },
   { v: 4, s: "+", l: "Internships", d: "Industry Experience" },
   { v: 5, s: "+", l: "Projects", d: "Innovation Work" },
   { v: 10, s: "+", l: "Certifications", d: "Professional Credentials" },
