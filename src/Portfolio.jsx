@@ -65,6 +65,52 @@ a,button{cursor:none}
 .cursor-ring{position:fixed;pointer-events:none;z-index:9998;width:32px;height:32px;border:1.5px solid rgba(196,154,60,.35);border-radius:50%;transition:width .22s ease,height .22s ease,border-color .22s,background .22s}
 .cursor-ring.hovering{width:48px;height:48px;border-color:rgba(196,154,60,.75);background:rgba(196,154,60,.06)}
 .cursor-dot.hovering{width:4px;height:4px;background:#E8C87A}
+
+/* ── Responsive layout helpers ─────────────────────────────────────────────── */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.grid-2-tight{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.grid-bio{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.sec-pad{padding:120px 32px}
+.sec-pad-hero{padding:0 32px}
+.cert-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.exp-wrap{position:relative;padding-left:44px}
+
+/* Hamburger nav */
+.nav-links{display:flex;gap:36px}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--t2);border-radius:2px;transition:all .3s}
+.nav-mobile{display:none;position:fixed;inset:0;top:64px;background:rgba(4,4,10,.98);backdrop-filter:blur(20px);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:36px;border-top:1px solid var(--bd)}
+.nav-mobile.open{display:flex}
+.nav-mobile button{font-family:var(--ff-m);font-size:16px;letter-spacing:.1em;color:var(--t2);background:none;border:none;padding:8px 0;transition:color .2s;cursor:pointer}
+.nav-mobile button:hover{color:var(--gold)}
+
+@media(max-width:768px){
+  body,#p-root{cursor:auto}
+  a,button{cursor:auto}
+  .cursor-dot,.cursor-ring{display:none}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .sec-pad{padding:80px 20px}
+  .sec-pad-hero{padding:0 20px}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .grid-2-tight{grid-template-columns:1fr}
+  .grid-bio{grid-template-columns:1fr;gap:36px}
+  .cert-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-wrap{padding-left:36px}
+  .contact-card{padding:20px 18px !important}
+}
+@media(max-width:480px){
+  .sec-pad{padding:64px 16px}
+  .sec-pad-hero{padding:0 16px}
+  .grid-4{grid-template-columns:repeat(2,1fr);gap:10px}
+  .cert-grid{grid-template-columns:1fr}
+  .grid-2{grid-template-columns:1fr}
+  .grid-2-tight{grid-template-columns:1fr}
+  .grid-bio{grid-template-columns:1fr;gap:28px}
+  .exp-wrap{padding-left:28px}
+}
 `;
 
 const scrollTo = (id) => {
@@ -80,7 +126,7 @@ const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 const TITLES = ["Business / Data Analyt", "Aspiring Management Consultant", "Data-Driven Problem Solver", "Full Stack Developer", "Strategy & Analytics Enthusiast"];
 
 const STATS = [
-  { v: 8.9, s: "/10", l: "GPA", d: "Academic Excellence" },
+  { v: 9.4, s: "/10", l: "GPA", d: "Academic Excellence" },
   { v: 4, s: "+", l: "Internships", d: "Industry Experience" },
   { v: 5, s: "+", l: "Projects", d: "Innovation Work" },
   { v: 10, s: "+", l: "Certifications", d: "Professional Credentials" },
@@ -294,43 +340,69 @@ function CustomCursor() {
 
 function Nav({ active }) {
   const [sc, setSc] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const h = () => setSc(window.scrollY > 60);
     window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
   }, []);
+  const handleNav = (k) => { scrollTo(k.toLowerCase()); setMenuOpen(false); };
   return (
-    <nav style={{
-      position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: "0 32px",
-      background: sc ? "rgba(4,4,10,.96)" : "transparent",
-      backdropFilter: sc ? "blur(20px)" : "none",
-      borderBottom: sc ? "1px solid var(--bd)" : "none", transition: "all .3s"
-    }}>
-      <div style={{ maxWidth: 1120, margin: "0 auto", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ fontFamily: "var(--ff-m)", fontSize: 12, color: "var(--gold)", letterSpacing: ".12em" }}>
-          MIT<span style={{ color: "var(--t3)" }}>.</span>
-        </div>
-        <div style={{ display: "flex", gap: 36 }}>
-          {NAV_LINKS.map(k => (
-            <button key={k}
-              onClick={() => scrollTo(k.toLowerCase())}
-              style={{
-                fontFamily: "var(--ff-m)", fontSize: 11, letterSpacing: ".07em",
-                color: active === k.toLowerCase() ? "var(--gold)" : "var(--t2)",
-                background: "none", border: "none", padding: 0, transition: "color .2s", cursor: "none"
-              }}
-              onMouseEnter={e => e.target.style.color = "var(--t1)"}
-              onMouseLeave={e => e.target.style.color = active === k.toLowerCase() ? "var(--gold)" : "var(--t2)"}>
-              {k}
+    <>
+      <nav style={{
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, padding: "0 20px",
+        background: sc || menuOpen ? "rgba(4,4,10,.96)" : "transparent",
+        backdropFilter: sc || menuOpen ? "blur(20px)" : "none",
+        borderBottom: sc || menuOpen ? "1px solid var(--bd)" : "none", transition: "all .3s"
+      }}>
+        <div style={{ maxWidth: 1120, margin: "0 auto", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div style={{ fontFamily: "var(--ff-m)", fontSize: 12, color: "var(--gold)", letterSpacing: ".12em" }}>
+            MIT<span style={{ color: "var(--t3)" }}>.</span>
+          </div>
+          {/* Desktop nav links */}
+          <div className="nav-links">
+            {NAV_LINKS.map(k => (
+              <button key={k}
+                onClick={() => scrollTo(k.toLowerCase())}
+                style={{
+                  fontFamily: "var(--ff-m)", fontSize: 11, letterSpacing: ".07em",
+                  color: active === k.toLowerCase() ? "var(--gold)" : "var(--t2)",
+                  background: "none", border: "none", padding: 0, transition: "color .2s", cursor: "none"
+                }}
+                onMouseEnter={e => e.target.style.color = "var(--t1)"}
+                onMouseLeave={e => e.target.style.color = active === k.toLowerCase() ? "var(--gold)" : "var(--t2)"}>
+                {k}
+              </button>
+            ))}
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <button className="btn-p" style={{ padding: "8px 18px", fontSize: 11 }}
+              onClick={() => openLink("mailto:mohammedimad031@gmail.com")}>
+              Get in Touch
             </button>
-          ))}
+            {/* Hamburger button */}
+            <button
+              className="nav-hamburger"
+              aria-label="Toggle menu"
+              onClick={() => setMenuOpen(o => !o)}>
+              <span style={{ transform: menuOpen ? "rotate(45deg) translate(5px,5px)" : "none" }} />
+              <span style={{ opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ transform: menuOpen ? "rotate(-45deg) translate(5px,-5px)" : "none" }} />
+            </button>
+          </div>
         </div>
-        <button className="btn-p" style={{ padding: "8px 18px", fontSize: 11 }}
-          onClick={() => openLink("mailto:mohammedimad031@gmail.com")}>
-          Get in Touch
-        </button>
+      </nav>
+      {/* Mobile full-screen menu */}
+      <div className={`nav-mobile${menuOpen ? " open" : ""}`}>
+        {NAV_LINKS.map(k => (
+          <button key={k}
+            onClick={() => handleNav(k)}
+            style={{ color: active === k.toLowerCase() ? "var(--gold)" : "var(--t2)" }}>
+            {k}
+          </button>
+        ))}
       </div>
-    </nav>
+    </>
   );
 }
 
@@ -344,9 +416,9 @@ function Hero() {
     { icon: <MapPin size={13} />, label: "Udupi, Karnataka, IN", action: () => openLink("https://www.google.com/maps/search/Udupi,+Karnataka,+IN") },
   ];
   return (
-    <section id="hero" style={{
+    <section id="hero" className="sec-pad-hero" style={{
       minHeight: "100vh", display: "flex", flexDirection: "column",
-      justifyContent: "center", padding: "0 32px", position: "relative", zIndex: 2
+      justifyContent: "center", position: "relative", zIndex: 2
     }}>
       <div style={{ maxWidth: 1120, margin: "0 auto", width: "100%", paddingTop: 80 }}>
         {/* Status badge */}
@@ -415,7 +487,7 @@ function Hero() {
 function About() {
   const [ref, v] = useReveal(.08);
   return (
-    <section id="about" ref={ref} style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section id="about" ref={ref} className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Executive Profile</div>
@@ -424,7 +496,7 @@ function About() {
           </h2>
         </div>
         {/* Stats */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14, marginBottom: 64 }}>
+        <div className="grid-4" style={{ marginBottom: 64 }}>
           {STATS.map((s, i) => (
             <div key={i} className={`gc reveal d${i + 1} ${v ? "in" : ""}`}
               style={{ padding: "28px 22px", textAlign: "center", position: "relative", overflow: "hidden" }}>
@@ -438,7 +510,7 @@ function About() {
           ))}
         </div>
         {/* Bio columns */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64 }}>
+        <div className="grid-bio">
           <div className={`reveal d1 ${v ? "in" : ""}`}>
             <p style={{ fontSize: 15.5, lineHeight: 1.82, color: "var(--t2)", fontWeight: 300, marginBottom: 22 }}>
               Final-year Analytics student at MAHE Manipal, graduating with a 9.4/10 GPA and a record of turning complex analytical problems into structured, evidence-based strategic recommendations.
@@ -473,7 +545,7 @@ function About() {
 function Experience() {
   const [ref, v] = useReveal(.08);
   return (
-    <section id="experience" ref={ref} style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section id="experience" ref={ref} className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Track Record</div>
@@ -481,7 +553,7 @@ function Experience() {
             Experience<br /><em style={{ color: "var(--gold)" }}>& Internships</em>
           </h2>
         </div>
-        <div style={{ position: "relative", paddingLeft: 44 }}>
+        <div className="exp-wrap">
           <div className="timeline-stem" />
           {EXP.map((e, i) => (
             <div key={i} className={`reveal d${Math.min(i + 1, 4)} ${v ? "in" : ""}`} style={{ marginBottom: 28, position: "relative" }}>
@@ -525,7 +597,7 @@ function Experience() {
 function Projects() {
   const [ref, v] = useReveal(.06);
   return (
-    <section id="projects" ref={ref} style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section id="projects" ref={ref} className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Case Studies</div>
@@ -536,7 +608,7 @@ function Projects() {
             Each case study follows the consulting framework: problem identification → analytical approach → measurable outcomes.
           </p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 }}>
+        <div className="grid-2">
           {PROJECTS.map((p, i) => {
             const Icon = p.Icon;
             return (
@@ -600,7 +672,7 @@ function Analytics() {
     );
   };
   return (
-    <section style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div ref={ref} style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Intelligence Dashboard</div>
@@ -608,7 +680,7 @@ function Analytics() {
             Capability<br /><em style={{ color: "var(--gold)" }}>at a Glance</em>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+        <div className="grid-2">
           <div className={`gc reveal d1 ${v ? "in" : ""}`} style={{ padding: "30px" }}>
             <div style={{ fontFamily: "var(--ff-m)", fontSize: 10, color: "var(--t2)", letterSpacing: ".12em", textTransform: "uppercase", marginBottom: 24 }}>Capability Radar</div>
             <ResponsiveContainer width="100%" height={270}>
@@ -643,7 +715,7 @@ function Analytics() {
 function Skills() {
   const [ref, v] = useReveal(.08);
   return (
-    <section id="skills" ref={ref} style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section id="skills" ref={ref} className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Capabilities</div>
@@ -651,7 +723,7 @@ function Skills() {
             Technical &<br /><em style={{ color: "var(--gold)" }}>Business Skills</em>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 18, marginBottom: 40 }}>
+        <div className="grid-2" style={{ marginBottom: 40 }}>
           {SKILL_CATS.map((cat, i) => {
             const Icon = cat.Icon;
             return (
@@ -683,7 +755,7 @@ function Skills() {
         </div>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div style={{ fontFamily: "var(--ff-m)", fontSize: 10, color: "var(--t2)", letterSpacing: ".12em", textTransform: "uppercase", marginBottom: 18 }}>Certifications</div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 14 }}>
+          <div className="cert-grid">
             {CERTS.map((c, i) => (
               <div key={i} className="gc" style={{ padding: "20px" }}>
                 <div style={{ width: 7, height: 7, borderRadius: "50%", background: c.col, marginBottom: 10 }} />
@@ -703,7 +775,7 @@ function Skills() {
 function Achievements() {
   const [ref, v] = useReveal(.08);
   return (
-    <section style={{ padding: "120px 32px", position: "relative", zIndex: 2 }}>
+    <section className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div ref={ref} style={{ maxWidth: 1120, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Recognition</div>
@@ -711,7 +783,7 @@ function Achievements() {
             Leadership &<br /><em style={{ color: "var(--gold)" }}>Achievements</em>
           </h2>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
+        <div className="grid-2-tight">
           {ACHIEVEMENTS.map((a, i) => {
             const Icon = a.Icon;
             return (
@@ -769,7 +841,7 @@ function Contact() {
     },
   ];
   return (
-    <section id="contact" ref={ref} style={{ padding: "120px 32px 100px", position: "relative", zIndex: 2 }}>
+    <section id="contact" ref={ref} className="sec-pad" style={{ position: "relative", zIndex: 2 }}>
       <div style={{ maxWidth: 700, margin: "0 auto" }}>
         <div className={`reveal ${v ? "in" : ""}`}>
           <div className="s-label" style={{ marginBottom: 16 }}>Let's Talk</div>
