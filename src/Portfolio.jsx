@@ -413,7 +413,7 @@ function Hero() {
   const links = [
     { icon: <Mail size={13} />, label: "Email Address", action: () => openLink("mailto:mohammedimad031@gmail.com") },
     { icon: <Globe size={13} />, label: "LinkedIn", action: () => openLink("https://www.linkedin.com/in/mohammed-imad-68b036330") },
-    { icon: <MapPin size={13} />, label: "Udupi, Karnataka, IN", action: () => openLink("https://www.google.com/maps/search/Udupi,+Karnataka,+IN") },
+    { icon: <MapPin size={13} />, label: "Karnataka, IN", action: () => openLink("https://www.google.com/maps/search/Udupi,+Karnataka,+IN") },
   ];
   return (
     <section id="hero" className="sec-pad-hero" style={{
@@ -513,7 +513,7 @@ function About() {
         <div className="grid-bio">
           <div className={`reveal d1 ${v ? "in" : ""}`}>
             <p style={{ fontSize: 15.5, lineHeight: 1.82, color: "var(--t2)", fontWeight: 300, marginBottom: 22 }}>
-              Final-year Analytics student at MAHE Manipal, graduating with a 9.4/10 GPA and a record of turning complex analytical problems into structured, evidence-based strategic recommendations.
+              Final-year Analytics student at MAHE Manipal, graduating with a 8.9/10 GPA and a record of turning complex analytical problems into structured, evidence-based strategic recommendations.
             </p>
             <p style={{ fontSize: 15.5, lineHeight: 1.82, color: "var(--t2)", fontWeight: 300 }}>
               Across four internships spanning analytics, operations, finance, and engineering, I've consistently bridged technical outputs and executive decision-making — building dashboards, models, and AI systems that create measurable business impact.
