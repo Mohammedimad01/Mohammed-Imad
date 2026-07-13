@@ -126,7 +126,7 @@ const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 const TITLES = ["Business / Data Analyt", "Aspiring Management Consultant", "Data-Driven Problem Solver", "Full Stack Developer", "Strategy & Analytics Enthusiast"];
 
 const STATS = [
-  { v: 9.4, s: "/10", l: "GPA", d: "Academic Excellence" },
+  { v: 8.9, s: "/10", l: "GPA", d: "Academic Excellence" },
   { v: 4, s: "+", l: "Internships", d: "Industry Experience" },
   { v: 5, s: "+", l: "Projects", d: "Innovation Work" },
   { v: 10, s: "+", l: "Certifications", d: "Professional Credentials" },
@@ -225,7 +225,7 @@ const ACHIEVEMENTS = [
   { Icon: Award, col: "#C49A3C", title: "1st Place — Product Innovation Challenge", sub: "EcoFlow: end-to-end business concept judged by faculty & industry" },
   { Icon: Star, col: "#4E6EF2", title: "Aspire Young Leaders Program, Cohort 1", sub: "Competitive global cohort by Harvard Business School faculty" },
   { Icon: Users, col: "#22D3B8", title: "AIESEC Manipal", sub: "Cross-cultural leadership & international professional development" },
-  { Icon: TrendingUp, col: "#9B7FF7", title: "GPA 9.4/10 — Top Academic Standing", sub: "Manipal Academy of Higher Education (MAHE)" },
+  { Icon: TrendingUp, col: "#9B7FF7", title: "GPA 8.9/10 — Top Academic Standing", sub: "Manipal Academy of Higher Education (MAHE)" },
 ];
 
 // ── Hooks ─────────────────────────────────────────────────────────────────────
