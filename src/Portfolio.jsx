@@ -445,7 +445,7 @@ function Hero() {
         {/* Tagline */}
         <p style={{ maxWidth: 600, fontSize: 16, fontWeight: 300, color: "var(--t2)", lineHeight: 1.75, marginBottom: 44, letterSpacing: ".01em" }}>
           Bridging business strategy, data analytics, and emerging technology to deliver measurable impact.
-          Business / Data Analyst · GPA 9.4/10 · MAHE Manipal.
+          Business / Data Analyst · GPA 8.9/10 · MAHE Manipal.
         </p>
         {/* CTAs */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 56 }}>
