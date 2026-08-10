@@ -150,6 +150,12 @@ const EXP = [
     tools: ["Power BI", "Python", "SQL", "Excel", "Data Storytelling"]
   },
   {
+    role: "Full Stack Web Developer Intern", co: "Zephyr Technologies", period: "Jun – Jul 2025", type: "Engineering", col: "#9B7FF7",
+    pts: ["Built responsive web applications supporting digital transformation initiatives",
+      "Implemented Git-based version control reducing deployment errors across distributed sprints"],
+    tools: ["React", "Node.js", "Git", "REST APIs"]
+  },
+  {
     role: "Business Operations & Project Management Intern", co: "Rainbow Pipes", period: "Apr – May 2025", type: "Strategy & Ops", col: "#4E6EF2",
     pts: ["Analyzed production, sales & supply-chain data to pinpoint operational bottlenecks",
       "Coordinated cross-functional teams across 3+ departments for on-time milestone delivery",
@@ -161,12 +167,6 @@ const EXP = [
     pts: ["Built financial models for variance analysis and multi-period budget forecasting",
       "Translated financial data into strategic recommendations aligned with institutional priorities"],
     tools: ["Excel", "Financial Modeling", "Variance Analysis", "Forecasting"]
-  },
-  {
-    role: "Full Stack Web Developer Intern", co: "Zephyr Technologies", period: "Jun – Jul 2025", type: "Engineering", col: "#9B7FF7",
-    pts: ["Built responsive web applications supporting digital transformation initiatives",
-      "Implemented Git-based version control reducing deployment errors across distributed sprints"],
-    tools: ["React", "Node.js", "Git", "REST APIs"]
   },
 ];
 
