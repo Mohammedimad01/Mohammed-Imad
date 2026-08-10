@@ -126,13 +126,22 @@ const NAV_LINKS = ["About", "Experience", "Projects", "Skills", "Contact"];
 const TITLES = ["Business / Data Analyt", "Aspiring Management Consultant", "Data-Driven Problem Solver", "Full Stack Developer", "Strategy & Analytics Enthusiast"];
 
 const STATS = [
-  { v: 8.9, s: "/10", l: "GPA", d: "Academic Excellence" },
+  { v: 8.9, s: "/10", l: "CGPA", d: "Academic Excellence" },
   { v: 4, s: "+", l: "Internships", d: "Industry Experience" },
-  { v: 5, s: "+", l: "Projects", d: "Innovation Work" },
+  { v: 8, s: "+", l: "Projects", d: "Innovation Work" },
   { v: 10, s: "+", l: "Certifications", d: "Professional Credentials" },
 ];
 
 const EXP = [
+  {
+    role: "Technical Lead – Web Development", co: "Qlovix", period: "Sep 2025 – Present", type: "Leadership & Engineering", col: "#F0648C",
+    pts: ["Lead technical direction and architecture decisions for the web development team, overseeing project execution from client requirements through production deployment across 3+ concurrent engagements",
+      "Manage and mentor a team of developers, conducting code reviews and setting engineering standards across React.js, Next.js, and Node.js codebases",
+      "Own technical stack and architecture strategy, evaluating and selecting frameworks and tools to balance performance, scalability, and delivery speed",
+      "Scaled development process into a formal team-wide framework — reusable UI component libraries, structured planning-to-deployment workflows, and QA checkpoints",
+      "Serve as primary technical point of contact for client stakeholders, translating business requirements into technical specifications and managing delivery timelines"],
+    tools: ["React.js", "Next.js", "Node.js", "Team Leadership", "Technical Architecture", "Client Management"]
+  },
   {
     role: "Data Analyst Intern", co: "Meknoid Solutions Pvt. Ltd", period: "Jul – Aug 2025", type: "Analytics", col: "#C49A3C",
     pts: ["Built 10+ Power BI & Excel dashboards, cutting time-to-insight for operations leadership",
@@ -197,12 +206,42 @@ const PROJECTS = [
     impact: "Self-serve data retrieval for business users, automating analytics workflows previously requiring data team intervention.",
     tools: ["Azure OpenAI", "LangChain", "RAG", "SQL", "Python"], status: "Completed"
   },
+  {
+    name: "Google Play Store Product Intelligence Platform",
+    tag: "End-to-end analytics pipeline · 10,841 apps, 64,296 reviews",
+    type: "Data Analytics · Statistical Testing · NLP", Icon: BarChart2, col: "#4E6EF2",
+    problem: "Businesses assumed app metadata (category, size, price) drove user ratings — but without statistical validation, that assumption could misdirect product investment entirely.",
+    approach: "Built a full pipeline from data cleaning through statistical testing to two live BI dashboards. Wrote 25 production-quality SQL queries in BigQuery (window functions: RANK, LAG/LEAD, running totals). Built a VADER-based sentiment pipeline validated at 76.3% agreement against an independent labeling method.",
+    impact: "Found app metadata explains <1% of rating variance (R²=0.008) — reframing the core business question toward review-text sentiment. Identified a 36% negative-review rate in the platform's largest app category. Delivered 3 prioritized, quantified recommendations in a written report and stakeholder presentation.",
+    tools: ["Python", "SQL", "BigQuery", "Power BI", "Looker Studio", "Statistics", "NLP"],
+    status: "Jul 2026",
+  },
+  {
+    name: "ExpenseAudit AI",
+    tag: "Multi-agent AI system · Kaggle x Google AI Agents Capstone 2026",
+    type: "AI Engineering · Multi-Agent Systems", Icon: Zap, col: "#9B7FF7",
+    problem: "Expense auditing needs dollar-accurate, auditable decisions — but rule-based systems alone can't interpret policy language or describe fraud patterns the way LLMs can.",
+    approach: "Architected a multi-agent platform using Google ADK and Gemini 2.0 Flash, orchestrating 3 specialized LLM agents (policy compliance, fraud detection, executive reporting) through a Sequential Agent pipeline. Built deterministic Python rule engines for spend-policy limits and fraud pattern detection (duplicate submissions, split transactions, statistical outliers) — ensuring every dollar decision came from tested code, not LLM inference.",
+    impact: "Deployed as a FastAPI service with Docker containerization and 89 automated tests. Integrated Google Drive export via a custom MCP Toolset for finance-ready reporting.",
+    tools: ["Google ADK", "Gemini 2.0 Flash", "Python", "FastAPI", "Docker", "MCP"],
+    status: "Kaggle × Google Capstone 2026",
+  },
+  {
+    name: "Superstore Sales & Profit Performance Dashboard",
+    tag: "Power BI dashboard · 5,000+ orders, $2.3M in sales",
+    type: "Business Intelligence · Power BI", Icon: Database, col: "#22D3B8",
+    problem: "Topline sales growth was masking where profit was actually leaking across product categories and regions.",
+    approach: "Built an interactive Power BI dashboard analyzing 5,000+ orders and $2.3M in sales from the Superstore retail dataset, using DAX measures to surface KPIs across sales, profit, discount, and regional performance.",
+    impact: "Identified profit leakage from over-discounting on low-margin Furniture products and surfaced regional performance gaps — translated into data-driven recommendations on category focus and discount strategy.",
+    tools: ["Power BI", "DAX", "Data Visualization"],
+    status: "Completed",
+  },
 ];
 
 const SKILL_CATS = [
-  { l: "Analytics & Data", Icon: BarChart2, col: "#C49A3C", skills: ["Python", "SQL", "R", "Power BI", "Tableau", "Excel", "SAS", "Data Visualization", "Data Storytelling", "Predictive Analytics"] },
-  { l: "AI & Technology", Icon: Brain, col: "#4E6EF2", skills: ["Prompt Engineering", "Generative AI", "Machine Learning", "NLP / Sentiment Analysis", "API Integration", "AI-assisted Analytics"] },
-  { l: "Business & Consulting", Icon: Briefcase, col: "#22D3B8", skills: ["Business Requirement Analysis", "Market Research", "Strategic Planning", "Stakeholder Management", "Hypothesis Analysis", "Process Improvement", "Financial Modelling", "Business Insights Generation"] },
+  { l: "Analytics & Data", Icon: BarChart2, col: "#C49A3C", skills: ["Python", "SQL", "R", "Power BI", "Tableau", "Excel", "SAS", "Data Visualization", "Data Storytelling", "Predictive Analytics", "Sheets", "Fabric Analytics", "Colab", "BigQuery", "Data Studio"] },
+  { l: "AI & Technology", Icon: Brain, col: "#4E6EF2", skills: ["Prompt Engineering", "Generative AI", "Machine Learning", "NLP / Sentiment Analysis", "API Integration", "AI-assisted Analytics", "Agile/Scrum", "JIRA"] },
+  { l: "Business & Consulting", Icon: Briefcase, col: "#22D3B8", skills: ["Business Requirement Analysis", "Market Research", "Strategic Planning", "Stakeholder Management", "Hypothesis Analysis", "Process Improvement", "Financial Modelling", "Business Insights Generation", "Management Consulting", "Commercial Awareness", "Organisational Performance Analysis", "Change Management"] },
   { l: "Engineering", Icon: Code2, col: "#9B7FF7", skills: ["React", "Node.js", "Next.js", "Git/GitHub", "REST APIs", "HTML/CSS/JS", "Database Management", "MySQL", "SQL Server"] },
 ];
 
@@ -225,7 +264,7 @@ const ACHIEVEMENTS = [
   { Icon: Award, col: "#C49A3C", title: "1st Place — Product Innovation Challenge", sub: "EcoFlow: end-to-end business concept judged by faculty & industry" },
   { Icon: Star, col: "#4E6EF2", title: "Aspire Young Leaders Program, Cohort 1", sub: "Competitive global cohort by Harvard Business School faculty" },
   { Icon: Users, col: "#22D3B8", title: "AIESEC Manipal", sub: "Cross-cultural leadership & international professional development" },
-  { Icon: TrendingUp, col: "#9B7FF7", title: "GPA 8.9/10 — Top Academic Standing", sub: "Manipal Academy of Higher Education (MAHE)" },
+  { Icon: TrendingUp, col: "#9B7FF7", title: "CGPA 8.9/10 — Top Academic Standing", sub: "Manipal Academy of Higher Education (MAHE)" },
 ];
 
 // ── Hooks ─────────────────────────────────────────────────────────────────────
@@ -445,7 +484,7 @@ function Hero() {
         {/* Tagline */}
         <p style={{ maxWidth: 600, fontSize: 16, fontWeight: 300, color: "var(--t2)", lineHeight: 1.75, marginBottom: 44, letterSpacing: ".01em" }}>
           Bridging business strategy, data analytics, and emerging technology to deliver measurable impact.
-          Business / Data Analyst · GPA 8.9/10 · MAHE Manipal.
+          Business / Data Analyst · CGPA 8.9/10 · MAHE Manipal.
         </p>
         {/* CTAs */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 56 }}>
@@ -513,7 +552,7 @@ function About() {
         <div className="grid-bio">
           <div className={`reveal d1 ${v ? "in" : ""}`}>
             <p style={{ fontSize: 15.5, lineHeight: 1.82, color: "var(--t2)", fontWeight: 300, marginBottom: 22 }}>
-              Final-year Analytics student at MAHE Manipal, graduating with a 8.9/10 GPA and a record of turning complex analytical problems into structured, evidence-based strategic recommendations.
+              Final-year Analytics student at MAHE Manipal, graduating with a 8.9/10 CGPA and a record of turning complex analytical problems into structured, evidence-based strategic recommendations.
             </p>
             <p style={{ fontSize: 15.5, lineHeight: 1.82, color: "var(--t2)", fontWeight: 300 }}>
               Across four internships spanning analytics, operations, finance, and engineering, I've consistently bridged technical outputs and executive decision-making — building dashboards, models, and AI systems that create measurable business impact.
