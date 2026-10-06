@@ -2,9 +2,12 @@ import { ArrowUp } from "lucide-react";
 import { PROFILE, CONTACT } from "../../data/meta";
 import { PALETTES, usePrefs } from "../../context/PrefsContext";
 import { scrollToId } from "../../lib/actions";
+import { useHydrated } from "../../hooks/useHydrated";
 
 export default function Footer() {
   const { palette, setPalette } = usePrefs();
+  // Saved palette lives in localStorage; match the pre-rendered default until hydrated.
+  const shown = useHydrated() ? palette : PALETTES[0].id;
   const year = new Date().getFullYear();
 
   return (
@@ -19,7 +22,7 @@ export default function Footer() {
           <legend>Palette</legend>
           {PALETTES.map((p) => (
             <label key={p.id} className="swatch" title={p.name}>
-              <input type="radio" name="palette" value={p.id} checked={palette === p.id} onChange={() => setPalette(p.id)} />
+              <input type="radio" name="palette" value={p.id} checked={shown === p.id} onChange={() => setPalette(p.id)} />
               <span className="swatch__chip" aria-hidden="true">
                 <i style={{ background: p.swatch[0] }} />
                 <i style={{ background: p.swatch[2] }} />

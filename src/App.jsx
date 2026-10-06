@@ -16,6 +16,7 @@ import Projects from "./components/sections/Projects";
 import SkillsAnalytics from "./components/sections/SkillsAnalytics";
 import Education from "./components/sections/Education";
 import Certifications from "./components/sections/Certifications";
+import Faq from "./components/sections/Faq";
 import Contact from "./components/sections/Contact";
 
 import ProjectDetailModal from "./components/modals/ProjectDetailModal";
@@ -40,6 +41,7 @@ function Site() {
         <SkillsAnalytics />
         <Education />
         <Certifications />
+        <Faq />
         <Contact />
       </main>
       <Footer />
@@ -51,10 +53,10 @@ function Site() {
   );
 }
 
-export default function App() {
+export default function App({ initialProjectId = null }) {
   return (
     <PrefsProvider>
-      <UIProvider>
+      <UIProvider initialProjectId={initialProjectId}>
         <Site />
       </UIProvider>
     </PrefsProvider>

@@ -5,6 +5,7 @@ import { PROJECTS, PROJECT_FILTERS } from "../../data/projects";
 import { useUI } from "../../context/UIContext";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
+import { projectPath } from "../../seo/site.js";
 
 export default function Projects() {
   const { openProject } = useUI();
@@ -57,7 +58,16 @@ export default function Projects() {
                   exit={{ opacity: 0, transition: { duration: 0.15 } }}
                   transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
                 >
-                  <button className="index__row" onClick={() => openProject(p.id)} aria-haspopup="dialog">
+                  <a
+                    className="index__row"
+                    href={projectPath(p.id)}
+                    aria-haspopup="dialog"
+                    onClick={(e) => {
+                      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+                      e.preventDefault();
+                      openProject(p.id);
+                    }}
+                  >
                     <span className="index__n">{String(n).padStart(2, "0")}</span>
                     <span className="index__main">
                       <span className="index__name">{p.shortName || p.name}</span>
@@ -68,7 +78,7 @@ export default function Projects() {
                     <span className="index__go" aria-hidden="true">
                       <ArrowUpRight size={18} />
                     </span>
-                  </button>
+                  </a>
                 </motion.li>
               );
             })}

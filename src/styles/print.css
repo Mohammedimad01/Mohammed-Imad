@@ -14,7 +14,7 @@
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .print-cv header { border-bottom: 1.2pt solid #111; padding-bottom: 6pt; margin-bottom: 8pt; }
-  .print-cv h1 { font: 400 24pt/1 "Cormorant Garamond", Georgia, serif; letter-spacing: -0.01em; }
+  .print-cv .pc-name { font: 400 24pt/1 "Cormorant Garamond", Georgia, serif; letter-spacing: -0.01em; }
   .print-cv .pc-head { margin-top: 3pt; font-size: 10.5pt; }
   .print-cv .pc-contact { margin-top: 3pt; font-size: 8.4pt; color: #444; }
   .print-cv h2 {

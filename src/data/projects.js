@@ -42,7 +42,7 @@ export const PROJECTS = [
     category: "ai",
     role: "Sole developer & analyst",
     status: "Jan – May 2026",
-    summary: "Predicts which telecom customers will leave, explains why, and lets retention teams can act first.",
+    summary: "Predicts which telecom customers will leave and explains why, so retention teams can act first.",
     problem: "Businesses can't identify at-risk customers before churn occurs, causing preventable revenue loss without structured early-warning analytics.",
     approach: "Developed an end-to-end churn prediction system on the IBM Telco dataset (7,000+ records), training Logistic Regression, Random Forest and XGBoost models to achieve ROC-AUC > 0.85, with SHAP explainability to identify key churn drivers. Backed by 12+ SQL analytics queries for churn trend analysis and customer segmentation.",
     impact: "Shipped a Power BI dashboard and Streamlit web app for real-time churn prediction and customer risk scoring. Identified contract type, tenure & monthly charges as top churn drivers, guiding a targeted retention strategy.",

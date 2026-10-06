@@ -34,9 +34,21 @@ Until it exists, the résumé dialog shows an at-a-glance summary and a "Request
 Copy `.env.example` to `.env.local` and set `VITE_WEB3FORMS_KEY` to deliver messages to your inbox.
 Without a key the form validates, then opens the visitor's email app with the message pre-filled.
 
+## Search visibility (SEO / AEO / GEO)
+
+`npm run build` runs three steps: the client build, a server build of `src/entry-server.jsx`, and `scripts/prerender.mjs`, which:
+
+- pre-renders `/` and every case study at `/work/<id>/` to real HTML, so crawlers that don't run JavaScript (most AI search bots) see the full content;
+- writes per-page `<title>`, description, canonical, OpenGraph and JSON-LD (Person, ProfilePage, WebSite, case-study CreativeWork, BreadcrumbList, FAQPage);
+- generates `sitemap.xml`, `robots.txt` (all crawlers allowed), `llms.txt` and a `noindex` `404.html`.
+
+Everything is generated from `src/data/` via `src/seo/site.js`; the "Quick answers" copy lives in `src/data/faq.js`.
+Check a build with `npm run preview`, then open e.g. `http://localhost:4173/work/churnsense/`.
+
 ## Before deploying
 
-- Replace `https://mohammed-imad.vercel.app` with your real domain in `src/data/meta.js` **and** `index.html` (canonical, OpenGraph, JSON-LD).
+- Set your real domain in `SITE_URL` in `src/data/meta.js`. The build rewrites every canonical, OpenGraph URL, sitemap entry and JSON-LD id from it.
+- Optional: add Search Console / Bing verification codes to `.env.local` (see `.env.example`).
 - `public/og-image.png` is the 1200×630 link-preview card.
 
 ## Structure

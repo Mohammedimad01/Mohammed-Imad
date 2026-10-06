@@ -95,7 +95,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section section--contact" aria-labelledby="contact-title">
       <div className="wrap">
-        <SectionHeader index={6} kicker="Let's Talk" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
+        <SectionHeader index={7} kicker="Let's Talk" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
 
         <div className="contact">
           <Reveal className="contact__direct">

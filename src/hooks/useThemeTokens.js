@@ -11,9 +11,10 @@ const subscribe = (cb) => {
   return () => mo.disconnect();
 };
 const getPalette = () => document.documentElement.dataset.palette || "";
+const getServerPalette = () => "";
 
 export function useThemeTokens() {
-  const palette = useSyncExternalStore(subscribe, getPalette);
+  const palette = useSyncExternalStore(subscribe, getPalette, getServerPalette);
   return useMemo(() => {
     if (!palette) return null;
     const cs = getComputedStyle(document.documentElement);

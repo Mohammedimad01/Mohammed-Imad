@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
+import { useHydrated } from "../../hooks/useHydrated";
 
 const FOCUSABLE = 'a[href],button:not([disabled]),textarea,input,select,iframe,[tabindex]:not([tabindex="-1"])';
 
@@ -13,7 +14,7 @@ function Panel({ onClose, title, label, variant, children, className = "" }) {
   const titleId = useId();
   const closeRef = useRef(onClose);
   // Captured at render: children may move focus inside before our effect runs.
-  const [prevFocus] = useState(() => document.activeElement);
+  const [prevFocus] = useState(() => (typeof document === "undefined" ? null : document.activeElement));
 
   useEffect(() => {
     closeRef.current = onClose;
@@ -99,9 +100,12 @@ function Panel({ onClose, title, label, variant, children, className = "" }) {
   );
 }
 
+// Portals can't be server-rendered, so a modal that is open in the
+// pre-rendered HTML (a /work/<id>/ case-study URL) renders in place until
+// hydration, then moves into a portal. initial={false} keeps either path from
+// replaying the entrance animation; later openings animate as normal.
 export default function Modal({ open, variant = "center", ...rest }) {
-  return createPortal(
-    <AnimatePresence>{open && <Panel key="panel" variant={variant} {...rest} />}</AnimatePresence>,
-    document.body
-  );
+  const hydrated = useHydrated();
+  const tree = <AnimatePresence initial={false}>{open && <Panel key="panel" variant={variant} {...rest} />}</AnimatePresence>;
+  return hydrated ? createPortal(tree, document.body) : tree;
 }

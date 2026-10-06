@@ -5,6 +5,7 @@ import { CONTACT } from "../../data/meta";
 import { useUI } from "../../context/UIContext";
 import Modal from "../common/Modal";
 import { GithubIcon } from "../common/BrandIcons";
+import { projectPath } from "../../seo/site.js";
 
 const LINKS = [
   { k: "demo", label: "Live demo", Icon: MonitorPlay },
@@ -12,7 +13,17 @@ const LINKS = [
   { k: "writeup", label: "Technical write-up", Icon: FileText },
 ];
 
-function Body({ p, index, onSwitch }) {
+function Body({ p, index, onSwitch, isLanding }) {
+  // Real links (crawlable, open-in-new-tab friendly); a plain click swaps the
+  // case study in place.
+  const linkTo = (id) => ({
+    href: projectPath(id),
+    onClick: (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      e.preventDefault();
+      onSwitch(id, { replace: true });
+    },
+  });
   const [tool, setTool] = useState(null);
   const scrollRef = useRef(null);
 
@@ -25,6 +36,8 @@ function Body({ p, index, onSwitch }) {
     () => (tool ? PROJECTS.filter((x) => x.id !== p.id && x.tools.includes(tool)) : []),
     [tool, p.id]
   );
+  // Keep the outline unbroken: sub-headings sit one level below the title.
+  const Sub = isLanding ? "h2" : "h3";
   const links = LINKS.filter((l) => p.links?.[l.k]);
   const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
   const next = PROJECTS[(index + 1) % PROJECTS.length];
@@ -36,7 +49,11 @@ function Body({ p, index, onSwitch }) {
           <span className="cs__no">Case {String(index + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}</span>
           <span className="cs__type">{p.type}</span>
         </div>
-        <h2 className="cs__title" data-autofocus tabIndex={-1}>{p.name}</h2>
+        {isLanding ? (
+          <h1 className="cs__title" data-autofocus tabIndex={-1}>{p.name}</h1>
+        ) : (
+          <h2 className="cs__title" data-autofocus tabIndex={-1}>{p.name}</h2>
+        )}
         <p className="cs__lede">{p.summary}</p>
         <dl className="cs__facts">
           <div><dt>Role</dt><dd>{p.role}</dd></div>
@@ -60,14 +77,14 @@ function Body({ p, index, onSwitch }) {
             ["Outcome", p.impact],
           ].map(([h, t], i) => (
             <section key={h} className="cs__block">
-              <h3><span>{String(i + 1).padStart(2, "0")}</span>{h}</h3>
+              <Sub><span>{String(i + 1).padStart(2, "0")}</span>{h}</Sub>
               <p>{t}</p>
             </section>
           ))}
         </div>
 
         <section className="cs__arch" aria-label="System architecture">
-          <h3 className="eyebrow">Architecture &amp; method</h3>
+          <Sub className="eyebrow">Architecture &amp; method</Sub>
           <ol className="flow">
             {p.pipeline.map((s, i) => (
               <li key={s} style={{ "--i": i }}>
@@ -79,7 +96,7 @@ function Body({ p, index, onSwitch }) {
         </section>
 
         <section className="cs__stack" aria-label="Tech stack">
-          <h3 className="eyebrow">Stack: select a tool to see where else I've used it</h3>
+          <Sub className="eyebrow">Stack: select a tool to see where else I've used it</Sub>
           <div className="tags">
             {p.tools.map((t) => (
               <button key={t} type="button" className={`tag tag--btn${tool === t ? " is-active" : ""}`} aria-pressed={tool === t} onClick={() => setTool(tool === t ? null : t)}>
@@ -94,7 +111,7 @@ function Body({ p, index, onSwitch }) {
                   <span className="muted">{tool} also appears in </span>
                   {related.map((r, i) => (
                     <span key={r.id}>
-                      <button className="linkish" onClick={() => onSwitch(r.id)}>{r.shortName || r.name}</button>
+                      <a className="linkish" {...linkTo(r.id)}>{r.shortName || r.name}</a>
                       {i < related.length - 1 ? ", " : ""}
                     </span>
                   ))}
@@ -125,27 +142,27 @@ function Body({ p, index, onSwitch }) {
       </div>
 
       <nav className="cs__nav" aria-label="Other case studies">
-        <button className="cs__pn" onClick={() => onSwitch(prev.id)}>
+        <a className="cs__pn" {...linkTo(prev.id)}>
           <ArrowLeft size={14} aria-hidden="true" />
           <span><small>Previous</small>{prev.shortName || prev.name}</span>
-        </button>
-        <button className="cs__pn cs__pn--next" onClick={() => onSwitch(next.id)}>
+        </a>
+        <a className="cs__pn cs__pn--next" {...linkTo(next.id)}>
           <span><small>Next</small>{next.shortName || next.name}</span>
           <ArrowRight size={14} aria-hidden="true" />
-        </button>
+        </a>
       </nav>
     </>
   );
 }
 
 export default function ProjectDetailModal() {
-  const { projectId, closeProject, openProject } = useUI();
+  const { projectId, closeProject, openProject, landingProjectId } = useUI();
   const index = PROJECTS.findIndex((p) => p.id === projectId);
   const p = PROJECTS[index];
 
   return (
     <Modal open={!!p} onClose={closeProject} variant="drawer" title={p ? "Case study" : ""} className="drawer">
-      {p && <Body key={p.id} p={p} index={index} onSwitch={openProject} />}
+      {p && <Body key={p.id} p={p} index={index} onSwitch={openProject} isLanding={p.id === landingProjectId} />}
     </Modal>
   );
 }

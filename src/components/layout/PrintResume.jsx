@@ -2,17 +2,22 @@ import { PROFILE, CONTACT, SITE_URL } from "../../data/meta";
 import { EXPERIENCE } from "../../data/experience";
 import { PROJECTS } from "../../data/projects";
 import { SKILL_TABS } from "../../data/skills";
+import { useHydrated } from "../../hooks/useHydrated";
 import { EDUCATION, ACHIEVEMENTS, CERTIFICATIONS } from "../../data/achievements";
 
 const strip = (u) => u.replace(/^https?:\/\/(www\.)?/, "");
 
 // Hidden on screen; the only thing rendered by @media print. Generated from the
 // same data as the site so the printed résumé never drifts out of date.
+// Rendered in the browser only: kept out of the pre-rendered HTML so crawlers
+// don't see a hidden duplicate of the page.
 export default function PrintResume() {
+  const hydrated = useHydrated();
+  if (!hydrated) return null;
   return (
     <article className="print-cv" aria-hidden="true">
       <header>
-        <h1>{PROFILE.name}</h1>
+        <p className="pc-name">{PROFILE.name}</p>
         <p className="pc-head">{PROFILE.headline}</p>
         <p className="pc-contact">
           {PROFILE.location} · {CONTACT.phone} · {CONTACT.email} · {strip(CONTACT.linkedin)} · {strip(CONTACT.github)} · {strip(SITE_URL)}

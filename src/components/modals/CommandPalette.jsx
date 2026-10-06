@@ -15,6 +15,7 @@ const SECTIONS = [
   ...NAV.slice(0, 4),
   { id: "education", label: "Education & Achievements" },
   { id: "certifications", label: "Certifications" },
+  { id: "faq", label: "Quick answers" },
   NAV[4],
 ];
 

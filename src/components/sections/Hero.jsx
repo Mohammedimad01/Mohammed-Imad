@@ -12,8 +12,13 @@ function useLocalTime() {
     new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: PROFILE.timeZone }).format(new Date());
   const [t, setT] = useState(fmt);
   useEffect(() => {
+    // Tick once right away: pre-rendered HTML carries the build-time clock.
+    const now = setTimeout(() => setT(fmt()), 0);
     const id = setInterval(() => setT(fmt()), 20_000);
-    return () => clearInterval(id);
+    return () => {
+      clearTimeout(now);
+      clearInterval(id);
+    };
   }, []);
   return t;
 }
@@ -34,7 +39,9 @@ function Stat({ stat, start, i }) {
 }
 
 export default function Hero() {
-  const { openResume, copyEmail } = useUI();
+  const { openResume, copyEmail, landingProjectId } = useUI();
+  // One H1 per page: on a case-study URL the project title takes it.
+  const NameTag = landingProjectId ? "p" : "h1";
   const time = useLocalTime();
   const [statsRef, statsIn] = useIntersection({ threshold: 0.4 });
   const [current, ...previous] = EXPERIENCE;
@@ -48,7 +55,7 @@ export default function Hero() {
           <span className="hide-sm">{PROFILE.coords}</span>
           <span>
             <span className="hide-sm">Local time </span>
-            <time>{time} {PROFILE.tzLabel}</time>
+            <time suppressHydrationWarning>{time} {PROFILE.tzLabel}</time>
           </span>
         </div>
 
@@ -57,10 +64,10 @@ export default function Hero() {
           {PROFILE.availability}
         </p>
 
-        <h1 className="hero__name">
-          <span className="line"><span className="line__in">{PROFILE.firstName}</span></span>
+        <NameTag className="hero__name">
+          <span className="line"><span className="line__in">{PROFILE.firstName}</span></span>{" "}
           <span className="line"><em className="line__in">{PROFILE.lastName}</em></span>
-        </h1>
+        </NameTag>
 
         <div className="hero__grid">
           <div className="hero__main">
