@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { ArrowDownRight, Copy, FileDown } from "lucide-react";
 import { PROFILE, STATS } from "../../data/meta";
-import { EXPERIENCE } from "../../data/experience";
 import { useUI } from "../../context/UIContext";
 import { useIntersection } from "../../hooks/useIntersection";
 import { useCounter } from "../../hooks/useCounter";
 import { scrollToId } from "../../lib/actions";
+import HeroCode from "./HeroCode";
+import DataTerrain from "../three/DataTerrain";
 
 function useLocalTime() {
   const fmt = () =>
@@ -44,11 +45,11 @@ export default function Hero() {
   const NameTag = landingProjectId ? "p" : "h1";
   const time = useLocalTime();
   const [statsRef, statsIn] = useIntersection({ threshold: 0.4 });
-  const [current, ...previous] = EXPERIENCE;
 
   return (
     <section id="top" className="hero" aria-label="Introduction">
-      <div className="wrap">
+      <DataTerrain />
+      <div className="wrap hero__wrap">
         <div className="hero__strip rise" style={{ "--i": 0 }}>
           <span>Portfolio / {new Date().getFullYear()}</span>
           <span className="hide-sm">{PROFILE.location}</span>
@@ -94,26 +95,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <aside className="hero__aside rise" style={{ "--i": 5 }} aria-label="Most recent role">
-            <div className="now">
-              <div className="now__k">Most recently</div>
-              <div className="now__role">{current.role}</div>
-              <div className="now__org">
-                {current.co} <span>· {current.period}</span>
-              </div>
-            </div>
-            <div className="prev">
-              <div className="now__k">Previously</div>
-              <ul>
-                {previous.map((e) => (
-                  <li key={e.co}>
-                    <span>{e.co}</span>
-                    <span className="prev__t">{e.type}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+          <HeroCode />
         </div>
 
         <dl ref={statsRef} className="stats rise" style={{ "--i": 7 }}>

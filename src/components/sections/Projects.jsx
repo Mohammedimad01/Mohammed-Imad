@@ -6,10 +6,12 @@ import { useUI } from "../../context/UIContext";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import { projectPath } from "../../seo/site.js";
+import ProjectPreview from "./ProjectPreview";
 
 export default function Projects() {
   const { openProject } = useUI();
   const [filter, setFilter] = useState("all");
+  const [hovered, setHovered] = useState(null);
 
   const counts = useMemo(() => {
     const c = { all: PROJECTS.length };
@@ -45,7 +47,7 @@ export default function Projects() {
           ))}
         </Reveal>
 
-        <ol className="index" aria-live="polite">
+        <ol className="index" aria-live="polite" onPointerLeave={() => setHovered(null)}>
           <AnimatePresence initial={false} mode="popLayout">
             {list.map((p) => {
               const n = PROJECTS.indexOf(p) + 1;
@@ -62,6 +64,7 @@ export default function Projects() {
                     className="index__row"
                     href={projectPath(p.id)}
                     aria-haspopup="dialog"
+                    onPointerEnter={() => setHovered(p.id)}
                     onClick={(e) => {
                       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
                       e.preventDefault();
@@ -84,6 +87,7 @@ export default function Projects() {
             })}
           </AnimatePresence>
         </ol>
+        <ProjectPreview project={PROJECTS.find((x) => x.id === hovered)} />
       </div>
     </section>
   );

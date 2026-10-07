@@ -1,5 +1,6 @@
 import { CERTIFICATIONS } from "../../data/achievements";
 import Reveal from "../common/Reveal";
+import Marquee from "../common/Marquee";
 
 export default function Certifications() {
   return (
@@ -10,14 +11,19 @@ export default function Certifications() {
             <span className="eyebrow">Certifications</span>
             <span className="certs__count">{String(CERTIFICATIONS.length).padStart(2, "0")}</span>
           </h2>
-          <ul className="certs__list">
-            {CERTIFICATIONS.map((c) => (
-              <li key={c.n}>
-                <span className="certs__n">{c.n}</span>
-                <span className="certs__org">{c.org}</span>
+          <Marquee
+            label="Certifications"
+            items={CERTIFICATIONS}
+            duration={38}
+            className="certs__rail"
+            render={(c, i) => (
+              <li key={c.n} className="cert">
+                <span className="cert__no" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                <span className="cert__n">{c.n}</span>
+                <span className="cert__org">{c.org}</span>
               </li>
-            ))}
-          </ul>
+            )}
+          />
         </Reveal>
       </div>
     </section>

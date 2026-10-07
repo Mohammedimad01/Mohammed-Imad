@@ -10,6 +10,7 @@ import Footer from "./components/layout/Footer";
 import PrintResume from "./components/layout/PrintResume";
 
 import Hero from "./components/sections/Hero";
+import StackTicker from "./components/sections/StackTicker";
 import About from "./components/sections/About";
 import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
@@ -35,6 +36,7 @@ function Site() {
       <Navbar active={active} />
       <main id="main">
         <Hero />
+        <StackTicker />
         <About />
         <Experience />
         <Projects />
