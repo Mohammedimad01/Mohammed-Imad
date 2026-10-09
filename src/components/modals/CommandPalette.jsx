@@ -1,22 +1,22 @@
 import { useCallback } from "react";
 import { Command } from "cmdk";
 import { ArrowRight, Copy, CornerDownLeft, FileDown, Hash, Mail, Palette, Printer, Search, Sparkles, Wind } from "lucide-react";
-import { NAV, CONTACT } from "../../data/meta";
+import { CONTACT } from "../../data/meta";
+import { PAGES } from "../../data/pages";
+import { useRouter } from "../../router/RouterContext";
 import { PROJECTS } from "../../data/projects";
 import { PALETTES, usePrefs } from "../../context/PrefsContext";
 import { useUI } from "../../context/UIContext";
 import { useKeyboardNav } from "../../hooks/useKeyboardNav";
-import { navigateTo, openExternal, scrollToId } from "../../lib/actions";
+import { navigateTo, openExternal } from "../../lib/actions";
 import Modal from "../common/Modal";
 import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
 
-const SECTIONS = [
-  { id: "top", label: "Home" },
-  ...NAV.slice(0, 4),
-  { id: "education", label: "Education & Achievements" },
-  { id: "certifications", label: "Certifications" },
-  { id: "faq", label: "Quick answers" },
-  NAV[4],
+// Pages, plus a couple of deep links into them.
+const DESTINATIONS = [
+  ...PAGES.map((p) => ({ to: p.path, label: p.label, keywords: ["page", p.id] })),
+  { to: "/#faq", label: "Quick answers", keywords: ["faq", "questions", "about"] },
+  { to: "/education/#certifications", label: "Certifications", keywords: ["certificates", "courses"] },
 ];
 
 function Item({ onSelect, icon: Icon, children, hint, keywords }) {
@@ -33,6 +33,7 @@ function Item({ onSelect, icon: Icon, children, hint, keywords }) {
 export default function CommandPalette() {
   const { paletteOpen, setPaletteOpen, togglePalette, openProject, openResume, copyEmail, toast } = useUI();
   const { palette, setPalette, reducedMotion, toggleReducedMotion } = usePrefs();
+  const { navigate } = useRouter();
 
   const open = useCallback(() => setPaletteOpen(true), [setPaletteOpen]);
   useKeyboardNav({ onToggle: togglePalette, onOpen: open });
@@ -49,7 +50,7 @@ export default function CommandPalette() {
       <Command label="Command palette" loop>
         <div className="cmd__search">
           <Search size={15} aria-hidden="true" />
-          <Command.Input data-autofocus placeholder="Jump to a section, case study or action…" />
+          <Command.Input data-autofocus placeholder="Jump to a page, case study or action…" />
           <kbd>esc</kbd>
         </div>
         <Command.List className="cmd__list">
@@ -68,9 +69,9 @@ export default function CommandPalette() {
           </Command.Group>
 
           <Command.Group heading="Go to">
-            {SECTIONS.map((s) => (
-              <Item key={s.id} icon={Hash} onSelect={run(() => scrollToId(s.id))} keywords={["section", "scroll"]}>
-                {s.label}
+            {DESTINATIONS.map((d) => (
+              <Item key={d.to} icon={Hash} onSelect={run(() => navigate(d.to))} keywords={d.keywords} hint={d.to}>
+                {d.label}
               </Item>
             ))}
           </Command.Group>

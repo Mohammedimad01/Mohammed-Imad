@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { NAV, PROFILE, CONTACT } from "../../data/meta";
+import { PROFILE, CONTACT } from "../../data/meta";
+import { PAGES } from "../../data/pages";
 import { useUI } from "../../context/UIContext";
+import Link from "../../router/Link";
 
-export default function MobileMenu({ open, active, onNavigate, onClose }) {
+export default function MobileMenu({ open, activeId, onClose }) {
   const { openResume, copyEmail } = useUI();
 
   useEffect(() => {
@@ -30,17 +32,22 @@ export default function MobileMenu({ open, active, onNavigate, onClose }) {
         >
           <nav aria-label="Mobile">
             <ol className="mmenu__list">
-              {NAV.map((n, i) => (
+              {PAGES.map((n, i) => (
                 <motion.li
                   key={n.id}
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.12 + i * 0.05 }}
                 >
-                  <a href={`#${n.id}`} onClick={(e) => onNavigate(e, n.id)} className={active === n.id ? "is-active" : undefined}>
-                    <span>0{i + 1}</span>
+                  <Link
+                    to={n.path}
+                    onClick={onClose}
+                    className={activeId === n.id ? "is-active" : undefined}
+                    aria-current={activeId === n.id ? "page" : undefined}
+                  >
+                    <span>{String(i).padStart(2, "0")}</span>
                     {n.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </ol>

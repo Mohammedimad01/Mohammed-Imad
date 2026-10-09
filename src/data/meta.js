@@ -67,11 +67,3 @@ export const STATS = [
   { v: 5, s: "", l: "Roles", d: "Tech lead + 4 internships across analytics, ops, eng & finance" },
   { v: 8, s: "", l: "Projects", d: "ML · BI · AI agents · ventures" },
 ];
-
-export const NAV = [
-  { id: "about", label: "Profile" },
-  { id: "experience", label: "Experience" },
-  { id: "projects", label: "Work" },
-  { id: "skills", label: "Skills" },
-  { id: "contact", label: "Contact" },
-];

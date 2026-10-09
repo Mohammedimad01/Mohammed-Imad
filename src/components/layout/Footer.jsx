@@ -1,7 +1,8 @@
 import { ArrowUp } from "lucide-react";
 import { PROFILE, CONTACT } from "../../data/meta";
 import { PALETTES, usePrefs } from "../../context/PrefsContext";
-import { scrollToId } from "../../lib/actions";
+import { PAGES } from "../../data/pages";
+import Link from "../../router/Link";
 import { useHydrated } from "../../hooks/useHydrated";
 
 export default function Footer() {
@@ -36,13 +37,18 @@ export default function Footer() {
           <a href={`mailto:${CONTACT.email}`}>Email</a>
           <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-          <button className="icon-btn" onClick={() => scrollToId("top")} aria-label="Back to top">
+          <button className="icon-btn" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
             <ArrowUp size={14} />
           </button>
         </div>
       </div>
       <div className="wrap footer__base">
         <span>© {year} {PROFILE.name}</span>
+        <nav className="footer__pages" aria-label="Footer">
+          {PAGES.map((p) => (
+            <Link key={p.id} to={p.path}>{p.label}</Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );

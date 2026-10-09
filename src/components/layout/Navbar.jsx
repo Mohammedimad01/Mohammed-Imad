@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { Command, FileText } from "lucide-react";
-import { NAV, PROFILE } from "../../data/meta";
+import { PROFILE } from "../../data/meta";
+import { PAGES } from "../../data/pages";
 import { useUI } from "../../context/UIContext";
-import { scrollToId } from "../../lib/actions";
+import { useRouter } from "../../router/RouterContext";
+import Link from "../../router/Link";
 import MobileMenu from "./MobileMenu";
 
 const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+const NAV_PAGES = PAGES.filter((p) => p.id !== "home");
 
-export default function Navbar({ active }) {
+export default function Navbar() {
   const { setPaletteOpen, openResume } = useUI();
+  const { page } = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,33 +23,26 @@ export default function Navbar({ active }) {
     return () => window.removeEventListener("scroll", h);
   }, []);
 
-  const go = (e, id) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    scrollToId(id);
-  };
-
   return (
     <>
       <header className={`nav${scrolled || menuOpen ? " is-solid" : ""}`}>
         <div className="nav__inner wrap">
-          <a href="#top" className="nav__mark" onClick={(e) => go(e, "top")} aria-label={`${PROFILE.name}, back to top`}>
+          <Link to="/" className="nav__mark" onClick={() => setMenuOpen(false)} aria-label={`${PROFILE.name}, home`}>
             <span className="nav__mono">MI</span>
             <span className="nav__name">Mohammed Imad <i>Thotan</i></span>
-          </a>
+          </Link>
 
           <nav className="nav__links" aria-label="Primary">
-            {NAV.map((n, i) => (
-              <a
+            {NAV_PAGES.map((n, i) => (
+              <Link
                 key={n.id}
-                href={`#${n.id}`}
-                onClick={(e) => go(e, n.id)}
-                className={active === n.id ? "is-active" : undefined}
-                aria-current={active === n.id ? "location" : undefined}
+                to={n.path}
+                className={page.id === n.id ? "is-active" : undefined}
+                aria-current={page.id === n.id ? "page" : undefined}
               >
                 <span className="nav__idx">0{i + 1}</span>
                 {n.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -69,7 +66,7 @@ export default function Navbar({ active }) {
           </div>
         </div>
       </header>
-      <MobileMenu open={menuOpen} active={active} onNavigate={go} onClose={() => setMenuOpen(false)} />
+      <MobileMenu open={menuOpen} activeId={page.id} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

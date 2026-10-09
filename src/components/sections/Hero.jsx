@@ -4,7 +4,7 @@ import { PROFILE, STATS } from "../../data/meta";
 import { useUI } from "../../context/UIContext";
 import { useIntersection } from "../../hooks/useIntersection";
 import { useCounter } from "../../hooks/useCounter";
-import { scrollToId } from "../../lib/actions";
+import Link from "../../router/Link";
 import HeroCode from "./HeroCode";
 import DataTerrain from "../three/DataTerrain";
 
@@ -40,9 +40,7 @@ function Stat({ stat, start, i }) {
 }
 
 export default function Hero() {
-  const { openResume, copyEmail, landingProjectId } = useUI();
-  // One H1 per page: on a case-study URL the project title takes it.
-  const NameTag = landingProjectId ? "p" : "h1";
+  const { openResume, copyEmail } = useUI();
   const time = useLocalTime();
   const [statsRef, statsIn] = useIntersection({ threshold: 0.4 });
 
@@ -65,10 +63,10 @@ export default function Hero() {
           {PROFILE.availability}
         </p>
 
-        <NameTag className="hero__name">
+        <h1 className="hero__name">
           <span className="line"><span className="line__in">{PROFILE.firstName}</span></span>{" "}
           <span className="line"><em className="line__in">{PROFILE.lastName}</em></span>
-        </NameTag>
+        </h1>
 
         <div className="hero__grid">
           <div className="hero__main">
@@ -86,9 +84,9 @@ export default function Hero() {
               <button className="btn btn--primary btn--lg" onClick={openResume}>
                 <FileDown size={15} aria-hidden="true" /> Download résumé
               </button>
-              <button className="btn btn--ghost btn--lg" onClick={() => scrollToId("projects")}>
+              <Link to="/work/" className="btn btn--ghost btn--lg">
                 Read the case studies <ArrowDownRight size={15} aria-hidden="true" />
-              </button>
+              </Link>
               <button className="btn btn--text" onClick={copyEmail}>
                 <Copy size={13} aria-hidden="true" /> Copy email
               </button>

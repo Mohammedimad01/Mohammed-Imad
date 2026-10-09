@@ -4,11 +4,11 @@ import Reveal from "../common/Reveal";
 
 const ROMAN = ["i", "ii", "iii", "iv"];
 
-export default function About() {
+export default function About({ index = 1, level = 2 }) {
   return (
     <section id="about" className="section" aria-labelledby="about-title">
       <div className="wrap">
-        <SectionHeader index={1} kicker="Executive Profile" title="Structured thinking." accent="Measurable outcomes." id="about-title" />
+        <SectionHeader index={index} level={level} kicker="Executive Profile" title="Structured thinking." accent="Measurable outcomes." id="about-title" />
         <div className="about">
           <Reveal className="about__bio">
             {PROFILE.bio.map((p, i) => (

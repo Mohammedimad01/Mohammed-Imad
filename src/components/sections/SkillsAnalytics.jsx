@@ -7,7 +7,7 @@ import Reveal from "../common/Reveal";
 
 const SkillRadar = lazy(() => import("./SkillRadar"));
 
-export default function SkillsAnalytics() {
+export default function SkillsAnalytics({ index = 4, level = 2 }) {
   const [tab, setTab] = useState("overview");
   // Start fetching the chart bundle a little before the section scrolls in.
   const [chartRef, chartNear] = useIntersection({ threshold: 0, rootMargin: "600px 0px" });
@@ -28,7 +28,7 @@ export default function SkillsAnalytics() {
   return (
     <section id="skills" className="section" aria-labelledby="skills-title">
       <div className="wrap">
-        <SectionHeader index={4} kicker="Capabilities" title="Technical &" accent="business skills." id="skills-title" />
+        <SectionHeader index={index} level={level} kicker="Capabilities" title="Technical &" accent="business skills." id="skills-title" />
 
         <Reveal className="tabs" role="tablist" aria-label="Skill categories">
           {SKILL_TABS.map((t, i) => (

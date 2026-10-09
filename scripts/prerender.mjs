@@ -12,7 +12,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(root, "dist");
 const ssrDir = join(root, "dist-ssr");
 
-const { render, pageMeta, jsonLd, projectIdFromPath, ROUTES, SITE, sitemapXml, robotsTxt, llmsTxt } = await import(
+const { render, pageMeta, jsonLd, ROUTES, NOT_FOUND_PATH, SITE, sitemapXml, robotsTxt, llmsTxt } = await import(
   pathToFileURL(join(ssrDir, "entry-server.js")).href
 );
 
@@ -24,10 +24,10 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").repl
 // SITE_URL from src/data/meta.js so the domain is configured in one place.
 const template = readFileSync(join(dist, "index.html"), "utf8").replaceAll("https://mohammed-imad.vercel.app", SITE);
 
-function headFor(projectId) {
-  const m = pageMeta(projectId);
+function headFor(route) {
+  const m = pageMeta(route);
   const url = `${SITE}${m.path}`;
-  const ld = JSON.stringify(jsonLd(projectId, { dateModified: today })).replace(/</g, "\\u003c");
+  const ld = JSON.stringify(jsonLd(route, { dateModified: today })).replace(/</g, "\\u003c");
   const verify = [
     env.VITE_GOOGLE_SITE_VERIFICATION && `<meta name="google-site-verification" content="${esc(env.VITE_GOOGLE_SITE_VERIFICATION)}" />`,
     env.VITE_BING_SITE_VERIFICATION && `<meta name="msvalidate.01" content="${esc(env.VITE_BING_SITE_VERIFICATION)}" />`,
@@ -47,15 +47,17 @@ function headFor(projectId) {
   ].join("\n    ");
 }
 
-function page(route, { noindex = false } = {}) {
-  const projectId = projectIdFromPath(route);
-  let head = headFor(projectId);
+function page(route) {
+  const noindex = !!pageMeta(route).noindex;
+  let head = headFor(route);
   if (noindex) head += '\n    <meta name="robots" content="noindex" />';
   const html = render(route);
   return template
     .replace(/<!--seo:start[\s\S]*?<!--seo:end-->/, head)
     .replace(/<meta name="robots" content="index[^>]*>\n?\s*/, noindex ? "" : (m) => m)
-    .replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+    // data-route lets the client check this HTML was built for the URL it's
+    // being served at before hydrating (hosts may fall back to another page).
+    .replace('<div id="root"></div>', `<div id="root" data-route="${route}">${html}</div>`);
 }
 
 const out = (rel, content) => {
@@ -68,7 +70,7 @@ for (const route of ROUTES) {
   out(join(route, "index.html"), page(route));
   console.log(`prerendered ${route}`);
 }
-out("404.html", page("/", { noindex: true }));
+out("404.html", page(NOT_FOUND_PATH));
 out("sitemap.xml", sitemapXml(today));
 out("robots.txt", robotsTxt());
 out("llms.txt", llmsTxt());

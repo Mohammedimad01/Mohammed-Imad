@@ -34,7 +34,7 @@ function Field({ id, label, optional, error, children }) {
   );
 }
 
-export default function Contact() {
+export default function Contact({ index = 7, level = 2 }) {
   const { copyEmail, openResume, toast } = useUI();
   const [values, setValues] = useState(EMPTY);
   const [touched, setTouched] = useState({});
@@ -95,7 +95,7 @@ export default function Contact() {
   return (
     <section id="contact" className="section section--contact" aria-labelledby="contact-title">
       <div className="wrap">
-        <SectionHeader index={7} kicker="Let's Talk" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
+        <SectionHeader index={index} level={level} kicker="Let's Talk" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
 
         <div className="contact">
           <Reveal className="contact__direct">

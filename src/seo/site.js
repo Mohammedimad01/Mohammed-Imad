@@ -8,6 +8,7 @@ import { EXPERIENCE } from "../data/experience.js";
 import { EDUCATION, ACHIEVEMENTS } from "../data/achievements.js";
 import { SKILL_TABS } from "../data/skills.js";
 import { FAQ } from "../data/faq.js";
+import { PAGES, NOT_FOUND } from "../data/pages.js";
 
 export const SITE = SITE_URL.replace(/\/$/, "");
 export const OG_IMAGE = `${SITE}/og-image.png`;
@@ -20,6 +21,20 @@ export const projectIdFromPath = (path = "/") => {
   return m && PROJECTS.some((p) => p.id === m[1]) ? m[1] : null;
 };
 
+const normalize = (path = "/") => {
+  const clean = path.split(/[?#]/)[0] || "/";
+  return clean.endsWith("/") ? clean : `${clean}/`;
+};
+
+// Which page a URL shows. Case-study URLs render the Work page underneath an
+// open case study; anything unknown is the 404 page.
+export function resolveRoute(path = "/") {
+  const projectId = projectIdFromPath(path);
+  if (projectId) return { page: PAGES.find((x) => x.id === "work"), projectId };
+  const norm = normalize(path);
+  return { page: PAGES.find((x) => x.path === norm) || NOT_FOUND, projectId: null };
+}
+
 const clip = (s, max = 158) => {
   if (s.length <= max) return s;
   const cut = s.slice(0, max - 1);
@@ -28,15 +43,16 @@ const clip = (s, max = 158) => {
 
 // ── Per-page head ──────────────────────────────────────────────────────────
 
-export function pageMeta(projectId) {
+export function pageMeta(path = "/") {
+  const { page, projectId } = resolveRoute(path);
   const p = projectId && PROJECTS.find((x) => x.id === projectId);
   if (!p) {
     return {
-      path: "/",
-      title: `${PROFILE.name} | Business / Data Analyst, Dubai`,
-      description:
-        "Mohammed Imad Thotan is a Business / Data Analyst in Dubai, UAE: SQL, Python, Power BI and Tableau, plus full-stack and AI delivery. Case studies and résumé.",
-      ogType: "profile",
+      path: page.path,
+      title: page.title,
+      description: page.description,
+      ogType: page.id === "home" ? "profile" : "website",
+      noindex: page === NOT_FOUND,
     };
   }
   const short = p.shortName || p.name;
@@ -118,8 +134,22 @@ const caseStudy = (p) => ({
   inLanguage: "en",
 });
 
-export function jsonLd(projectId, { dateModified } = {}) {
+const crumbs = (...items) => ({
+  "@type": "BreadcrumbList",
+  itemListElement: [{ name: "Home", path: "/" }, ...items].map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: c.name,
+    ...(c.path && { item: `${SITE}${c.path}` }),
+  })),
+});
+
+export function jsonLd(path = "/", { dateModified } = {}) {
+  const { page, projectId } = resolveRoute(path);
   const p = projectId && PROJECTS.find((x) => x.id === projectId);
+  const stamp = dateModified ? { dateModified } : {};
+  const workPage = PAGES.find((x) => x.id === "work");
+
   if (p) {
     return {
       "@context": "https://schema.org",
@@ -132,53 +162,65 @@ export function jsonLd(projectId, { dateModified } = {}) {
           text: `${p.problem} ${p.approach} ${p.impact}`,
           about: p.metrics.map((m) => `${m.v} ${m.l}`),
           isPartOf: { "@id": WEBSITE_ID },
-          ...(dateModified && { dateModified }),
+          ...stamp,
         },
+        crumbs({ name: "Case studies", path: workPage.path }, { name: p.name }),
+      ],
+    };
+  }
+
+  if (page.id === "home") {
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        website(),
         {
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-            { "@type": "ListItem", position: 2, name: "Case studies", item: `${SITE}/#projects` },
-            { "@type": "ListItem", position: 3, name: p.name },
-          ],
+          "@type": "ProfilePage",
+          "@id": `${SITE}/#profile`,
+          url: `${SITE}/`,
+          name: page.title,
+          isPartOf: { "@id": WEBSITE_ID },
+          mainEntity: { "@id": PERSON_ID },
+          ...stamp,
+        },
+        person(),
+        {
+          // No FAQ rich result since May 2026, but the Q&A mirrors the visible
+          // "Quick answers" section and helps engines map questions to answers.
+          "@type": "FAQPage",
+          "@id": `${SITE}/#faq`,
+          mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
         },
       ],
     };
   }
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      website(),
-      {
-        "@type": "ProfilePage",
-        "@id": `${SITE}/#profile`,
-        url: `${SITE}/`,
-        name: pageMeta().title,
-        isPartOf: { "@id": WEBSITE_ID },
-        mainEntity: { "@id": PERSON_ID },
-        ...(dateModified && { dateModified }),
-      },
-      person(),
-      {
-        "@type": "ItemList",
-        "@id": `${SITE}/#case-studies`,
-        name: `Case studies by ${PROFILE.name}`,
-        itemListElement: PROJECTS.map((x, i) => ({ "@type": "ListItem", position: i + 1, item: caseStudy(x) })),
-      },
-      {
-        // No FAQ rich result since May 2026, but the Q&A mirrors the visible
-        // "Quick answers" section and helps engines map questions to answers.
-        "@type": "FAQPage",
-        "@id": `${SITE}/#faq`,
-        mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-      },
-    ],
+
+  const url = `${SITE}${page.path}`;
+  const webPage = {
+    "@type": page.id === "work" ? "CollectionPage" : page.id === "contact" ? "ContactPage" : "WebPage",
+    "@id": `${url}#page`,
+    url,
+    name: page.title,
+    description: page.description,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": PERSON_ID },
+    ...stamp,
   };
+  if (page.id === "work") {
+    webPage.mainEntity = {
+      "@type": "ItemList",
+      "@id": `${SITE}/#case-studies`,
+      name: `Case studies by ${PROFILE.name}`,
+      itemListElement: PROJECTS.map((x, i) => ({ "@type": "ListItem", position: i + 1, item: caseStudy(x) })),
+    };
+  }
+  return { "@context": "https://schema.org", "@graph": [website(), person(), webPage, crumbs({ name: page.label })] };
 }
 
 // ── Crawl files ────────────────────────────────────────────────────────────
 
-export const ROUTES = ["/", ...PROJECTS.map((p) => projectPath(p.id))];
+export const ROUTES = [...PAGES.map((x) => x.path), ...PROJECTS.map((p) => projectPath(p.id))];
+export const NOT_FOUND_PATH = NOT_FOUND.path;
 
 export const sitemapXml = (lastmod) =>
   `<?xml version="1.0" encoding="UTF-8"?>

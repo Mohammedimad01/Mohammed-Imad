@@ -18,6 +18,7 @@ All copy lives in `src/data/` — components never hard-code content.
 | File | What's in it |
 | --- | --- |
 | `meta.js` | Name, bio, contact links, hero stats, **`SITE_URL`**, résumé path |
+| `pages.js` | The site's pages (URL, nav label, title, description) and the home page's featured case studies |
 | `experience.js` | Roles, bullets, tools, the margin metric per role |
 | `projects.js` | Case studies: summary, problem/approach/impact, metrics, pipeline, **links** |
 | `skills.js` | Skill tabs, radar scores (self-assessed), full toolkit lists |
@@ -61,6 +62,8 @@ src/
     sections/  Hero, About, Experience, Projects, SkillsAnalytics (+ lazy SkillRadar),
                Education, Certifications, Contact
     modals/    ProjectDetailModal, CommandPalette, ResumeModal
+  pages/       Home, Experience, Work, Skills, Education, Contact, 404 (compose sections)
+  router/      Small History-API router: page transitions, scroll restore, per-page <head>
   context/     Prefs (palette, reduced motion) and UI (dialogs, toasts) providers
   data/        content (see above)
   hooks/       useScrollSpy, useIntersection, useCounter, useKeyboardNav, useThemeTokens

@@ -1,13 +1,3 @@
-export const scrollToId = (id) => {
-  const el = document.getElementById(id);
-  if (!el) return;
-  const reduced = document.documentElement.dataset.motion === "reduced";
-  el.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-  // Move focus for keyboard + screen-reader users without a second jump.
-  el.setAttribute("tabindex", "-1");
-  el.focus({ preventScroll: true });
-};
-
 export const navigateTo = (url) => window.location.assign(url);
 
 export const openExternal = (url) => window.open(url, "_blank", "noopener,noreferrer");
