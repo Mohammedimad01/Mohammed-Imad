@@ -50,9 +50,12 @@
         var m = localStorage.getItem("mit:motion");
         var reduced = m === "on" || (m !== "off" && matchMedia("(prefers-reduced-motion: reduce)").matches);
         d.dataset.motion = reduced ? "reduced" : "full";
-        // Intro plays on a visitor's first visit only, never for reduced-motion users.
-        if (!reduced && !localStorage.getItem("mit:intro")) {
-          localStorage.setItem("mit:intro", "1");
+        // Intro plays whenever the site is opened from a link (a new tab, or a
+        // link from LinkedIn, email, etc.), not on refresh or Back/Forward.
+        // Never for reduced-motion users.
+        var nav = performance.getEntriesByType && performance.getEntriesByType("navigation")[0];
+        var how = nav ? nav.type : (performance.navigation && performance.navigation.type === 1 ? "reload" : "navigate");
+        if (!reduced && how === "navigate") {
           d.dataset.intro = "on";
           d.style.setProperty("--intro-shift", "5000ms");
         }
