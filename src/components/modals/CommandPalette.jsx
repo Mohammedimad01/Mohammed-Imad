@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Command } from "cmdk";
-import { ArrowRight, Copy, CornerDownLeft, FileDown, Hash, Mail, Palette, Printer, Search, Sparkles, Wind } from "lucide-react";
+import { ArrowRight, Copy, CornerDownLeft, FileDown, Hash, Mail, Moon, Palette, Printer, Search, Sparkles, Sun, Wind } from "lucide-react";
 import { CONTACT } from "../../data/meta";
 import { PAGES } from "../../data/pages";
 import { useRouter } from "../../router/RouterContext";
@@ -32,7 +32,7 @@ function Item({ onSelect, icon: Icon, children, hint, keywords }) {
 
 export default function CommandPalette() {
   const { paletteOpen, setPaletteOpen, togglePalette, openProject, openResume, copyEmail, toast } = useUI();
-  const { palette, setPalette, reducedMotion, toggleReducedMotion } = usePrefs();
+  const { palette, setPalette, theme, toggleTheme, reducedMotion, toggleReducedMotion } = usePrefs();
   const { navigate } = useRouter();
 
   const open = useCallback(() => setPaletteOpen(true), [setPaletteOpen]);
@@ -105,6 +105,16 @@ export default function CommandPalette() {
             >
               Toggle reduced motion
             </Item>
+            <Item
+              icon={theme === "dark" ? Sun : Moon}
+              keywords={["theme", "dark", "light", "mode", "appearance"]}
+              onSelect={() => {
+                toggleTheme();
+                toast(theme === "dark" ? "Light theme on" : "Dark theme on");
+              }}
+            >
+              Switch to {theme === "dark" ? "light" : "dark"} theme
+            </Item>
             <Item icon={Printer} onSelect={run(() => window.print())} keywords={["print", "pdf", "resume"]}>
               Print web résumé
             </Item>
@@ -112,7 +122,7 @@ export default function CommandPalette() {
               <Item
                 key={p.id}
                 icon={p.id === palette ? Sparkles : Palette}
-                keywords={["theme", "colour", "color", "palette", p.id === "paper" ? "light" : "dark"]}
+                keywords={["colour", "color", "palette", "accent"]}
                 hint={p.id === palette ? "Active" : undefined}
                 onSelect={() => {
                   setPalette(p.id);

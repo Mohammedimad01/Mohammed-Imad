@@ -6,6 +6,10 @@ import "./styles/sections.css";
 import "./styles/print.css";
 import App from "./App.jsx";
 import { resolveRoute } from "./seo/site.js";
+import { inject } from "@vercel/analytics";
+
+// Vercel Web Analytics: cookie-free page views (enable it in the Vercel dashboard).
+if (import.meta.env.PROD) inject();
 
 const root = document.getElementById("root");
 const path = window.location.pathname;

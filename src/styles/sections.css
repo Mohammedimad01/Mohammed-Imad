@@ -76,8 +76,6 @@
 .code__dots i:nth-child(2) { background: color-mix(in srgb, var(--warn) 70%, var(--line-2)); }
 .code__dots i:last-child { background: color-mix(in srgb, var(--ok) 70%, var(--line-2)); }
 .code__file { padding: 3px 10px; border: 1px solid var(--line); border-radius: 4px; color: var(--ink-2); background: var(--bg-2); }
-.code__live { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; color: var(--ok); }
-.code__live .avail__dot { width: 6px; height: 6px; }
 .code__body { margin: 0; padding: 16px 0 18px; overflow-x: auto; font: 12.5px/1.75 var(--ff-m); color: var(--ink-2); tab-size: 2; }
 .code__ln { display: block; padding: 0 18px 0 0; opacity: 0; animation: codeIn 0.45s var(--ease) forwards; animation-delay: calc(var(--l) * 55ms + 700ms + var(--intro-shift, 0ms)); white-space: pre; }
 .code__no { display: inline-block; width: 3.2ch; margin-right: 14px; text-align: right; color: var(--line-2); user-select: none; }
@@ -330,6 +328,8 @@
 .cs__no { color: var(--accent); }
 .cs__title { margin-top: 22px; font: 300 clamp(38px, 5.4vw, 60px)/1 var(--ff-d); letter-spacing: -0.02em; color: var(--ink); text-wrap: balance; }
 .cs__lede { margin-top: 18px; font: italic 400 clamp(19px, 2vw, 23px)/1.4 var(--ff-d); color: var(--ink-2); max-width: 54ch; }
+.cs__cover { margin-top: 26px; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; background: #070b14; }
+.cs__cover img { display: block; width: 100%; height: auto; }
 .cs__facts { display: grid; grid-template-columns: 1fr 1fr 1.6fr; gap: 20px; margin-top: 28px; padding: 18px 0; border-block: 1px solid var(--line); }
 .cs__facts dt { font: 500 10px var(--ff-m); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 5px; }
 .cs__facts dd { font-size: 13.5px; line-height: 1.5; color: var(--ink); }
@@ -457,12 +457,13 @@ html[data-motion="reduced"] .marquee__group[aria-hidden="true"] { display: none;
 .pv { position: fixed; left: 0; top: 0; z-index: 90; pointer-events: none; opacity: 0; transition: opacity 0.25s; will-change: transform; }
 .pv.is-on { opacity: 1; }
 .pv__card {
-  display: grid; gap: 14px; width: 300px; padding: 18px 20px; border-radius: var(--r-lg);
+  display: grid; gap: 14px; width: 320px; padding: 18px 20px; border-radius: var(--r-lg); overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: color-mix(in srgb, var(--surface) 92%, transparent);
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.75), 0 0 40px -20px var(--accent);
   animation: pvIn 0.35s var(--ease);
 }
+.pv__img { display: block; width: calc(100% + 40px); height: 150px; margin: -18px -20px 0; object-fit: cover; object-position: center top; border-bottom: 1px solid var(--line); background: #070b14; }
 .pv__type { font: 10.5px var(--ff-m); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .pv__metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .pv__metrics strong { display: block; font: 300 30px/1 var(--ff-d); color: var(--accent); letter-spacing: -0.02em; }
@@ -488,6 +489,9 @@ main:focus { outline: none; }
 .feat__card { height: 100%; border: 1px solid var(--line); border-radius: var(--r-lg); background: color-mix(in srgb, var(--surface) 72%, transparent); overflow: hidden; transition: border-color 0.3s, transform 0.5s var(--ease); }
 .feat__card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .feat__link { display: flex; flex-direction: column; gap: 14px; height: 100%; padding: 24px; }
+.feat__img { display: block; margin: -24px -24px 4px; aspect-ratio: 16 / 9; overflow: hidden; border-bottom: 1px solid var(--line); background: #070b14; }
+.feat__img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.6s var(--ease); }
+.feat__link:hover .feat__img img { transform: scale(1.04); }
 .feat__top { display: flex; justify-content: space-between; gap: 12px; font: 10.5px var(--ff-m); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .feat__n { color: var(--accent); }
 .feat__name { font: 400 clamp(26px, 2.4vw, 32px)/1.05 var(--ff-d); color: var(--ink); letter-spacing: -0.01em; }

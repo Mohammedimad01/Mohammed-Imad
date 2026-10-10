@@ -25,6 +25,9 @@ function syncHead(path) {
   set('meta[property="og:type"]', "content", m.ogType);
   set('meta[name="twitter:title"]', "content", m.title);
   set('meta[name="twitter:description"]', "content", m.description);
+  set('meta[property="og:image"]', "content", m.image);
+  set('meta[name="twitter:image"]', "content", m.image);
+  set('meta[property="og:image:alt"]', "content", m.imageAlt);
 }
 
 function scrollToHash(hash) {

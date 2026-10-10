@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePrefs } from "../../context/PrefsContext";
+import { coverVisual } from "../../data/covers";
 
 // Floating card that trails the cursor over the project index, tilting in
 // the direction of travel. Desktop + fine pointer only; purely decorative
@@ -54,10 +55,12 @@ export default function ProjectPreview({ project }) {
 
   if (!enabled) return null;
   const metrics = project?.metrics.slice(0, 2) || [];
+  const cover = project && coverVisual(project.id);
   return (
     <div ref={ref} className={`pv${project ? " is-on" : ""}`} aria-hidden="true">
       {project && (
         <div className="pv__card" key={project.id}>
+          {cover && <img className="pv__img" src={cover.src} width={cover.width} height={cover.height} alt="" decoding="async" />}
           <span className="pv__type">{project.type}</span>
           <div className="pv__metrics">
             {metrics.map((m) => (

@@ -38,7 +38,6 @@ export default function HeroCode() {
         <div className="code__bar">
           <span className="code__dots" aria-hidden="true"><i /><i /><i /></span>
           <span className="code__file">profile.ts</span>
-          <span className="code__live"><span className="avail__dot" aria-hidden="true" /> live</span>
         </div>
         <pre className="code__body">
           <code>

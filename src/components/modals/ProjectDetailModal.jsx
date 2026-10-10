@@ -6,6 +6,7 @@ import { useUI } from "../../context/UIContext";
 import Modal from "../common/Modal";
 import { GithubIcon } from "../common/BrandIcons";
 import { projectPath } from "../../seo/site.js";
+import { coverVisual } from "../../data/covers";
 
 const LINKS = [
   { k: "demo", label: "Live demo", Icon: MonitorPlay },
@@ -39,6 +40,7 @@ function Body({ p, index, onSwitch, isLanding }) {
   // Keep the outline unbroken: sub-headings sit one level below the title.
   const Sub = isLanding ? "h2" : "h3";
   const links = LINKS.filter((l) => p.links?.[l.k]);
+  const cover = coverVisual(p.id);
   const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
   const next = PROJECTS[(index + 1) % PROJECTS.length];
 
@@ -55,6 +57,11 @@ function Body({ p, index, onSwitch, isLanding }) {
           <h2 className="cs__title" data-autofocus tabIndex={-1}>{p.name}</h2>
         )}
         <p className="cs__lede">{p.summary}</p>
+        {cover && (
+          <figure className="cs__cover">
+            <img src={cover.src} width={cover.width} height={cover.height} alt={cover.alt} decoding="async" />
+          </figure>
+        )}
         <dl className="cs__facts">
           <div><dt>Role</dt><dd>{p.role}</dd></div>
           <div><dt>Status</dt><dd>{p.status}</dd></div>

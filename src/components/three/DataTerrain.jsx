@@ -34,7 +34,7 @@ export default function DataTerrain() {
           /* No WebGL (or blocked): the hero simply has no 3D backdrop. */
         });
 
-    const introLeft = document.documentElement.dataset.intro === "on" ? 2300 : 0;
+    const introLeft = document.documentElement.dataset.intro === "on" ? 4700 : 0;
     const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
     const timer = setTimeout(() => idle(load), introLeft + 150);
     return () => {

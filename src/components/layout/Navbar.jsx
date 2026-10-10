@@ -6,6 +6,7 @@ import { useUI } from "../../context/UIContext";
 import { useRouter } from "../../router/RouterContext";
 import Link from "../../router/Link";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "../common/ThemeToggle";
 
 const isMac = typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 const NAV_PAGES = PAGES.filter((p) => p.id !== "home");
@@ -33,14 +34,13 @@ export default function Navbar() {
           </Link>
 
           <nav className="nav__links" aria-label="Primary">
-            {NAV_PAGES.map((n, i) => (
+            {NAV_PAGES.map((n) => (
               <Link
                 key={n.id}
                 to={n.path}
                 className={page.id === n.id ? "is-active" : undefined}
                 aria-current={page.id === n.id ? "page" : undefined}
               >
-                <span className="nav__idx">0{i + 1}</span>
                 {n.label}
               </Link>
             ))}
@@ -51,6 +51,7 @@ export default function Navbar() {
               <Command size={12} aria-hidden="true" />
               <span>{isMac ? "⌘K" : "Ctrl K"}</span>
             </button>
+            <ThemeToggle />
             <button className="btn btn--primary btn--sm nav__cv" onClick={openResume}>
               <FileText size={13} aria-hidden="true" /> Résumé
             </button>

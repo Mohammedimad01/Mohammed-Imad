@@ -9,6 +9,7 @@ import { EDUCATION, ACHIEVEMENTS } from "../data/achievements.js";
 import { SKILL_TABS } from "../data/skills.js";
 import { FAQ } from "../data/faq.js";
 import { PAGES, NOT_FOUND } from "../data/pages.js";
+import { coverCard } from "../data/covers.js";
 
 export const SITE = SITE_URL.replace(/\/$/, "");
 export const OG_IMAGE = `${SITE}/og-image.png`;
@@ -53,6 +54,8 @@ export function pageMeta(path = "/") {
       description: page.description,
       ogType: page.id === "home" ? "profile" : "website",
       noindex: page === NOT_FOUND,
+      image: OG_IMAGE,
+      imageAlt: `${PROFILE.name}, Business / Data Analyst, Dubai`,
     };
   }
   const short = p.shortName || p.name;
@@ -61,6 +64,8 @@ export function pageMeta(path = "/") {
     title: `${short} case study | ${PROFILE.name}`,
     description: clip(`${p.summary} ${p.metrics.map((m) => `${m.v} ${m.l}`).slice(0, 2).join("; ")}. A case study by ${PROFILE.name}.`),
     ogType: "article",
+    image: coverCard(p.id) ? `${SITE}${coverCard(p.id)}` : OG_IMAGE,
+    imageAlt: `${short} case study by ${PROFILE.name}`,
   };
 }
 
@@ -127,6 +132,8 @@ const caseStudy = (p) => ({
   headline: p.name,
   url: `${SITE}${projectPath(p.id)}`,
   description: p.summary,
+  ...(coverCard(p.id) && { image: `${SITE}${coverCard(p.id)}` }),
+  ...(p.links?.github && { codeRepository: p.links.github, sameAs: p.links.github }),
   genre: p.type,
   keywords: p.tools.join(", "),
   creator: { "@id": PERSON_ID },
@@ -263,7 +270,7 @@ ${rest.map((e) => `- ${e.role}, ${e.co} (${e.period})`).join("\n")}
 ${EDUCATION.map((e) => `- ${e.degree}, ${e.school} (${e.period})${e.grade ? `, ${e.gradeLabel} ${e.grade}` : ""}`).join("\n")}
 
 ## Case studies
-${PROJECTS.map((p) => `- [${p.name}](${SITE}${projectPath(p.id)}): ${p.summary}`).join("\n")}
+${PROJECTS.map((p) => `- [${p.name}](${SITE}${projectPath(p.id)}): ${p.summary}${p.links?.github ? ` Code: ${p.links.github}` : ""}`).join("\n")}
 
 ## Quick answers
 ${FAQ.map((f) => `### ${f.q}\n${f.a}`).join("\n\n")}

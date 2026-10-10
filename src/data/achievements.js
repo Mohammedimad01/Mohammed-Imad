@@ -27,7 +27,7 @@ export const EDUCATION = [
 
 export const ACHIEVEMENTS = [
   { kind: "Award", title: "1st Place, Entrepreneurship & Product Innovation Challenge", sub: "EcoFlow: full business concept judged by faculty & industry stakeholders in a competitive multi-team challenge" },
-  { kind: "Venture", title: "SkillBridge: selected for a competitive seed fund", sub: "AI-enabled micro-internship platform, Aspire Institute Seed Fund Program" },
+  { kind: "Venture", title: "SkillBridge: seed funded by Aspire Institute", sub: "AI-enabled micro-internship platform, run live in Mangalore & Udupi, then handed over to Aspire Institute" },
   { kind: "Leadership", title: "AIESEC Manipal", sub: "Contributed to cross-cultural leadership initiatives and international professional development programs" },
   { kind: "Service", title: "VSO Manipal", sub: "15+ hours of community service supporting social impact initiatives; recognized for teamwork and collaborative communication" },
 ];

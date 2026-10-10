@@ -8,7 +8,7 @@ export default function SectionHeader({ index, kicker, title, accent, lede, id, 
   return (
     <Reveal as="header" className="sec-head">
       <div className="sec-head__meta">
-        <span className="sec-head__no">§ {String(index).padStart(2, "0")}</span>
+        <span className="sec-head__no">{String(index).padStart(2, "0")}</span>
         <span className="sec-head__rule" aria-hidden="true" />
         <ScrambleText className="sec-head__kicker" text={kicker} />
       </div>

@@ -48,7 +48,8 @@ function headFor(route) {
 }
 
 function page(route) {
-  const noindex = !!pageMeta(route).noindex;
+  const meta = pageMeta(route);
+  const noindex = !!meta.noindex;
   let head = headFor(route);
   if (noindex) head += '\n    <meta name="robots" content="noindex" />';
   const html = render(route);
@@ -57,6 +58,9 @@ function page(route) {
     .replace(/<meta name="robots" content="index[^>]*>\n?\s*/, noindex ? "" : (m) => m)
     // data-route lets the client check this HTML was built for the URL it's
     // being served at before hydrating (hosts may fall back to another page).
+    .replace(/(<meta property="og:image" content=")[^"]*/, (_, a) => a + meta.image)
+    .replace(/(<meta name="twitter:image" content=")[^"]*/, (_, a) => a + meta.image)
+    .replace(/(<meta property="og:image:alt" content=")[^"]*/, (_, a) => a + esc(meta.imageAlt))
     .replace('<div id="root"></div>', `<div id="root" data-route="${route}">${html}</div>`);
 }
 

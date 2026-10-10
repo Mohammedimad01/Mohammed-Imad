@@ -51,7 +51,6 @@ export default function Hero() {
         <div className="hero__strip rise" style={{ "--i": 0 }}>
           <span>Portfolio / {new Date().getFullYear()}</span>
           <span className="hide-sm">{PROFILE.location}</span>
-          <span className="hide-sm">{PROFILE.coords}</span>
           <span>
             <span className="hide-sm">Local time </span>
             <time suppressHydrationWarning>{time} {PROFILE.tzLabel}</time>

@@ -45,7 +45,6 @@ export default function MobileMenu({ open, activeId, onClose }) {
                     className={activeId === n.id ? "is-active" : undefined}
                     aria-current={activeId === n.id ? "page" : undefined}
                   >
-                    <span>{String(i).padStart(2, "0")}</span>
                     {n.label}
                   </Link>
                 </motion.li>

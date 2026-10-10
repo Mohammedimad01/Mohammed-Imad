@@ -25,7 +25,7 @@ export const PAGES = [
     label: "Work",
     title: "Case Studies | Mohammed Imad Thotan, Data Analyst",
     description:
-      "Eight case studies by Mohammed Imad Thotan across machine learning, BI dashboards, AI agents and ventures, each with problem, approach and measurable outcome.",
+      "Ten case studies by Mohammed Imad Thotan across machine learning, BI dashboards, AI agents and ventures, each with problem, approach and measurable outcome.",
   },
   {
     id: "skills",

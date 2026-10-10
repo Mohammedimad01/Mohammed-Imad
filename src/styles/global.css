@@ -159,8 +159,6 @@ kbd {
   background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease);
 }
 .nav__links a.is-active::after { transform: scaleX(1); }
-.nav__idx { font: 9.5px var(--ff-m); color: var(--ink-3); }
-.nav__links a.is-active .nav__idx { color: var(--accent); }
 .nav__actions { display: flex; align-items: center; gap: 10px; }
 .kbd-btn {
   display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 10px;
@@ -168,6 +166,25 @@ kbd {
   font: 11px var(--ff-m); color: var(--ink-3); transition: color 0.2s, border-color 0.2s;
 }
 .kbd-btn:hover { color: var(--ink); border-color: var(--line-2); }
+
+/* Light / dark switch: icon shows the theme you'd switch to */
+.theme-btn {
+  position: relative; display: grid; place-items: center; width: 32px; height: 32px; flex: none;
+  border: 1px solid var(--line); border-radius: 50%; color: var(--ink-2);
+  transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+}
+.theme-btn:hover { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); background: var(--accent-soft); }
+.theme-btn svg { grid-area: 1 / 1; transition: transform 0.45s var(--ease), opacity 0.25s; }
+.theme-btn__moon { opacity: 0; transform: rotate(-90deg) scale(0.6); }
+:root[data-theme="light"] .theme-btn__sun { opacity: 0; transform: rotate(90deg) scale(0.6); }
+:root[data-theme="light"] .theme-btn__moon { opacity: 1; transform: none; }
+
+/* Brief colour cross-fade while the theme switches (class set by PrefsProvider) */
+.theme-anim, .theme-anim *, .theme-anim *::before, .theme-anim *::after {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease, fill 0.4s ease, stroke 0.4s ease !important;
+}
+.theme-anim .theme-btn svg { transition: transform 0.45s var(--ease), opacity 0.25s !important; }
+:root[data-motion="reduced"].theme-anim * { transition: none !important; }
 
 .burger { display: none; width: 40px; height: 40px; position: relative; }
 .burger span {
@@ -188,7 +205,6 @@ kbd {
   display: flex; align-items: baseline; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line);
   font: 400 clamp(34px, 10vw, 48px)/1.1 var(--ff-d); color: var(--ink);
 }
-.mmenu__list a span { font: 11px var(--ff-m); color: var(--ink-3); }
 .mmenu__list a.is-active { color: var(--accent); }
 .mmenu__foot { display: grid; gap: 10px; margin-top: 32px; }
 .mmenu__meta { margin-top: 10px; font: 11px/1.8 var(--ff-m); color: var(--ink-3); }

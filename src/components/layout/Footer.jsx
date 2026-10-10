@@ -6,9 +6,11 @@ import Link from "../../router/Link";
 import { useHydrated } from "../../hooks/useHydrated";
 
 export default function Footer() {
-  const { palette, setPalette } = usePrefs();
-  // Saved palette lives in localStorage; match the pre-rendered default until hydrated.
-  const shown = useHydrated() ? palette : PALETTES[0].id;
+  const { palette, setPalette, theme } = usePrefs();
+  // Saved palette/theme live in localStorage; match the pre-rendered defaults until hydrated.
+  const hydrated = useHydrated();
+  const shown = hydrated ? palette : PALETTES[0].id;
+  const mode = hydrated ? theme : "dark";
   const year = new Date().getFullYear();
 
   return (
@@ -25,8 +27,8 @@ export default function Footer() {
             <label key={p.id} className="swatch" title={p.name}>
               <input type="radio" name="palette" value={p.id} checked={shown === p.id} onChange={() => setPalette(p.id)} />
               <span className="swatch__chip" aria-hidden="true">
-                <i style={{ background: p.swatch[0] }} />
-                <i style={{ background: p.swatch[2] }} />
+                <i style={{ background: p[mode][0] }} />
+                <i style={{ background: p[mode][2] }} />
               </span>
               <span className="sr-only">{p.name}</span>
             </label>

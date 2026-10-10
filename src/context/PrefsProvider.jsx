@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MotionConfig } from "motion/react";
-import { PALETTES, PrefsContext } from "./PrefsContext";
+import { PALETTES, THEMES, PrefsContext } from "./PrefsContext";
 
 const read = (k, fallback) => {
   try {
@@ -21,9 +21,15 @@ const systemReduced = () =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 export default function PrefsProvider({ children }) {
+  // index.html applies the saved palette/theme before first paint (and
+  // migrates the old "paper" palette to Brass + light); read the result.
   const [palette, setPaletteState] = useState(() => {
-    const p = read("mit:palette", "cobalt");
+    const p = typeof document !== "undefined" ? document.documentElement.dataset.palette : "cobalt";
     return PALETTES.some((x) => x.id === p) ? p : "cobalt";
+  });
+  const [theme, setThemeState] = useState(() => {
+    const t = typeof document !== "undefined" ? document.documentElement.dataset.theme : "dark";
+    return THEMES.includes(t) ? t : "dark";
   });
   // "system" follows the OS; "on"/"off" are explicit overrides.
   const [motionPref, setMotionPref] = useState(() => read("mit:motion", "system"));
@@ -42,15 +48,26 @@ export default function PrefsProvider({ children }) {
   useEffect(() => {
     const root = document.documentElement;
     root.dataset.palette = palette;
+    root.dataset.theme = theme;
     root.dataset.motion = reducedMotion ? "reduced" : "full";
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", PALETTES.find((p) => p.id === palette).swatch[0]);
-  }, [palette, reducedMotion]);
+    if (meta) meta.setAttribute("content", PALETTES.find((p) => p.id === palette)[theme][0]);
+  }, [palette, theme, reducedMotion]);
 
   const setPalette = useCallback((id) => {
     setPaletteState(id);
     write("mit:palette", id);
   }, []);
+
+  const setTheme = useCallback((t) => {
+    // Cross-fade colours for a moment, but not on every hover transition.
+    const root = document.documentElement;
+    root.classList.add("theme-anim");
+    window.setTimeout(() => root.classList.remove("theme-anim"), 450);
+    setThemeState(t);
+    write("mit:theme", t);
+  }, []);
+  const toggleTheme = useCallback(() => setTheme(theme === "dark" ? "light" : "dark"), [theme, setTheme]);
 
   const toggleReducedMotion = useCallback(() => {
     const next = reducedMotion ? "off" : "on";
@@ -60,8 +77,8 @@ export default function PrefsProvider({ children }) {
   }, [reducedMotion]);
 
   const value = useMemo(
-    () => ({ palette, setPalette, reducedMotion, toggleReducedMotion }),
-    [palette, setPalette, reducedMotion, toggleReducedMotion]
+    () => ({ palette, setPalette, theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion }),
+    [palette, setPalette, theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion]
   );
 
   return (

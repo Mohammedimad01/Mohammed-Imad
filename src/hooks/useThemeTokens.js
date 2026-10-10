@@ -7,10 +7,13 @@ const KEYS = ["accent", "accent-2", "ink", "ink-2", "ink-3", "line", "surface"];
 
 const subscribe = (cb) => {
   const mo = new MutationObserver(cb);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-palette"] });
+  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-palette", "data-theme"] });
   return () => mo.disconnect();
 };
-const getPalette = () => document.documentElement.dataset.palette || "";
+const getPalette = () => {
+  const d = document.documentElement.dataset;
+  return d.palette ? `${d.palette}:${d.theme || "dark"}` : "";
+};
 const getServerPalette = () => "";
 
 export function useThemeTokens() {

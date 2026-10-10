@@ -7,6 +7,7 @@ import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import Tilt from "../common/Tilt";
 import Link from "../../router/Link";
+import { coverVisual } from "../../data/covers";
 
 export default function FeaturedWork({ index = 2 }) {
   const { openProject } = useUI();
@@ -37,6 +38,11 @@ export default function FeaturedWork({ index = 2 }) {
                     openProject(p.id);
                   }}
                 >
+                  {coverVisual(p.id) && (
+                    <span className="feat__img">
+                      <img src={coverVisual(p.id).src} width={coverVisual(p.id).width} height={coverVisual(p.id).height} alt="" loading="lazy" decoding="async" />
+                    </span>
+                  )}
                   <span className="feat__top">
                     <span className="feat__n">{String(PROJECTS.indexOf(p) + 1).padStart(2, "0")}</span>
                     <span className="feat__type">{p.type.split("·")[0].trim()}</span>

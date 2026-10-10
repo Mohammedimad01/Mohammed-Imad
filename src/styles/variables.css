@@ -1,6 +1,7 @@
 /* ── Design tokens ─────────────────────────────────────────────────────────
-   Four palettes share one token vocabulary; swap with data-palette on <html>.
-   :root holds Midnight Cobalt, the default.
+   Three palettes (data-palette) × two themes (data-theme) on <html>, all
+   sharing one token vocabulary. :root holds Cobalt dark, the default; each
+   light block re-defines every colour token so it wins over the dark one.
    ink   = text, line = hairlines, accent = primary, accent-2 = support. */
 
 :root {
@@ -81,7 +82,35 @@
   --glass: rgba(17, 26, 34, 0.88);
 }
 
-:root[data-palette="paper"] {
+/* ── Light theme ─────────────────────────────────────────────────────────── */
+
+:root[data-theme="light"] {
+  --bg: #f5f7fb;
+  --bg-2: #edf1f8;
+  --surface: #ffffff;
+  --surface-2: #f8fafd;
+  --line: #dce2ed;
+  --line-2: #c5cfe0;
+  --ink: #0f1729;
+  --ink-2: #434f69;
+  --ink-3: #5c6882;
+  --accent: #2f5bd3;
+  --accent-hi: #2149b8;
+  --accent-ink: #ffffff;
+  --accent-2: #94701f;
+  --accent-soft: rgba(47, 91, 211, 0.08);
+  --glow: rgba(47, 91, 211, 0.07);
+  --glass: rgba(255, 255, 255, 0.86);
+  --scrim: rgba(15, 23, 41, 0.38);
+  --grain: 0.035;
+  --ok: #2f7a4f;
+  --warn: #9a5d12;
+  --err: #b23a2a;
+  color-scheme: light;
+}
+
+/* Brass in daylight: paper and ink */
+:root[data-theme="light"][data-palette="obsidian"] {
   --bg: #f2eee5;
   --bg-2: #ebe6db;
   --surface: #f8f5ee;
@@ -100,8 +129,25 @@
   --scrim: rgba(30, 26, 20, 0.4);
   --glass: rgba(248, 245, 238, 0.9);
   --grain: 0.05;
-  --ok: #2f7a4f;
-  --warn: #9a5d12;
-  --err: #a8402f;
-  color-scheme: light;
+}
+
+:root[data-theme="light"][data-palette="sage"] {
+  --bg: #f1f4ef;
+  --bg-2: #e9eee6;
+  --surface: #fafbf8;
+  --surface-2: #ffffff;
+  --line: #d4ddd1;
+  --line-2: #bac7b6;
+  --ink: #131a15;
+  --ink-2: #46524a;
+  --ink-3: #616e67;
+  --accent: #3d6a44;
+  --accent-hi: #315a38;
+  --accent-ink: #ffffff;
+  --accent-2: #8a6430;
+  --accent-soft: rgba(61, 106, 68, 0.09);
+  --glow: rgba(61, 106, 68, 0.06);
+  --scrim: rgba(19, 26, 21, 0.38);
+  --glass: rgba(250, 251, 248, 0.9);
+  --grain: 0.04;
 }
