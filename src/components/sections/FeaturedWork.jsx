@@ -9,7 +9,7 @@ import Tilt from "../common/Tilt";
 import Link from "../../router/Link";
 import { coverVisual } from "../../data/covers";
 
-export default function FeaturedWork({ index = 2 }) {
+export default function FeaturedWork() {
   const { openProject } = useUI();
   const featured = FEATURED_PROJECTS.map((id) => PROJECTS.find((p) => p.id === id)).filter(Boolean);
 
@@ -17,8 +17,6 @@ export default function FeaturedWork({ index = 2 }) {
     <section className="section" aria-labelledby="featured-title">
       <div className="wrap">
         <SectionHeader
-          index={index}
-          kicker="Selected Work"
           title="Three case studies,"
           accent="start to finish."
           id="featured-title"
@@ -44,7 +42,6 @@ export default function FeaturedWork({ index = 2 }) {
                     </span>
                   )}
                   <span className="feat__top">
-                    <span className="feat__n">{String(PROJECTS.indexOf(p) + 1).padStart(2, "0")}</span>
                     <span className="feat__type">{p.type.split("·")[0].trim()}</span>
                   </span>
                   <span className="feat__name">{p.shortName || p.name}</span>

@@ -12,7 +12,7 @@ export const EDUCATION = [
     school: "Aspire Institute",
     campus: "Founded by Harvard Business School faculty",
     degree: "Aspire Young Leaders Program, Cohort 1",
-    period: "Jan – Apr 2026",
+    period: "Jan - Apr 2026",
     note: "Competitive global cohort; systems thinking, ethics, and organizational impact.",
   },
   {

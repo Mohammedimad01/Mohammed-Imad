@@ -17,7 +17,7 @@ export const PROJECTS = [
   {
     id: "skillbridge",
     name: "SkillBridge",
-    tag: "Founder & Product Lead · Seed funded by Aspire Institute · Mangalore & Udupi",
+    tag: "Seed funded by Aspire Institute, run in Mangalore & Udupi",
     type: "Venture · AI-Enabled Platform",
     category: "venture",
     role: "Founder & Product Lead",
@@ -42,7 +42,7 @@ export const PROJECTS = [
     type: "Machine Learning · Business Intelligence",
     category: "ai",
     role: "Sole developer & analyst",
-    status: "Jan – May 2026",
+    status: "Jan - May 2026",
     summary: "Predicts which telecom customers will leave and explains why, so retention teams can act first.",
     problem: "Businesses can't identify at-risk customers before churn occurs, causing preventable revenue loss without structured early-warning analytics.",
     approach: "Developed an end-to-end churn prediction system on the IBM Telco dataset (7,000+ records), training Logistic Regression, Random Forest and XGBoost models to achieve ROC-AUC > 0.85, with SHAP explainability to identify key churn drivers. Backed by 12+ SQL analytics queries for churn trend analysis and customer segmentation.",

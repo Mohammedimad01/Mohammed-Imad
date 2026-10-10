@@ -3,9 +3,9 @@
 
 export const EXPERIENCE = [
   {
-    role: "Technical Lead – Web Development",
+    role: "Technical Lead, Web Development",
     co: "Qlovix",
-    period: "Sep 2025 – Sep 2026",
+    period: "Sep 2025 - Sep 2026",
     start: "2025",
     type: "Leadership & Engineering",
     mode: "Hybrid",
@@ -22,7 +22,7 @@ export const EXPERIENCE = [
   {
     role: "Data Analyst Intern",
     co: "Meknoid Solutions Pvt. Ltd",
-    period: "Jul – Aug 2025",
+    period: "Jul - Aug 2025",
     start: "2025",
     type: "Analytics",
     metric: { v: "~70%", l: "less report-prep time (~8 hrs/week saved)" },
@@ -38,7 +38,7 @@ export const EXPERIENCE = [
   {
     role: "Full Stack Web Developer Intern",
     co: "Zephyr Technologies",
-    period: "Jun – Jul 2025",
+    period: "Jun - Jul 2025",
     start: "2025",
     type: "Engineering",
     metric: { v: "Git", l: "workflows that cut deployment errors" },
@@ -51,7 +51,7 @@ export const EXPERIENCE = [
   {
     role: "Business Operations & Project Management Intern",
     co: "Rainbow Pipes",
-    period: "Apr – May 2025",
+    period: "Apr - May 2025",
     start: "2025",
     type: "Strategy & Ops",
     metric: { v: "3+", l: "departments coordinated" },

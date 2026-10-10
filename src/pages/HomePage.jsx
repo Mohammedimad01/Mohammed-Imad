@@ -12,9 +12,9 @@ export default function HomePage() {
     <>
       <Hero />
       <StackTicker />
-      <About index={1} />
-      <FeaturedWork index={2} />
-      <Faq index={3} />
+      <About />
+      <FeaturedWork />
+      <Faq />
       <CtaBand />
       <PageNav />
     </>

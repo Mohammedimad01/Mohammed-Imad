@@ -14,7 +14,7 @@ export const FAQ = [
   },
   {
     q: "What experience does he have?",
-    a: "Most recently he was Technical Lead – Web Development at Qlovix (Sep 2025 – Sep 2026), leading a development team across 3+ concurrent client engagements. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations at Rainbow Pipes, and in finance at MAHE.",
+    a: "Most recently he was Technical Lead, Web Development at Qlovix (Sep 2025 - Sep 2026), leading a development team across 3+ concurrent client engagements. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations at Rainbow Pipes, and in finance at MAHE.",
   },
   {
     q: "Which tools and skills does he use?",

@@ -65,5 +65,5 @@ export const STATS = [
   { v: 8.9, dec: 1, s: "/10", l: "GPA", d: "BBA Business Analytics, MAHE" },
   { v: 70, s: "%", l: "Less report prep", d: "~8 hrs/week saved via Python automation" },
   { v: 5, s: "", l: "Roles", d: "Tech lead + 4 internships across analytics, ops, eng & finance" },
-  { v: PROJECTS.length, s: "", l: "Projects", d: "ML · BI · AI agents · ventures" },
+  { v: PROJECTS.length, s: "", l: "Projects", d: "ML, BI, AI agents and ventures" },
 ];

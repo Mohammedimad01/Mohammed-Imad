@@ -7,7 +7,7 @@ export default function WorkPage() {
   const { landingProjectId } = useUI();
   return (
     <>
-      <Projects index={2} level={landingProjectId ? 2 : 1} />
+      <Projects level={landingProjectId ? 2 : 1} />
       <PageNav />
     </>
   );

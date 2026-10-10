@@ -3,11 +3,11 @@ import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import Tag from "../common/Tag";
 
-export default function Experience({ index = 2, level = 2 }) {
+export default function Experience({ level = 2 }) {
   return (
     <section id="experience" className="section" aria-labelledby="exp-title">
       <div className="wrap">
-        <SectionHeader index={index} level={level} kicker="Track Record" title="Experience" accent="& Internships" id="exp-title"
+        <SectionHeader level={level} title="Experience" accent="& Internships" id="exp-title"
           lede="Analytics is the through-line. The Data Analyst internship delivered the dashboards and Python automation; leading a web team at Qlovix added architecture, delivery, and the habit of turning stakeholder requirements into working products."
         />
         <ol className="ledger">

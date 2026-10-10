@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { ArrowDownRight, Copy, FileDown } from "lucide-react";
+import { ArrowDownRight, FileDown } from "lucide-react";
 import { PROFILE, STATS } from "../../data/meta";
 import { useUI } from "../../context/UIContext";
 import { useIntersection } from "../../hooks/useIntersection";
@@ -7,22 +6,6 @@ import { useCounter } from "../../hooks/useCounter";
 import Link from "../../router/Link";
 import HeroCode from "./HeroCode";
 import DataTerrain from "../three/DataTerrain";
-
-function useLocalTime() {
-  const fmt = () =>
-    new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: PROFILE.timeZone }).format(new Date());
-  const [t, setT] = useState(fmt);
-  useEffect(() => {
-    // Tick once right away: pre-rendered HTML carries the build-time clock.
-    const now = setTimeout(() => setT(fmt()), 0);
-    const id = setInterval(() => setT(fmt()), 20_000);
-    return () => {
-      clearTimeout(now);
-      clearInterval(id);
-    };
-  }, []);
-  return t;
-}
 
 function Stat({ stat, start, i }) {
   const n = useCounter(stat.v, { start, decimals: stat.dec || 0, duration: 1400 + i * 150 });
@@ -40,23 +23,13 @@ function Stat({ stat, start, i }) {
 }
 
 export default function Hero() {
-  const { openResume, copyEmail } = useUI();
-  const time = useLocalTime();
+  const { openResume } = useUI();
   const [statsRef, statsIn] = useIntersection({ threshold: 0.4 });
 
   return (
     <section id="top" className="hero" aria-label="Introduction">
       <DataTerrain />
       <div className="wrap hero__wrap">
-        <div className="hero__strip rise" style={{ "--i": 0 }}>
-          <span>Portfolio / {new Date().getFullYear()}</span>
-          <span className="hide-sm">{PROFILE.location}</span>
-          <span>
-            <span className="hide-sm">Local time </span>
-            <time suppressHydrationWarning>{time} {PROFILE.tzLabel}</time>
-          </span>
-        </div>
-
         <p className="avail rise" style={{ "--i": 1 }}>
           <span className="avail__dot" aria-hidden="true" />
           {PROFILE.availability}
@@ -70,14 +43,8 @@ export default function Hero() {
         <div className="hero__grid">
           <div className="hero__main">
             <p className="hero__lede rise" style={{ "--i": 4 }}>
-              {PROFILE.intro} <span className="muted">BBA Business Analytics · MAHE Manipal · GPA 8.9/10</span>
+              {PROFILE.intro} <span className="muted">BBA in Business Analytics from MAHE Manipal, GPA 8.9/10.</span>
             </p>
-
-            <ul className="hero__disc rise" style={{ "--i": 5 }} aria-label="Disciplines">
-              {PROFILE.disciplines.map((d) => (
-                <li key={d}>{d}</li>
-              ))}
-            </ul>
 
             <div className="hero__cta rise" style={{ "--i": 6 }}>
               <button className="btn btn--primary btn--lg" onClick={openResume}>
@@ -86,9 +53,6 @@ export default function Hero() {
               <Link to="/work/" className="btn btn--ghost btn--lg">
                 Read the case studies <ArrowDownRight size={15} aria-hidden="true" />
               </Link>
-              <button className="btn btn--text" onClick={copyEmail}>
-                <Copy size={13} aria-hidden="true" /> Copy email
-              </button>
             </div>
           </div>
 

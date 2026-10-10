@@ -7,11 +7,11 @@ import Reveal from "../common/Reveal";
 // and "what does he do…" questions. Mirrored in the FAQPage JSON-LD.
 // Native <details>: answers stay in the HTML (crawlable) while the list stays
 // short on phones; the first one starts open.
-export default function Faq({ index = 6, level = 2 }) {
+export default function Faq({ level = 2 }) {
   return (
     <section id="faq" className="section" aria-labelledby="faq-title">
       <div className="wrap">
-        <SectionHeader index={index} level={level} kicker="Quick Answers" title="The short" accent="version." id="faq-title" />
+        <SectionHeader level={level} title="The short" accent="version." id="faq-title" />
         <div className="faq">
           {FAQ.map((f, i) => (
             <Reveal key={f.q} delay={Math.min(i, 3) * 60}>

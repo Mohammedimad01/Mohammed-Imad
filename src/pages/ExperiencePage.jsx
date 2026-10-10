@@ -4,7 +4,7 @@ import PageNav from "../components/layout/PageNav";
 export default function ExperiencePage() {
   return (
     <>
-      <Experience index={1} level={1} />
+      <Experience level={1} />
       <PageNav />
     </>
   );

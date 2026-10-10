@@ -2,12 +2,12 @@ import { EDUCATION, ACHIEVEMENTS } from "../../data/achievements";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 
-export default function Education({ index = 5, level = 2 }) {
+export default function Education({ level = 2 }) {
   const [degree, ...further] = EDUCATION;
   return (
     <section id="education" className="section" aria-labelledby="edu-title">
       <div className="wrap">
-        <SectionHeader index={index} level={level} kicker="Education & Recognition" title="Education &" accent="leadership." id="edu-title" />
+        <SectionHeader level={level} title="Education &" accent="leadership." id="edu-title" />
         <div className="edu">
           <div>
             <Reveal as="article" className="edu__card">

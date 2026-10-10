@@ -8,7 +8,7 @@ import Reveal from "../common/Reveal";
 import { projectPath } from "../../seo/site.js";
 import ProjectPreview from "./ProjectPreview";
 
-export default function Projects({ index = 3, level = 2 }) {
+export default function Projects({ level = 2 }) {
   const { openProject } = useUI();
   const [filter, setFilter] = useState("all");
   const [hovered, setHovered] = useState(null);
@@ -25,9 +25,7 @@ export default function Projects({ index = 3, level = 2 }) {
     <section id="projects" className="section" aria-labelledby="work-title">
       <div className="wrap">
         <SectionHeader
-          index={index}
           level={level}
-          kicker="Case Studies"
           title="Projects as"
           accent="business impact stories."
           id="work-title"
