@@ -3,7 +3,7 @@
 
 export const EXPERIENCE = [
   {
-    role: "Technical Lead, Web Development",
+    role: "Technical Lead – Software Developer",
     co: "Qlovix",
     period: "Sep 2025 - Sep 2026",
     start: "2025",
@@ -11,7 +11,7 @@ export const EXPERIENCE = [
     mode: "Hybrid",
     metric: { v: "3+", l: "concurrent client engagements" },
     pts: [
-      "Led technical direction and architecture decisions for the web development team, overseeing project execution from client requirements through production deployment across 3+ concurrent engagements",
+      "Led technical direction and architecture decisions for the software development team, overseeing project execution from client requirements through production deployment across 3+ concurrent engagements",
       "Managed and mentored a team of developers, conducting code reviews and setting engineering standards to maintain consistent code quality across React.js, Next.js, and Node.js codebases",
       "Owned technical stack and architecture strategy, evaluating and selecting frameworks and tools to balance performance, scalability, and delivery speed across client and internal projects",
       "Scaled development process standardization into a formal team-wide framework: reusable UI component libraries, structured planning-to-deployment workflows, and QA checkpoints",

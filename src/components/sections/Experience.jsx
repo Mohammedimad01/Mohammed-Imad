@@ -8,7 +8,7 @@ export default function Experience({ level = 2 }) {
     <section id="experience" className="section" aria-labelledby="exp-title">
       <div className="wrap">
         <SectionHeader level={level} title="Experience" accent="& Internships" id="exp-title"
-          lede="Analytics is the through-line. The Data Analyst internship delivered the dashboards and Python automation; leading a web team at Qlovix added architecture, delivery, and the habit of turning stakeholder requirements into working products."
+          lede="A year leading software delivery at Qlovix, built on analytics work that shipped dashboards and Python automation. The through-line: turning stakeholder requirements into working products and decision-ready insight."
         />
         <ol className="ledger">
           {EXPERIENCE.map((e, i) => (

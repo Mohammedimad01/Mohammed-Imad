@@ -7,23 +7,23 @@ export const PAGES = [
     id: "home",
     path: "/",
     label: "Home",
-    title: "Mohammed Imad Thotan | Business / Data Analyst, Dubai",
+    title: "Mohammed Imad Thotan | Business Data Analyst, Dubai",
     description:
-      "Mohammed Imad Thotan is a Business / Data Analyst in Dubai, UAE: SQL, Python, Power BI and Tableau, plus full-stack and AI delivery. Case studies and résumé.",
+      "Mohammed Imad Thotan is a Business Data Analyst in Dubai, UAE: SQL, Python, Power BI and Tableau, plus a year leading software delivery. Case studies and résumé.",
   },
   {
     id: "experience",
     path: "/experience/",
     label: "Experience",
-    title: "Experience | Mohammed Imad Thotan, Data Analyst",
+    title: "Experience | Mohammed Imad Thotan, Business Data Analyst",
     description:
-      "Experience of Mohammed Imad Thotan: Technical Lead at Qlovix, Data Analyst Intern at Meknoid Solutions, plus engineering, operations and finance internships.",
+      "Experience of Mohammed Imad Thotan: Technical Lead – Software Developer at Qlovix, Data Analyst Intern at Meknoid Solutions, plus engineering, operations and finance internships.",
   },
   {
     id: "work",
     path: "/work/",
     label: "Work",
-    title: "Case Studies | Mohammed Imad Thotan, Data Analyst",
+    title: "Case Studies | Mohammed Imad Thotan, Business Data Analyst",
     description:
       "Ten case studies by Mohammed Imad Thotan across machine learning, BI dashboards, AI agents and ventures, each with problem, approach and measurable outcome.",
   },
@@ -47,9 +47,9 @@ export const PAGES = [
     id: "contact",
     path: "/contact/",
     label: "Contact",
-    title: "Contact | Mohammed Imad Thotan, Data Analyst in Dubai",
+    title: "Contact | Mohammed Imad Thotan, Business Data Analyst",
     description:
-      "Contact Mohammed Imad Thotan, Business / Data Analyst in Dubai: email, phone, LinkedIn or the message form. Available now for analyst roles in the UAE.",
+      "Contact Mohammed Imad Thotan, Business Data Analyst in Dubai: email, phone, LinkedIn or the message form. Available now for analyst roles in the UAE.",
   },
 ];
 
@@ -58,7 +58,7 @@ export const NOT_FOUND = {
   path: "/404/",
   label: "Not found",
   title: "Page not found | Mohammed Imad Thotan",
-  description: "This page doesn't exist. Head back to the portfolio of Mohammed Imad Thotan, Business / Data Analyst in Dubai.",
+  description: "This page doesn't exist. Head back to the portfolio of Mohammed Imad Thotan, Business Data Analyst in Dubai.",
 };
 
 // Case studies featured on the home page.

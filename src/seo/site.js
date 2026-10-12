@@ -55,7 +55,7 @@ export function pageMeta(path = "/") {
       ogType: page.id === "home" ? "profile" : "website",
       noindex: page === NOT_FOUND,
       image: OG_IMAGE,
-      imageAlt: `${PROFILE.name}, Business / Data Analyst, Dubai`,
+      imageAlt: `${PROFILE.name}, ${PROFILE.headline}, Dubai`,
     };
   }
   const short = p.shortName || p.name;
@@ -82,7 +82,7 @@ function person() {
     alternateName: "Mohammed Imad",
     givenName: "Mohammed Imad",
     familyName: "Thotan",
-    jobTitle: "Business / Data Analyst",
+    jobTitle: PROFILE.headline,
     description: FAQ[0].a,
     url: `${SITE}/`,
     image: OG_IMAGE,
@@ -91,7 +91,7 @@ function person() {
     address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
     hasOccupation: {
       "@type": "Occupation",
-      name: "Business / Data Analyst",
+      name: PROFILE.headline,
       occupationLocation: { "@type": "City", name: "Dubai" },
       skills: allSkills.slice(0, 14).join(", "),
     },

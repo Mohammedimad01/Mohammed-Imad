@@ -6,15 +6,15 @@
 export const FAQ = [
   {
     q: "Who is Mohammed Imad Thotan?",
-    a: "Mohammed Imad Thotan is a Business / Data Analyst based in Dubai, UAE. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10, June 2026) and turns raw data into decision-ready insight using SQL, Python, Power BI and Tableau, backed by hands-on full-stack development experience.",
+    a: "Mohammed Imad Thotan is a Business Data Analyst based in Dubai, UAE. He turns raw data into decision-ready insight using SQL, Python, Power BI and Tableau, backed by a year as Technical Lead – Software Developer at Qlovix. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10).",
   },
   {
     q: "What roles is Mohammed Imad Thotan looking for?",
-    a: "He is seeking Business Analyst and Data Analyst roles in the UAE. He is based in Dubai and available to start now.",
+    a: "He is seeking Business Data Analyst roles in the UAE, including Business Analyst and Data Analyst positions. He is based in Dubai and available to start now.",
   },
   {
     q: "What experience does he have?",
-    a: "Most recently he was Technical Lead, Web Development at Qlovix (Sep 2025 - Sep 2026), leading a development team across 3+ concurrent client engagements. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations at Rainbow Pipes, and in finance at MAHE.",
+    a: "He has a year of professional experience as Technical Lead – Software Developer at Qlovix (Sep 2025 - Sep 2026), leading the software development team across 3+ concurrent client engagements. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations and project management at Rainbow Pipes, and in finance at MAHE.",
   },
   {
     q: "Which tools and skills does he use?",

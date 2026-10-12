@@ -43,7 +43,7 @@ export default function Hero() {
         <div className="hero__grid">
           <div className="hero__main">
             <p className="hero__lede rise" style={{ "--i": 4 }}>
-              {PROFILE.intro} <span className="muted">BBA in Business Analytics from MAHE Manipal, GPA 8.9/10.</span>
+              {PROFILE.intro}
             </p>
 
             <div className="hero__cta rise" style={{ "--i": 6 }}>

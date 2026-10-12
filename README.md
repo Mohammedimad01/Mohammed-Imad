@@ -2,7 +2,7 @@
 
 Live: [https://mohammed-imad.vercel.app](https://mohammed-imad.vercel.app)
 
-React 19 + Vite. Editorial dark aesthetic (Cormorant Garamond · DM Sans · JetBrains Mono), four switchable palettes.
+React 19 + Vite. Editorial dark aesthetic (Cormorant Garamond · DM Sans · JetBrains Mono), three switchable palettes, each in dark and light.
 
 ```bash
 npm install
