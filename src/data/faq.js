@@ -10,7 +10,7 @@ export const FAQ = [
   },
   {
     q: "What roles is Mohammed Imad Thotan looking for?",
-    a: "He is seeking Business Data Analyst roles in the UAE, including Business Analyst and Data Analyst positions. He is based in Dubai and available to start now.",
+    a: "He is open to three kinds of role in the UAE: Business / Data Analyst (including Business Analyst, Data Analyst and BI positions), Front-end Developer (React and Next.js), and SaaS Software Developer building Next.js products. He is based in Dubai and available to start now.",
   },
   {
     q: "What experience does he have?",
@@ -18,11 +18,11 @@ export const FAQ = [
   },
   {
     q: "Which tools and skills does he use?",
-    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics and ETL. AI: machine learning, NLP and sentiment analysis, generative AI applications and prompt engineering. Engineering: React.js, Node.js and Next.js. Business: financial modelling, market research, stakeholder management and hypothesis-driven analysis.",
+    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics, Alteryx and ETL. AI: machine learning, NLP and sentiment analysis, generative AI applications and prompt engineering. Development: React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, REST APIs, FastAPI and Docker, deployed on Vercel and Netlify. Business: financial modelling, market research, stakeholder management and hypothesis-driven analysis.",
   },
   {
     q: "What are his notable projects?",
-    a: "Meridian People Analytics is an HR analytics dashboard for a ~1,200-person UAE healthcare group, with 17 unit-tested KPIs and five findings, including nursing attrition at 2.2× the rest of the workforce. ChurnSense AI predicts telecom customer churn with ROC-AUC above 0.85 on 7,000+ records. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. ExpenseAudit AI is a multi-agent expense-auditing system built with Google ADK and Gemini, shipped with 89 automated tests. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
+    a: "Meridian People Analytics is an HR analytics dashboard for a ~1,200-person UAE healthcare group, with 17 unit-tested KPIs and five findings, including nursing attrition at 2.2× the rest of the workforce. The Superstore Sales & Profit Performance Dashboard analysed 5,000+ orders and $2.3M in sales in Power BI and traced profit leakage to over-discounting. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. Ivo AI Health Companion is a Next.js and Gemini web app that turns medical reports into plain-language explanations, with safety rules enforced in code. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
   },
   {
     q: "How can I contact Mohammed Imad Thotan?",

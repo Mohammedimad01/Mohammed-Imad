@@ -57,7 +57,7 @@ Check a build with `npm run preview`, then open e.g. `http://localhost:4173/work
 ```
 src/
   components/
-    common/    Button, Tag, Modal, Toast, SectionHeader, Reveal (GSAP), ThemeToggle, BrandIcons
+    common/    Tag, Modal, Toast, SectionHeader, Reveal (GSAP), ThemeToggle, BrandIcons
     layout/    Navbar, MobileMenu, Footer, PageNav, PrintResume
     sections/  Hero, Highlights, About, FeaturedWork, Faq, CtaBand, Experience, Projects,
                SkillsAnalytics (+ lazy SkillRadar), Education, Certifications, Contact

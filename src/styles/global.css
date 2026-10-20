@@ -267,7 +267,6 @@ kbd {
   .modal--center { padding: 8px; place-items: end center; }
   .modal--center .modal__panel { max-height: 88vh; }
   .cmd__foot { display: none; }
-  .hide-sm { display: none !important; }
 }
 
 /* ── Accessibility preferences ─────────────────────────────────────────── */

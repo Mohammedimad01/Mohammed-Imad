@@ -25,7 +25,7 @@ export const PAGES = [
     label: "Work",
     title: "Case Studies | Mohammed Imad Thotan, Business Data Analyst",
     description:
-      "Eleven case studies by Mohammed Imad Thotan across people analytics, machine learning, BI dashboards, AI agents and ventures, each with a measurable outcome.",
+      "Eleven case studies by Mohammed Imad Thotan: people analytics, BI dashboards and statistical analysis first, then AI apps, machine learning and ventures.",
   },
   {
     id: "skills",
@@ -33,7 +33,7 @@ export const PAGES = [
     label: "Skills",
     title: "Skills: SQL, Python, Power BI | Mohammed Imad Thotan",
     description:
-      "Skills of Mohammed Imad Thotan: SQL, Python, Power BI, Tableau, BigQuery and ETL, plus React and Node.js, machine learning, NLP and business strategy.",
+      "Skills of Mohammed Imad Thotan: SQL, Python, Power BI, Tableau and BigQuery, plus React, Next.js, TypeScript and Node.js, machine learning and business strategy.",
   },
   {
     id: "education",
@@ -49,7 +49,7 @@ export const PAGES = [
     label: "Contact",
     title: "Contact | Mohammed Imad Thotan, Business Data Analyst",
     description:
-      "Contact Mohammed Imad Thotan, Business Data Analyst in Dubai: email, phone, LinkedIn or the message form. Available now for analyst roles in the UAE.",
+      "Contact Mohammed Imad Thotan, Business Data Analyst in Dubai: email, phone, LinkedIn or the message form. Open to analyst, front-end and Next.js roles.",
   },
 ];
 
@@ -62,4 +62,4 @@ export const NOT_FOUND = {
 };
 
 // Case studies featured on the home page.
-export const FEATURED_PROJECTS = ["churnsense", "play-store", "expenseaudit"];
+export const FEATURED_PROJECTS = ["meridian", "superstore", "play-store", "ivo"];

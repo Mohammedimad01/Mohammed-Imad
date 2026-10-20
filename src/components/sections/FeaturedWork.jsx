@@ -11,7 +11,9 @@ import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import Link from "../../router/Link";
 
-// Bento: the first case study gets the full width, the next two share a row.
+const WORDS = ["", "One", "Two", "Three", "Four", "Five", "Six"];
+
+// Two-by-two bento of the home page's featured case studies.
 export default function FeaturedWork() {
   const { openProject } = useUI();
   const { reducedMotion } = usePrefs();
@@ -39,16 +41,16 @@ export default function FeaturedWork() {
         <SectionHeader
           align="center"
           eyebrow="Selected work"
-          title="Three case studies."
+          title={`${WORDS[featured.length] || featured.length} case studies.`}
           accent="Start to finish."
           id="featured-title"
-          lede="Machine learning, statistical analysis and AI engineering, each with the problem, the method and a measurable result."
+          lede="People analytics, BI dashboards, statistical analysis and a generative-AI app, each with the problem, the method and a measurable result."
         />
         <ul className="feat">
           {featured.map((p, i) => {
             const cover = coverVisual(p.id);
             return (
-              <Reveal as="li" key={p.id} delay={i === 2 ? 90 : 0} className={`feat__item${i === 0 ? " feat__item--lead" : ""}`}>
+              <Reveal as="li" key={p.id} delay={(i % 2) * 90} className="feat__item">
                 <a
                   className="feat__card"
                   href={projectPath(p.id)}

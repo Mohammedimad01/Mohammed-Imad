@@ -6,23 +6,9 @@ export const SITE_URL = "https://mohammed-imad.vercel.app";
 
 export const PROFILE = {
   name: "Mohammed Imad Thotan",
-  firstName: "Mohammed",
-  lastName: "Imad Thotan",
-  initials: "MIT",
   headline: "Business Data Analyst",
-  disciplines: [
-    "Business Data Analyst",
-    "SQL · Python · Power BI / Tableau",
-    "Data-Driven Problem Solver",
-    "Software Development Lead",
-    "Strategy & Analytics",
-  ],
   location: "Dubai, UAE",
-  locationShort: "Dubai, UAE",
-  timeZone: "Asia/Dubai",
-  tzLabel: "GST",
-  mapsUrl: "https://www.google.com/maps/search/Dubai,+UAE",
-  availability: "Available now · Business Data Analyst roles in the UAE",
+  availability: "Available now · Analyst, front-end and Next.js roles in the UAE",
   availabilityShort: "Open to work",
   intro:
     "I turn raw data into decision-ready insight with SQL, Python and Power BI, backed by a year as Technical Lead – Software Developer at Qlovix. Based in Dubai.",
@@ -41,7 +27,13 @@ export const PROFILE = {
     { l: "Builder's Mindset", d: "Automate the recurring work and ship the data product, from Python reporting pipelines to full-stack apps and AI agents" },
   ],
   seeking:
-    "Seeking Business Data Analyst roles in the UAE. Based in Dubai and available to start. Let's talk about what your team needs.",
+    "Open to analyst, front-end and Next.js software roles in the UAE. Based in Dubai and available to start. Let's talk about what your team needs.",
+  // The roles I'm open to, shown on the home page and the contact page.
+  roles: [
+    { title: "Business / Data Analyst", detail: "Business Analyst, Data Analyst and BI roles", tools: "SQL · Python · Power BI · Tableau" },
+    { title: "Front-end Developer", detail: "Interfaces, dashboards and design systems", tools: "React · Next.js · JavaScript · CSS" },
+    { title: "SaaS Software Developer", detail: "Next.js products, from architecture to deployment", tools: "Next.js · Node.js · REST APIs · SQL" },
+  ],
 };
 
 export const CONTACT = {
@@ -71,16 +63,16 @@ export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 // columns; keep the spans summing to whole rows of three.
 export const HIGHLIGHTS = [
   { exp: "Meknoid Solutions Pvt. Ltd", wide: true },
-  { project: "churnsense", metric: 0 },
   { project: "meridian", metric: 0 },
-  { project: "expenseaudit", metric: 0, wide: true },
+  { project: "play-store", metric: 0 },
+  { project: "superstore", metric: 0, wide: true },
   { exp: "Qlovix" },
-  { project: "ecoflow", metric: 0, wide: true },
+  { project: "ivo", metric: 0, wide: true },
 ];
 
 export const STATS = [
   { v: 1, s: " yr", l: "Technical Lead", d: "Software development at Qlovix, 3+ client engagements" },
   { v: 70, s: "%", l: "Less report prep", d: "~8 hrs/week saved via Python automation" },
   { v: 5, s: "", l: "Roles", d: "Tech lead + 4 internships across analytics, engineering, ops & finance" },
-  { v: PROJECTS.length, s: "", l: "Projects", d: "ML, BI, AI agents and ventures" },
+  { v: PROJECTS.length, s: "", l: "Projects", d: "Analytics, BI, AI apps and ventures" },
 ];

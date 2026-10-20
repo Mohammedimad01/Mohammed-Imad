@@ -5,8 +5,8 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    // The largest chunk is Three.js for the hero backdrop. It's lazy-loaded
-    // after the page is idle, so it never blocks first paint.
+    // The main chunk (React, Motion, GSAP, the command palette) is ~585 kB
+    // before gzip; the pages are pre-rendered, so it never blocks first paint.
     chunkSizeWarningLimit: 600,
   },
 })

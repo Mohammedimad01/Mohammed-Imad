@@ -42,7 +42,7 @@ export default function Highlights() {
           ))}
         </ul>
         <Reveal as="p" className="hl__tools">
-          Fluent in <strong>{TOOLS.slice(0, -1).join(", ")}</strong> and <strong>{TOOLS.at(-1)}</strong>, with React, Next.js and Node.js on the engineering side.
+          Fluent in <strong>{TOOLS.slice(0, -1).join(", ")}</strong> and <strong>{TOOLS.at(-1)}</strong>, with React, Next.js, TypeScript and Node.js on the development side.
         </Reveal>
       </div>
     </section>

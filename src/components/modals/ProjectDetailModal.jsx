@@ -10,6 +10,7 @@ import { coverVisual } from "../../data/covers";
 
 const LINKS = [
   { k: "demo", label: "Live demo", Icon: MonitorPlay },
+  { k: "legacy", label: "Streamlit version", Icon: MonitorPlay },
   { k: "github", label: "Repository", Icon: GithubIcon },
   { k: "writeup", label: "Technical write-up", Icon: FileText },
 ];

@@ -6,6 +6,7 @@ import { navigateTo } from "../../lib/actions";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
+import OpenRoles from "./OpenRoles";
 
 const FORM_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -96,6 +97,7 @@ export default function Contact({ level = 2 }) {
     <section id="contact" className="section section--page section--contact" aria-labelledby="contact-title">
       <div className="wrap">
         <SectionHeader level={level} eyebrow="Contact" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
+        <OpenRoles level={level + 1} className="roles--contact" />
 
         <div className="contact">
           <Reveal className="contact__direct">
