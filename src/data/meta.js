@@ -46,9 +46,15 @@ export const CONTACT = {
   githubHandle: "Mohammedimad01",
 };
 
-// The PDF lives at /public/resume/. Replace the file to update it.
+// The PDF lives at /public/resume/. Replace the file to update it, and bump
+// `version` so browsers fetch the new copy instead of a cached one.
+const RESUME_FILE = "/resume/Mohammed-Imad-Thotan-Resume.pdf";
 export const RESUME = {
-  path: "/resume/Mohammed-Imad-Thotan-Resume.pdf",
+  path: RESUME_FILE,
+  version: "2026-10-20",
+  get href() {
+    return `${this.path}?v=${this.version}`;
+  },
   fileName: "Mohammed-Imad-Thotan-Resume.pdf",
   updated: "Oct 2026",
 };

@@ -23,7 +23,7 @@ export default function ResumeModal() {
   useEffect(() => {
     if (!resumeOpen || pdf !== "checking") return;
     let live = true;
-    probePdf(RESUME.path).then((ok) => live && setPdf(ok ? "ready" : "missing"));
+    probePdf(RESUME.href).then((ok) => live && setPdf(ok ? "ready" : "missing"));
     return () => {
       live = false;
     };
@@ -47,7 +47,7 @@ export default function ResumeModal() {
 
         <div className="resume__actions">
           {pdf === "ready" ? (
-            <a className="btn btn--primary btn--lg" href={RESUME.path} download={RESUME.fileName}>
+            <a className="btn btn--primary btn--lg" href={RESUME.href} download={RESUME.fileName}>
               <Download size={15} aria-hidden="true" /> Download PDF
             </a>
           ) : (
@@ -59,16 +59,16 @@ export default function ResumeModal() {
             <Printer size={14} aria-hidden="true" /> Print / save web version
           </button>
           {pdf === "ready" && (
-            <a className="btn btn--text" href={RESUME.path} target="_blank" rel="noopener noreferrer">
+            <a className="btn btn--text" href={RESUME.href} target="_blank" rel="noopener noreferrer">
               Open in new tab <ExternalLink size={12} aria-hidden="true" />
             </a>
           )}
         </div>
         <div className={`resume__preview${pdf === "ready" ? "" : " is-empty"}`}>
           {pdf === "ready" ? (
-            <object data={`${RESUME.path}#view=FitH&toolbar=0`} type="application/pdf" aria-label="Résumé preview">
+            <object data={`${RESUME.href}#view=FitH&toolbar=0`} type="application/pdf" aria-label="Résumé preview">
               <p className="resume__fallback">
-                Your browser can't preview PDFs inline. <a href={RESUME.path} target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
+                Your browser can't preview PDFs inline. <a href={RESUME.href} target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
               </p>
             </object>
           ) : (
