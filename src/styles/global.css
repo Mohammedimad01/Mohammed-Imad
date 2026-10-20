@@ -175,7 +175,7 @@ kbd {
 
 .mmenu {
   position: fixed; inset: var(--nav-h) 0 0 0; z-index: 110;
-  background: var(--glass-strong);
+  background: var(--glass-solid);
   backdrop-filter: saturate(180%) blur(24px); -webkit-backdrop-filter: saturate(180%) blur(24px);
   display: flex; flex-direction: column; justify-content: space-between;
   padding: 28px var(--gutter) 40px; overflow-y: auto;
@@ -230,7 +230,7 @@ kbd {
 
 /* ── Command palette: Spotlight ────────────────────────────────────────── */
 .cmd.modal__panel {
-  background: var(--glass-strong);
+  background: var(--glass-solid);
   backdrop-filter: saturate(180%) blur(30px); -webkit-backdrop-filter: saturate(180%) blur(30px);
   border: 1px solid color-mix(in srgb, var(--line) 45%, transparent);
 }
