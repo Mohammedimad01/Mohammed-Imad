@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Check, Copy, FileDown, Loader2, Phone, Send } from "lucide-react";
+import { Check, ChevronRight, Copy, FileDown, Loader2, Phone } from "lucide-react";
 import { CONTACT, PROFILE, FORM_ENDPOINT } from "../../data/meta";
 import { useUI } from "../../context/UIContext";
 import { navigateTo } from "../../lib/actions";
@@ -93,21 +93,21 @@ export default function Contact({ level = 2 }) {
   };
 
   return (
-    <section id="contact" className="section section--contact" aria-labelledby="contact-title">
+    <section id="contact" className="section section--page section--contact" aria-labelledby="contact-title">
       <div className="wrap">
-        <SectionHeader level={level} title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
+        <SectionHeader level={level} eyebrow="Contact" title="Open to" accent="opportunities." id="contact-title" lede={PROFILE.seeking} />
 
         <div className="contact">
           <Reveal className="contact__direct">
-            <span className="eyebrow">Write directly</span>
+            <span className="contact__k">Write directly</span>
             <a className="contact__email" href={`mailto:${CONTACT.email}`}>
               {CONTACT.email}
             </a>
             <div className="contact__row">
-              <button className="btn btn--ghost btn--sm" onClick={copyEmail}>
+              <button className="btn btn--quiet btn--sm" onClick={copyEmail}>
                 <Copy size={13} aria-hidden="true" /> Copy email
               </button>
-              <button className="btn btn--ghost btn--sm" onClick={openResume}>
+              <button className="btn btn--quiet btn--sm" onClick={openResume}>
                 <FileDown size={13} aria-hidden="true" /> Résumé
               </button>
             </div>
@@ -118,7 +118,7 @@ export default function Contact({ level = 2 }) {
                   <LinkedinIcon size={15} />
                   <span>LinkedIn</span>
                   <span className="contact__handle">{CONTACT.linkedinHandle}</span>
-                  <ArrowUpRight size={14} aria-hidden="true" />
+                  <ChevronRight size={18} strokeWidth={2} className="contact__chev" aria-hidden="true" />
                 </a>
               </li>
               <li>
@@ -126,7 +126,7 @@ export default function Contact({ level = 2 }) {
                   <GithubIcon size={15} />
                   <span>GitHub</span>
                   <span className="contact__handle">{CONTACT.githubHandle}</span>
-                  <ArrowUpRight size={14} aria-hidden="true" />
+                  <ChevronRight size={18} strokeWidth={2} className="contact__chev" aria-hidden="true" />
                 </a>
               </li>
               <li>
@@ -134,7 +134,7 @@ export default function Contact({ level = 2 }) {
                   <Phone size={15} aria-hidden="true" />
                   <span>Phone</span>
                   <span className="contact__handle">{CONTACT.phone}</span>
-                  <ArrowUpRight size={14} aria-hidden="true" />
+                  <ChevronRight size={18} strokeWidth={2} className="contact__chev" aria-hidden="true" />
                 </a>
               </li>
               <li>
@@ -142,7 +142,7 @@ export default function Contact({ level = 2 }) {
                   <span className="contact__glyph" aria-hidden="true">@</span>
                   <span>Email</span>
                   <span className="contact__handle">Drop me a line anytime</span>
-                  <ArrowUpRight size={14} aria-hidden="true" />
+                  <ChevronRight size={18} strokeWidth={2} className="contact__chev" aria-hidden="true" />
                 </a>
               </li>
             </ul>
@@ -157,7 +157,7 @@ export default function Contact({ level = 2 }) {
                 <span className="form__done-ic"><Check size={18} /></span>
                 <h3>Thank you, message received.</h3>
                 <p>I read every message personally and will get back to you soon.</p>
-                <button type="button" className="btn btn--ghost btn--sm" onClick={() => setStatus("idle")}>Send another</button>
+                <button type="button" className="btn btn--quiet btn--sm" onClick={() => setStatus("idle")}>Send another</button>
               </div>
             ) : (
               <>
@@ -178,8 +178,8 @@ export default function Contact({ level = 2 }) {
                 <input type="checkbox" name="botcheck" className="hp" tabIndex={-1} autoComplete="off" checked={!!values.botcheck} onChange={(e) => setValues((v) => ({ ...v, botcheck: e.target.checked ? "1" : "" }))} aria-hidden="true" />
 
                 <div className="form__foot">
-                  <button type="submit" className="btn btn--primary" disabled={status === "sending"}>
-                    {status === "sending" ? <Loader2 size={14} className="spin" aria-hidden="true" /> : <Send size={14} aria-hidden="true" />}
+                  <button type="submit" className="btn btn--primary btn--lg" disabled={status === "sending"}>
+                    {status === "sending" && <Loader2 size={16} className="spin" aria-hidden="true" />}
                     {status === "sending" ? "Sending…" : "Send message"}
                   </button>
                   <p className="form__note" id="form-note" aria-live="polite">

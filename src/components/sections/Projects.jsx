@@ -1,17 +1,19 @@
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { PROJECTS, PROJECT_FILTERS } from "../../data/projects";
 import { useUI } from "../../context/UIContext";
+import { coverVisual } from "../../data/covers";
+import { ScrollTrigger } from "../../lib/gsap";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 import { projectPath } from "../../seo/site.js";
-import ProjectPreview from "./ProjectPreview";
+
+const SPRING = { type: "spring", bounce: 0, duration: 0.5 };
 
 export default function Projects({ level = 2 }) {
   const { openProject } = useUI();
   const [filter, setFilter] = useState("all");
-  const [hovered, setHovered] = useState(null);
 
   const counts = useMemo(() => {
     const c = { all: PROJECTS.length };
@@ -22,71 +24,81 @@ export default function Projects({ level = 2 }) {
   const list = filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="section" aria-labelledby="work-title">
+    <section id="projects" className="section section--page" aria-labelledby="work-title">
       <div className="wrap">
         <SectionHeader
           level={level}
+          eyebrow="Case studies"
           title="Projects as"
           accent="business impact stories."
           id="work-title"
-          lede="Each one follows the consulting arc: problem, approach, measurable outcome. Open any row for the full case study."
+          lede="Each one follows the consulting arc: problem, approach, measurable outcome. Open any card for the full case study."
         />
 
-        <Reveal className="filters" role="toolbar" aria-label="Filter projects">
+        <Reveal className="seg" role="toolbar" aria-label="Filter projects">
           {PROJECT_FILTERS.map((f) => (
             <button
               key={f.id}
-              className={`filter${filter === f.id ? " is-active" : ""}`}
+              className={`seg__btn${filter === f.id ? " is-active" : ""}`}
               aria-pressed={filter === f.id}
               onClick={() => setFilter(f.id)}
             >
-              {f.label}
-              <sup>{counts[f.id] || 0}</sup>
+              {filter === f.id && <motion.span layoutId="seg-ink" className="seg__ink" transition={SPRING} />}
+              <span className="seg__label">
+                {f.label} <span className="seg__count">{counts[f.id] || 0}</span>
+              </span>
             </button>
           ))}
         </Reveal>
 
-        <ol className="index" aria-live="polite" onPointerLeave={() => setHovered(null)}>
-          <AnimatePresence initial={false} mode="popLayout">
+        <motion.ol className="works" aria-live="polite" layout transition={SPRING}>
+          <AnimatePresence initial={false} mode="popLayout" onExitComplete={() => ScrollTrigger.refresh()}>
             {list.map((p) => {
               const n = PROJECTS.indexOf(p) + 1;
+              const cover = coverVisual(p.id);
               return (
                 <motion.li
                   key={p.id}
                   layout
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, transition: { duration: 0.15 } }}
-                  transition={{ duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                  initial={{ opacity: 0, scale: 0.97 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97, transition: { duration: 0.18 } }}
+                  transition={SPRING}
+                  className="works__item"
                 >
                   <a
-                    className="index__row"
+                    className="work"
                     href={projectPath(p.id)}
                     aria-haspopup="dialog"
-                    onPointerEnter={() => setHovered(p.id)}
                     onClick={(e) => {
                       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
                       e.preventDefault();
                       openProject(p.id);
                     }}
                   >
-                    <span className="index__n">{String(n).padStart(2, "0")}</span>
-                    <span className="index__main">
-                      <span className="index__name">{p.shortName || p.name}</span>
-                      <span className="index__sum">{p.summary}</span>
+                    <span className="work__img">
+                      {cover ? (
+                        <img src={cover.src} width={cover.width} height={cover.height} alt="" loading="lazy" decoding="async" />
+                      ) : (
+                        <span className="work__mono" aria-hidden="true">{(p.shortName || p.name).slice(0, 1)}</span>
+                      )}
                     </span>
-                    <span className="index__type">{p.type}</span>
-                    <span className="index__status">{p.status}</span>
-                    <span className="index__go" aria-hidden="true">
-                      <ArrowUpRight size={18} />
+                    <span className="work__meta">
+                      <span className="work__n num">{String(n).padStart(2, "0")}</span>
+                      <span className="work__type">{p.type.split("·")[0].trim()}</span>
+                      <span className="work__status">{p.status}</span>
+                    </span>
+                    <span className="work__name">{p.shortName || p.name}</span>
+                    <span className="work__sum">{p.summary}</span>
+                    <span className="more">
+                      Read the case study <ChevronRight size={16} strokeWidth={2} aria-hidden="true" />
                     </span>
                   </a>
                 </motion.li>
               );
             })}
           </AnimatePresence>
-        </ol>
-        <ProjectPreview project={PROJECTS.find((x) => x.id === hovered)} />
+        </motion.ol>
       </div>
     </section>
   );

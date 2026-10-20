@@ -1,56 +1,44 @@
-import { ArrowUp } from "lucide-react";
 import { PROFILE, CONTACT } from "../../data/meta";
-import { PALETTES, usePrefs } from "../../context/PrefsContext";
 import { PAGES } from "../../data/pages";
 import Link from "../../router/Link";
-import { useHydrated } from "../../hooks/useHydrated";
 
 export default function Footer() {
-  const { palette, setPalette, theme } = usePrefs();
-  // Saved palette/theme live in localStorage; match the pre-rendered defaults until hydrated.
-  const hydrated = useHydrated();
-  const shown = hydrated ? palette : PALETTES[0].id;
-  const mode = hydrated ? theme : "dark";
   const year = new Date().getFullYear();
 
   return (
     <footer className="footer">
-      <div className="wrap footer__inner">
-        <div className="footer__sig">
-          <span className="footer__name">{PROFILE.name}</span>
-          <span className="footer__line">Strategy · Analytics · Technology</span>
+      <div className="wrap">
+        <div className="footer__top">
+          <div className="footer__sig">
+            <span className="footer__name">{PROFILE.name}</span>
+            <span className="footer__line">{PROFILE.headline} · {PROFILE.location}</span>
+          </div>
+          <nav className="footer__cols" aria-label="Footer">
+            <div>
+              <h2 className="footer__h">Explore</h2>
+              <ul>
+                {PAGES.map((p) => (
+                  <li key={p.id}><Link to={p.path}>{p.label}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="footer__h">Connect</h2>
+              <ul>
+                <li><a href={`mailto:${CONTACT.email}`}>Email</a></li>
+                <li><a href={CONTACT.phoneHref}>Phone</a></li>
+                <li><a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href={CONTACT.github} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              </ul>
+            </div>
+          </nav>
         </div>
-
-        <fieldset className="swatches">
-          <legend>Palette</legend>
-          {PALETTES.map((p) => (
-            <label key={p.id} className="swatch" title={p.name}>
-              <input type="radio" name="palette" value={p.id} checked={shown === p.id} onChange={() => setPalette(p.id)} />
-              <span className="swatch__chip" aria-hidden="true">
-                <i style={{ background: p[mode][0] }} />
-                <i style={{ background: p[mode][2] }} />
-              </span>
-              <span className="sr-only">{p.name}</span>
-            </label>
-          ))}
-        </fieldset>
-
-        <div className="footer__links">
-          <a href={`mailto:${CONTACT.email}`}>Email</a>
-          <a href={CONTACT.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a href={CONTACT.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-          <button className="icon-btn" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Back to top">
-            <ArrowUp size={14} />
+        <div className="footer__base">
+          <span>Copyright © {year} {PROFILE.name}. All rights reserved.</span>
+          <button className="footer__top-btn" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            Back to top
           </button>
         </div>
-      </div>
-      <div className="wrap footer__base">
-        <span>© {year} {PROFILE.name}</span>
-        <nav className="footer__pages" aria-label="Footer">
-          {PAGES.map((p) => (
-            <Link key={p.id} to={p.path}>{p.label}</Link>
-          ))}
-        </nav>
       </div>
     </footer>
   );

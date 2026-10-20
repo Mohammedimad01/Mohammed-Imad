@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, FileText, Mail, MonitorPlay } from "lucide-react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, FileText, Mail, MonitorPlay } from "lucide-react";
 import { PROJECTS } from "../../data/projects";
 import { CONTACT } from "../../data/meta";
 import { useUI } from "../../context/UIContext";
@@ -48,8 +48,8 @@ function Body({ p, index, onSwitch, isLanding }) {
     <>
       <div className="cs" ref={scrollRef}>
         <div className="cs__top">
-          <span className="cs__no">Case {String(index + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}</span>
           <span className="cs__type">{p.type}</span>
+          <span className="cs__no num">{index + 1} of {PROJECTS.length}</span>
         </div>
         {isLanding ? (
           <h1 className="cs__title" data-autofocus tabIndex={-1}>{p.name}</h1>
@@ -82,16 +82,16 @@ function Body({ p, index, onSwitch, isLanding }) {
             ["The problem", p.problem],
             ["Approach", p.approach],
             ["Outcome", p.impact],
-          ].map(([h, t], i) => (
+          ].map(([h, t]) => (
             <section key={h} className="cs__block">
-              <Sub><span>{String(i + 1).padStart(2, "0")}</span>{h}</Sub>
+              <Sub>{h}</Sub>
               <p>{t}</p>
             </section>
           ))}
         </div>
 
         <section className="cs__arch" aria-label="System architecture">
-          <Sub className="eyebrow">Architecture &amp; method</Sub>
+          <Sub className="cs__h">Architecture &amp; method</Sub>
           <ol className="flow">
             {p.pipeline.map((s, i) => (
               <li key={s} style={{ "--i": i }}>
@@ -103,7 +103,8 @@ function Body({ p, index, onSwitch, isLanding }) {
         </section>
 
         <section className="cs__stack" aria-label="Tech stack">
-          <Sub className="eyebrow">Stack: select a tool to see where else I've used it</Sub>
+          <Sub className="cs__h">Stack</Sub>
+          <p className="cs__hint">Select a tool to see where else I've used it.</p>
           <div className="tags">
             {p.tools.map((t) => (
               <button key={t} type="button" className={`tag tag--btn${tool === t ? " is-active" : ""}`} aria-pressed={tool === t} onClick={() => setTool(tool === t ? null : t)}>
@@ -133,7 +134,7 @@ function Body({ p, index, onSwitch, isLanding }) {
         <section className="cs__links" aria-label="Links">
           {links.length ? (
             links.map(({ k, label, Icon }) => (
-              <a key={k} className="btn btn--ghost" href={p.links[k]} target="_blank" rel="noopener noreferrer">
+              <a key={k} className={`btn ${k === "demo" ? "btn--primary" : "btn--ghost"}`} href={p.links[k]} target="_blank" rel="noopener noreferrer">
                 <Icon size={14} aria-hidden="true" /> {label} <ArrowUpRight size={13} aria-hidden="true" />
               </a>
             ))
@@ -150,12 +151,12 @@ function Body({ p, index, onSwitch, isLanding }) {
 
       <nav className="cs__nav" aria-label="Other case studies">
         <a className="cs__pn" {...linkTo(prev.id)}>
-          <ArrowLeft size={14} aria-hidden="true" />
+          <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
           <span><small>Previous</small>{prev.shortName || prev.name}</span>
         </a>
         <a className="cs__pn cs__pn--next" {...linkTo(next.id)}>
           <span><small>Next</small>{next.shortName || next.name}</span>
-          <ArrowRight size={14} aria-hidden="true" />
+          <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
         </a>
       </nav>
     </>

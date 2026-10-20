@@ -2,7 +2,7 @@
 
 Live: [https://mohammed-imad.vercel.app](https://mohammed-imad.vercel.app)
 
-React 19 + Vite. Editorial dark aesthetic (Cormorant Garamond · DM Sans · JetBrains Mono), three switchable palettes, each in dark and light.
+React 19 + Vite. Apple-style design: SF Pro on Apple devices and Inter elsewhere; white, `#f5f5f7` and black with Apple blue as the single accent; light and dark appearances that follow the system. Scroll motion with GSAP ScrollTrigger, springs (Motion) for sheets.
 
 ```bash
 npm install
@@ -57,18 +57,22 @@ Check a build with `npm run preview`, then open e.g. `http://localhost:4173/work
 ```
 src/
   components/
-    common/    Button, Tag, Modal, Toast, SectionHeader, Reveal, CustomCursor, BrandIcons
-    layout/    Navbar, MobileMenu, Footer, GridBackground, ScrollProgress, PrintResume
-    sections/  Hero, About, Experience, Projects, SkillsAnalytics (+ lazy SkillRadar),
-               Education, Certifications, Contact
+    common/    Button, Tag, Modal, Toast, SectionHeader, Reveal (GSAP), ThemeToggle, BrandIcons
+    layout/    Navbar, MobileMenu, Footer, PageNav, PrintResume
+    sections/  Hero, Highlights, About, FeaturedWork, Faq, CtaBand, Experience, Projects,
+               SkillsAnalytics (+ lazy SkillRadar), Education, Certifications, Contact
     modals/    ProjectDetailModal, CommandPalette, ResumeModal
   pages/       Home, Experience, Work, Skills, Education, Contact, 404 (compose sections)
   router/      Small History-API router: page transitions, scroll restore, per-page <head>
-  context/     Prefs (palette, reduced motion) and UI (dialogs, toasts) providers
+  context/     Prefs (appearance, reduced motion) and UI (dialogs, toasts) providers
   data/        content (see above)
-  hooks/       useScrollSpy, useIntersection, useCounter, useKeyboardNav, useThemeTokens
-  lib/         scroll / clipboard / navigation helpers
-  styles/      variables.css (tokens + palettes), global.css, sections.css, print.css
+  hooks/       useIntersection, useCounter, useKeyboardNav, useThemeTokens, useHydrated
+  lib/         gsap.js (plugin registration), clipboard / navigation helpers
+  styles/      variables.css (tokens, light/dark, .inverse), global.css, sections.css, print.css
 ```
 
 Keyboard: `Ctrl/⌘ K` or `/` opens the command palette.
+
+## Hero portrait (phase 2)
+
+Set `PROFILE.portrait` in `src/data/meta.js` to `{ src, alt, width, height }` (image in `public/`) and it appears in the hero, between the call to action and the stats.

@@ -22,7 +22,7 @@ export const FAQ = [
   },
   {
     q: "What are his notable projects?",
-    a: "ChurnSense AI predicts telecom customer churn with ROC-AUC above 0.85 on 7,000+ records. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. ExpenseAudit AI is a multi-agent expense-auditing system built with Google ADK and Gemini, shipped with 89 automated tests. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
+    a: "Meridian People Analytics is an HR analytics dashboard for a ~1,200-person UAE healthcare group, with 17 unit-tested KPIs and five findings, including nursing attrition at 2.2× the rest of the workforce. ChurnSense AI predicts telecom customer churn with ROC-AUC above 0.85 on 7,000+ records. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. ExpenseAudit AI is a multi-agent expense-auditing system built with Google ADK and Gemini, shipped with 89 automated tests. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
   },
   {
     q: "How can I contact Mohammed Imad Thotan?",

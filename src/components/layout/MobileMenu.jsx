@@ -5,6 +5,8 @@ import { PAGES } from "../../data/pages";
 import { useUI } from "../../context/UIContext";
 import Link from "../../router/Link";
 
+const EASE = [0.25, 1, 0.5, 1];
+
 export default function MobileMenu({ open, activeId, onClose }) {
   const { openResume, copyEmail } = useUI();
 
@@ -19,25 +21,26 @@ export default function MobileMenu({ open, activeId, onClose }) {
     };
   }, [open, onClose]);
 
+  // Drops down from the bar that opened it and lifts back the same way.
   return (
     <AnimatePresence>
       {open && (
         <motion.div
           id="mobile-menu"
           className="mmenu"
-          initial={{ clipPath: "inset(0 0 100% 0)" }}
-          animate={{ clipPath: "inset(0 0 0% 0)" }}
-          exit={{ clipPath: "inset(0 0 100% 0)" }}
-          transition={{ duration: 0.45, ease: [0.7, 0, 0.2, 1] }}
+          initial={{ opacity: 0, y: -12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -12 }}
+          transition={{ duration: 0.4, ease: EASE }}
         >
           <nav aria-label="Mobile">
             <ol className="mmenu__list">
               {PAGES.map((n, i) => (
                 <motion.li
                   key={n.id}
-                  initial={{ opacity: 0, y: 18 }}
+                  initial={{ opacity: 0, y: -8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.12 + i * 0.05 }}
+                  transition={{ delay: 0.04 + i * 0.035, duration: 0.45, ease: EASE }}
                 >
                   <Link
                     to={n.path}
@@ -52,8 +55,8 @@ export default function MobileMenu({ open, activeId, onClose }) {
             </ol>
           </nav>
           <div className="mmenu__foot">
-            <button className="btn btn--primary" onClick={() => { onClose(); openResume(); }}>View résumé</button>
-            <button className="btn btn--ghost" onClick={copyEmail}>Copy email</button>
+            <button className="btn btn--primary btn--lg" onClick={() => { onClose(); openResume(); }}>Download résumé</button>
+            <button className="btn btn--quiet btn--lg" onClick={copyEmail}>Copy email</button>
             <p className="mmenu__meta">{PROFILE.availability}<br />{CONTACT.email}</p>
           </div>
         </motion.div>

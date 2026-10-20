@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 import { Command } from "cmdk";
-import { ArrowRight, Copy, CornerDownLeft, FileDown, Hash, Mail, Moon, Palette, Printer, Search, Sparkles, Sun, Wind } from "lucide-react";
+import { ArrowRight, Copy, CornerDownLeft, FileDown, Hash, Mail, Moon, Printer, Search, Sun, Wind } from "lucide-react";
 import { CONTACT } from "../../data/meta";
 import { PAGES } from "../../data/pages";
 import { useRouter } from "../../router/RouterContext";
 import { PROJECTS } from "../../data/projects";
-import { PALETTES, usePrefs } from "../../context/PrefsContext";
+import { usePrefs } from "../../context/PrefsContext";
 import { useUI } from "../../context/UIContext";
 import { useKeyboardNav } from "../../hooks/useKeyboardNav";
 import { navigateTo, openExternal } from "../../lib/actions";
@@ -22,7 +22,7 @@ const DESTINATIONS = [
 function Item({ onSelect, icon: Icon, children, hint, keywords }) {
   return (
     <Command.Item onSelect={onSelect} keywords={keywords} className="cmd__item">
-      <span className="cmd__ic" aria-hidden="true"><Icon size={14} /></span>
+      <span className="cmd__ic" aria-hidden="true"><Icon size={15} strokeWidth={1.75} /></span>
       <span className="cmd__label">{children}</span>
       {hint && <span className="cmd__hint">{hint}</span>}
       <CornerDownLeft size={12} className="cmd__enter" aria-hidden="true" />
@@ -32,7 +32,7 @@ function Item({ onSelect, icon: Icon, children, hint, keywords }) {
 
 export default function CommandPalette() {
   const { paletteOpen, setPaletteOpen, togglePalette, openProject, openResume, copyEmail, toast } = useUI();
-  const { palette, setPalette, theme, toggleTheme, reducedMotion, toggleReducedMotion } = usePrefs();
+  const { theme, toggleTheme, reducedMotion, toggleReducedMotion } = usePrefs();
   const { navigate } = useRouter();
 
   const open = useCallback(() => setPaletteOpen(true), [setPaletteOpen]);
@@ -49,8 +49,8 @@ export default function CommandPalette() {
     <Modal open={paletteOpen} onClose={close} label="Command palette" className="cmd">
       <Command label="Command palette" loop>
         <div className="cmd__search">
-          <Search size={15} aria-hidden="true" />
-          <Command.Input data-autofocus placeholder="Jump to a page, case study or action…" />
+          <Search size={20} strokeWidth={1.75} aria-hidden="true" />
+          <Command.Input data-autofocus placeholder="Search pages, case studies and actions" />
           <kbd>esc</kbd>
         </div>
         <Command.List className="cmd__list">
@@ -100,7 +100,7 @@ export default function CommandPalette() {
               hint={reducedMotion ? "On" : "Off"}
               onSelect={() => {
                 const on = toggleReducedMotion();
-                toast(on ? "Reduced motion on" : "Reduced motion off", { detail: on ? "Animations and the custom cursor are paused." : undefined });
+                toast(on ? "Reduced motion on" : "Reduced motion off", { detail: on ? "Scroll and page animations are paused." : undefined });
               }}
             >
               Toggle reduced motion
@@ -110,28 +110,14 @@ export default function CommandPalette() {
               keywords={["theme", "dark", "light", "mode", "appearance"]}
               onSelect={() => {
                 toggleTheme();
-                toast(theme === "dark" ? "Light theme on" : "Dark theme on");
+                toast(theme === "dark" ? "Light appearance" : "Dark appearance");
               }}
             >
-              Switch to {theme === "dark" ? "light" : "dark"} theme
+              Switch to {theme === "dark" ? "light" : "dark"} appearance
             </Item>
             <Item icon={Printer} onSelect={run(() => window.print())} keywords={["print", "pdf", "resume"]}>
               Print web résumé
             </Item>
-            {PALETTES.map((p) => (
-              <Item
-                key={p.id}
-                icon={p.id === palette ? Sparkles : Palette}
-                keywords={["colour", "color", "palette", "accent"]}
-                hint={p.id === palette ? "Active" : undefined}
-                onSelect={() => {
-                  setPalette(p.id);
-                  toast(`Palette: ${p.name}`);
-                }}
-              >
-                Palette: {p.name}
-              </Item>
-            ))}
           </Command.Group>
         </Command.List>
         <div className="cmd__foot" aria-hidden="true">

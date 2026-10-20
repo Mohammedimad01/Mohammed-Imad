@@ -26,11 +26,11 @@ export default function SkillsAnalytics({ level = 2 }) {
   };
 
   return (
-    <section id="skills" className="section" aria-labelledby="skills-title">
+    <section id="skills" className="section section--page" aria-labelledby="skills-title">
       <div className="wrap">
-        <SectionHeader level={level} title="Technical &" accent="business skills." id="skills-title" />
+        <SectionHeader level={level} eyebrow="Skills" title="Technical and" accent="business skills." id="skills-title" lede="Self-assessed across six disciplines. Choose a category to see the detail and the full toolkit." />
 
-        <Reveal className="tabs" role="tablist" aria-label="Skill categories">
+        <Reveal className="seg" role="tablist" aria-label="Skill categories">
           {SKILL_TABS.map((t, i) => (
             <button
               key={t.id}
@@ -40,12 +40,12 @@ export default function SkillsAnalytics({ level = 2 }) {
               aria-selected={tab === t.id}
               aria-controls={`${baseId}-panel`}
               tabIndex={tab === t.id ? 0 : -1}
-              className={`tab${tab === t.id ? " is-active" : ""}`}
+              className={`seg__btn${tab === t.id ? " is-active" : ""}`}
               onClick={() => setTab(t.id)}
               onKeyDown={(e) => onTabKey(e, i)}
             >
-              {tab === t.id && <motion.span layoutId="tab-ink" className="tab__ink" transition={{ type: "spring", stiffness: 500, damping: 40 }} />}
-              <span className="tab__label">{t.label}</span>
+              {tab === t.id && <motion.span layoutId="tab-ink" className="seg__ink" transition={{ type: "spring", bounce: 0, duration: 0.5 }} />}
+              <span className="seg__label">{t.label}</span>
             </button>
           ))}
         </Reveal>
@@ -85,7 +85,7 @@ export default function SkillsAnalytics({ level = 2 }) {
                         <motion.span
                           initial={{ scaleX: 0 }}
                           animate={{ scaleX: r.v / 100 }}
-                          transition={{ duration: 0.8, delay: 0.05 * i, ease: [0.2, 0.7, 0.2, 1] }}
+                          transition={{ duration: 1, delay: 0.05 * i, ease: [0.25, 1, 0.5, 1] }}
                         />
                       </span>
                       <span className="matrix__v">{r.v}</span>
@@ -108,7 +108,7 @@ export default function SkillsAnalytics({ level = 2 }) {
             {toolkit.map((t) => (
               <div key={t.id} className="toolkit__col">
                 <button className="toolkit__h" onClick={() => setTab(t.id)}>
-                  {t.label} <span aria-hidden="true">→</span>
+                  {t.label} <span aria-hidden="true">›</span>
                 </button>
                 <ul>
                   {t.skills.map((s) => (

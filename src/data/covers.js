@@ -8,6 +8,7 @@ export const COVER_SIZES = {
   "expenseaudit": [960, 472],
   "failure-autopsy": [960, 477],
   "ivo": [960, 591],
+  "meridian": [960, 560],
   "play-store": [960, 592],
   "scm": [960, 464],
   "skillbridge": [960, 502],
@@ -15,6 +16,7 @@ export const COVER_SIZES = {
 };
 
 const ALT = {
+  meridian: "Meridian People Analytics workforce overview: headcount, attrition, time to hire, onboarding, compliance and eNPS KPIs, a headcount trend and attrition by department",
   churnsense: "ChurnSense AI: Power BI executive overview of high-risk customers and churn by contract, with the Streamlit risk-scoring app",
   "play-store": "Google Play Store analytics: executive summary dashboard with average rating, installs, satisfaction index and negative review share",
   superstore: "Superstore Power BI dashboard: sales, profit, discount and regional performance",

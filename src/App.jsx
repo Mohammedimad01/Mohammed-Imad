@@ -1,12 +1,12 @@
+import { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import PrefsProvider from "./context/PrefsProvider";
 import UIProvider from "./context/UIProvider";
 import RouterProvider from "./router/RouterProvider";
 import { useRouter } from "./router/RouterContext";
 import { usePrefs } from "./context/PrefsContext";
+import { ScrollTrigger } from "./lib/gsap";
 
-import CustomCursor from "./components/common/CustomCursor";
-import GridBackground from "./components/layout/GridBackground";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import PrintResume from "./components/layout/PrintResume";
@@ -38,21 +38,33 @@ function Site() {
   const { reducedMotion } = usePrefs();
   const t = (d) => (reducedMotion ? 0 : d);
   const Page = PAGE_COMPONENTS[page.id];
+
+  // Web fonts change line lengths, and so every scroll trigger's position.
+  useEffect(() => {
+    document.fonts?.ready.then(() => ScrollTrigger.refresh());
+  }, []);
+
   return (
     <>
       <a href="#main" className="skip">Skip to content</a>
-      <GridBackground />
-      <CustomCursor />
       <Navbar />
       <main id="main" tabIndex={-1}>
-        {/* Old page fades out, then settle() scrolls/focuses, then the new one fades in. */}
-        <AnimatePresence mode="wait" initial={false} onExitComplete={settle}>
+        {/* Old page fades out, settle() scrolls/focuses, the new one fades in;
+            scroll triggers measure again once it has landed. */}
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => {
+            settle();
+            ScrollTrigger.refresh();
+          }}
+        >
           <motion.div
             key={page.id}
             className={`page page--${page.id}`}
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: t(0.45), ease: [0.2, 0.7, 0.2, 1] } }}
-            exit={{ opacity: 0, y: -10, transition: { duration: t(0.22), ease: [0.4, 0, 1, 1] } }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { duration: t(0.5), ease: [0.25, 1, 0.5, 1] } }}
+            exit={{ opacity: 0, transition: { duration: t(0.2), ease: [0.65, 0, 0.35, 1] } }}
           >
             <Page />
           </motion.div>

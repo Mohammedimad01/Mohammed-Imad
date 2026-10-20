@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { MotionConfig } from "motion/react";
-import { PALETTES, THEMES, PrefsContext } from "./PrefsContext";
+import { THEMES, THEME_COLOR, PrefsContext } from "./PrefsContext";
 
 const read = (k, fallback) => {
   try {
@@ -21,15 +21,11 @@ const systemReduced = () =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
 export default function PrefsProvider({ children }) {
-  // index.html applies the saved palette/theme before first paint (and
-  // migrates the old "paper" palette to Brass + light); read the result.
-  const [palette, setPaletteState] = useState(() => {
-    const p = typeof document !== "undefined" ? document.documentElement.dataset.palette : "cobalt";
-    return PALETTES.some((x) => x.id === p) ? p : "cobalt";
-  });
+  // index.html picks the appearance before first paint (saved choice, else
+  // the OS setting); read the result rather than deciding twice.
   const [theme, setThemeState] = useState(() => {
-    const t = typeof document !== "undefined" ? document.documentElement.dataset.theme : "dark";
-    return THEMES.includes(t) ? t : "dark";
+    const t = typeof document !== "undefined" ? document.documentElement.dataset.theme : "light";
+    return THEMES.includes(t) ? t : "light";
   });
   // "system" follows the OS; "on"/"off" are explicit overrides.
   const [motionPref, setMotionPref] = useState(() => read("mit:motion", "system"));
@@ -43,27 +39,32 @@ export default function PrefsProvider({ children }) {
     return () => mq.removeEventListener("change", h);
   }, []);
 
+  // With no saved choice, keep following the OS if it switches appearance.
+  useEffect(() => {
+    const mq = window.matchMedia?.("(prefers-color-scheme: dark)");
+    if (!mq) return;
+    const h = () => {
+      if (read("mit:theme", null)) return;
+      setThemeState(mq.matches ? "dark" : "light");
+    };
+    mq.addEventListener("change", h);
+    return () => mq.removeEventListener("change", h);
+  }, []);
+
   const reducedMotion = motionPref === "system" ? osReduced : motionPref === "on";
 
   useEffect(() => {
     const root = document.documentElement;
-    root.dataset.palette = palette;
     root.dataset.theme = theme;
     root.dataset.motion = reducedMotion ? "reduced" : "full";
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", PALETTES.find((p) => p.id === palette)[theme][0]);
-  }, [palette, theme, reducedMotion]);
-
-  const setPalette = useCallback((id) => {
-    setPaletteState(id);
-    write("mit:palette", id);
-  }, []);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", THEME_COLOR[theme]);
+  }, [theme, reducedMotion]);
 
   const setTheme = useCallback((t) => {
     // Cross-fade colours for a moment, but not on every hover transition.
     const root = document.documentElement;
     root.classList.add("theme-anim");
-    window.setTimeout(() => root.classList.remove("theme-anim"), 450);
+    window.setTimeout(() => root.classList.remove("theme-anim"), 550);
     setThemeState(t);
     write("mit:theme", t);
   }, []);
@@ -77,8 +78,8 @@ export default function PrefsProvider({ children }) {
   }, [reducedMotion]);
 
   const value = useMemo(
-    () => ({ palette, setPalette, theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion }),
-    [palette, setPalette, theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion]
+    () => ({ theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion }),
+    [theme, setTheme, toggleTheme, reducedMotion, toggleReducedMotion]
   );
 
   return (

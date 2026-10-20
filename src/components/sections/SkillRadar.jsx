@@ -21,20 +21,20 @@ export default function SkillRadar({ data, id }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <RadarChart data={data} outerRadius="72%" margin={{ top: 8, right: 24, bottom: 8, left: 24 }}>
-        <PolarGrid stroke={tokens.line} gridType="polygon" />
+        <PolarGrid stroke={tokens.line} strokeOpacity={0.6} gridType="polygon" />
         <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
-        <PolarAngleAxis dataKey="s" tick={{ fill: tokens["ink-2"], fontSize: 11, fontFamily: "JetBrains Mono, monospace" }} />
+        <PolarAngleAxis dataKey="s" tick={{ fill: tokens["ink-2"], fontSize: 12, fontWeight: 500, fontFamily: "-apple-system, BlinkMacSystemFont, Inter, Segoe UI, sans-serif" }} />
         <Tooltip content={<RadarTip />} cursor={false} />
         <Radar
           key={id}
           dataKey="v"
-          stroke={tokens.accent}
-          strokeWidth={1.5}
-          fill={tokens.accent}
-          fillOpacity={0.14}
-          dot={{ r: 2.5, fill: tokens.accent, strokeWidth: 0 }}
+          stroke={tokens.link}
+          strokeWidth={2}
+          fill={tokens.link}
+          fillOpacity={0.12}
+          dot={{ r: 3, fill: tokens.link, strokeWidth: 0 }}
           isAnimationActive={!reducedMotion}
-          animationDuration={700}
+          animationDuration={900}
         />
       </RadarChart>
     </ResponsiveContainer>

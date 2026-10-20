@@ -1,153 +1,106 @@
 /* ── Design tokens ─────────────────────────────────────────────────────────
-   Three palettes (data-palette) × two themes (data-theme) on <html>, all
-   sharing one token vocabulary. :root holds Cobalt dark, the default; each
-   light block re-defines every colour token so it wins over the dark one.
-   ink   = text, line = hairlines, accent = primary, accent-2 = support. */
+   One system, two appearances (data-theme on <html>). Light is Apple's
+   white / #f5f5f7 / #1d1d1f; dark is true black with #1d1d1f surfaces.
+   A single accent, Apple blue, does every job colour has to do.
+   .inverse re-scopes the dark values to one section in either theme. */
 
 :root {
-  --ff-d: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
-  --ff-b: "DM Sans", "Segoe UI", system-ui, sans-serif;
-  --ff-m: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --ff: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-d: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-m: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
 
-  --wrap: 1200px;
-  --gutter: clamp(16px, 4vw, 40px);
-  --r-sm: 4px;
-  --r: 8px;
-  --r-lg: 14px;
-  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --ease-io: cubic-bezier(0.7, 0, 0.2, 1);
-  --blur: 14px;
-  --nav-h: 68px;
+  /* Type scale (size / leading / tracking travel together) */
+  --t-hero: clamp(44px, 7.4vw, 96px);
+  --t-h1: clamp(40px, 5.6vw, 72px);
+  --t-h2: clamp(32px, 4vw, 48px);
+  --t-h3: clamp(22px, 2.2vw, 28px);
+  --t-lede: clamp(19px, 1.7vw, 21px);
+  --t-body: 17px;
+  --t-small: 14px;
+  --t-cap: 12px;
 
-  /* Midnight Cobalt (default) */
-  --bg: #070b14;
-  --bg-2: #0a101c;
-  --surface: #0e1524;
-  --surface-2: #131c2f;
-  --line: #1c2740;
-  --line-2: #2a3856;
-  --ink: #e6ebf5;
-  --ink-2: #9eabc4;
-  --ink-3: #7d8ba6;
-  --accent: #6f9cff;
-  --accent-hi: #94b6ff;
-  --accent-ink: #050a16;
-  --accent-2: #d4b36a;
-  --accent-soft: rgba(111, 156, 255, 0.11);
-  --glow: rgba(111, 156, 255, 0.09);
-  --glass: rgba(14, 21, 36, 0.88);
-  --scrim: rgba(3, 6, 14, 0.72);
-  --grain: 0.06;
-  --ok: #7cc49a;
-  --warn: #e0a458;
-  --err: #e47a6b;
-  color-scheme: dark;
-}
+  --wrap: 1120px;
+  --wrap-narrow: 820px;
+  --gutter: clamp(20px, 4.5vw, 44px);
+  --sec: clamp(88px, 11vw, 152px);
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r: 18px;
+  --r-lg: 28px;
+  --pill: 980px;
+  --nav-h: 52px;
 
-:root[data-palette="obsidian"] {
-  --bg: #0a0a0c;
-  --bg-2: #0e0e12;
-  --surface: #121217;
-  --surface-2: #17171d;
-  --line: #24232a;
-  --line-2: #33313a;
-  --ink: #e9e4d8;
-  --ink-2: #a19c90;
-  --ink-3: #86817a;
-  --accent: #c9a35a;
-  --accent-hi: #e2c07e;
-  --accent-ink: #14100a;
-  --accent-2: #5ba89c;
-  --accent-soft: rgba(201, 163, 90, 0.1);
-  --glow: rgba(201, 163, 90, 0.08);
-  --glass: rgba(18, 18, 23, 0.86);
-}
+  /* Motion: Apple-style curves (quick start, long settle) */
+  --ease: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-io: cubic-bezier(0.65, 0, 0.35, 1);
 
-:root[data-palette="sage"] {
-  --bg: #0a1016;
-  --bg-2: #0d141b;
-  --surface: #111a22;
-  --surface-2: #16212b;
-  --line: #1f2b36;
-  --line-2: #2c3b48;
-  --ink: #e4e8e2;
-  --ink-2: #98a5a4;
-  --ink-3: #7b8a8e;
-  --accent: #a3bd9c;
-  --accent-hi: #bfd6b8;
-  --accent-ink: #0b130c;
-  --accent-2: #d9b98a;
-  --accent-soft: rgba(163, 189, 156, 0.1);
-  --glow: rgba(163, 189, 156, 0.07);
-  --glass: rgba(17, 26, 34, 0.88);
-}
-
-/* ── Light theme ─────────────────────────────────────────────────────────── */
-
-:root[data-theme="light"] {
-  --bg: #f5f7fb;
-  --bg-2: #edf1f8;
+  /* Light appearance (default) */
+  --bg: #ffffff;
+  --bg-2: #f5f5f7;
   --surface: #ffffff;
-  --surface-2: #f8fafd;
-  --line: #dce2ed;
-  --line-2: #c5cfe0;
-  --ink: #0f1729;
-  --ink-2: #434f69;
-  --ink-3: #5c6882;
-  --accent: #2f5bd3;
-  --accent-hi: #2149b8;
+  --surface-2: #fbfbfd;
+  --line: #d2d2d7;
+  --line-soft: #e8e8ed;
+  --ink: #1d1d1f;
+  --ink-2: #6e6e73;
+  --ink-3: #86868b;
+  --accent: #0071e3;
+  --accent-hi: #0077ed;
+  --link: #0066cc;
   --accent-ink: #ffffff;
-  --accent-2: #94701f;
-  --accent-soft: rgba(47, 91, 211, 0.08);
-  --glow: rgba(47, 91, 211, 0.07);
-  --glass: rgba(255, 255, 255, 0.86);
-  --scrim: rgba(15, 23, 41, 0.38);
-  --grain: 0.035;
-  --ok: #2f7a4f;
-  --warn: #9a5d12;
-  --err: #b23a2a;
+  --accent-soft: rgba(0, 113, 227, 0.08);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+  --scrim: rgba(0, 0, 0, 0.32);
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.04), 0 18px 48px -18px rgba(0, 0, 0, 0.14);
+  --shadow-lg: 0 30px 90px -20px rgba(0, 0, 0, 0.28);
+  --ok: #34c759;
+  --ok-ink: #248a3d;
+  --warn: #b25000;
+  --err: #d70015;
   color-scheme: light;
 }
 
-/* Brass in daylight: paper and ink */
-:root[data-theme="light"][data-palette="obsidian"] {
-  --bg: #f2eee5;
-  --bg-2: #ebe6db;
-  --surface: #f8f5ee;
-  --surface-2: #ffffff;
-  --line: #d9d2c3;
-  --line-2: #c4bba9;
-  --ink: #17150f;
-  --ink-2: #4f4a40;
-  --ink-3: #6f685b;
-  --accent: #8c5a1c;
-  --accent-hi: #a66d25;
-  --accent-ink: #fbf7ef;
-  --accent-2: #1f5e59;
-  --accent-soft: rgba(140, 90, 28, 0.09);
-  --glow: rgba(140, 90, 28, 0.06);
-  --scrim: rgba(30, 26, 20, 0.4);
-  --glass: rgba(248, 245, 238, 0.9);
-  --grain: 0.05;
+:root[data-theme="dark"] {
+  --bg: #000000;
+  --bg-2: #161617;
+  --surface: #1d1d1f;
+  --surface-2: #232325;
+  --line: #424245;
+  --line-soft: #2c2c2e;
+  --ink: #f5f5f7;
+  --ink-2: #a1a1a6;
+  --ink-3: #86868b;
+  --accent: #0071e3;
+  --accent-hi: #0077ed;
+  --link: #2997ff;
+  --accent-soft: rgba(41, 151, 255, 0.14);
+  --glass: rgba(22, 22, 23, 0.72);
+  --glass-strong: rgba(29, 29, 31, 0.88);
+  --scrim: rgba(0, 0, 0, 0.55);
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 18px 48px -18px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 30px 90px -20px rgba(0, 0, 0, 0.8);
+  --ok: #30d158;
+  --ok-ink: #30d158;
+  --warn: #ff9f0a;
+  --err: #ff453a;
+  color-scheme: dark;
 }
 
-:root[data-theme="light"][data-palette="sage"] {
-  --bg: #f1f4ef;
-  --bg-2: #e9eee6;
-  --surface: #fafbf8;
-  --surface-2: #ffffff;
-  --line: #d4ddd1;
-  --line-2: #bac7b6;
-  --ink: #131a15;
-  --ink-2: #46524a;
-  --ink-3: #616e67;
-  --accent: #3d6a44;
-  --accent-hi: #315a38;
-  --accent-ink: #ffffff;
-  --accent-2: #8a6430;
-  --accent-soft: rgba(61, 106, 68, 0.09);
-  --glow: rgba(61, 106, 68, 0.06);
-  --scrim: rgba(19, 26, 21, 0.38);
-  --glass: rgba(250, 251, 248, 0.9);
-  --grain: 0.04;
+/* A dark band inside the light page (and a matching one in dark mode). */
+.inverse {
+  --bg: #000000;
+  --bg-2: #161617;
+  --surface: #1d1d1f;
+  --surface-2: #232325;
+  --line: #424245;
+  --line-soft: #2c2c2e;
+  --ink: #f5f5f7;
+  --ink-2: #a1a1a6;
+  --ink-3: #86868b;
+  --link: #2997ff;
+  --accent-soft: rgba(41, 151, 255, 0.14);
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: dark;
 }

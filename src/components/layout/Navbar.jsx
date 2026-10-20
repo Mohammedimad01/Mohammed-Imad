@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Command, FileText } from "lucide-react";
+import { Search } from "lucide-react";
 import { PROFILE } from "../../data/meta";
 import { PAGES } from "../../data/pages";
 import { useUI } from "../../context/UIContext";
@@ -18,7 +18,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 40);
+    const h = () => setScrolled(window.scrollY > 8);
     h();
     window.addEventListener("scroll", h, { passive: true });
     return () => window.removeEventListener("scroll", h);
@@ -29,8 +29,8 @@ export default function Navbar() {
       <header className={`nav${scrolled || menuOpen ? " is-solid" : ""}`}>
         <div className="nav__inner wrap">
           <Link to="/" className="nav__mark" onClick={() => setMenuOpen(false)} aria-label={`${PROFILE.name}, home`}>
-            <span className="nav__mono">MI</span>
-            <span className="nav__name">Mohammed Imad <i>Thotan</i></span>
+            <span className="nav__mono" aria-hidden="true">MI</span>
+            <span className="nav__name">Mohammed Imad</span>
           </Link>
 
           <nav className="nav__links" aria-label="Primary">
@@ -47,13 +47,12 @@ export default function Navbar() {
           </nav>
 
           <div className="nav__actions">
-            <button className="kbd-btn" onClick={() => setPaletteOpen(true)} aria-label="Open command palette" aria-keyshortcuts={isMac ? "Meta+K" : "Control+K"}>
-              <Command size={12} aria-hidden="true" />
-              <span>{isMac ? "⌘K" : "Ctrl K"}</span>
+            <button className="nav__icon" onClick={() => setPaletteOpen(true)} aria-label="Search the site" aria-keyshortcuts={isMac ? "Meta+K" : "Control+K"} title={isMac ? "Search (⌘K)" : "Search (Ctrl K)"}>
+              <Search size={16} strokeWidth={1.75} aria-hidden="true" />
             </button>
             <ThemeToggle />
             <button className="btn btn--primary btn--sm nav__cv" onClick={openResume}>
-              <FileText size={13} aria-hidden="true" /> Résumé
+              Résumé
             </button>
             <button
               className={`burger${menuOpen ? " is-open" : ""}`}

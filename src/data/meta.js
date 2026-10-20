@@ -25,7 +25,12 @@ export const PROFILE = {
   availability: "Available now · Business Data Analyst roles in the UAE",
   availabilityShort: "Open to work",
   intro:
-    "Business Data Analyst with a year as Technical Lead – Software Developer at Qlovix. I turn raw data into decision-ready insight, and I can build the tools that deliver it.",
+    "I turn raw data into decision-ready insight with SQL, Python and Power BI, backed by a year as Technical Lead – Software Developer at Qlovix. Based in Dubai.",
+  // The one-breath version, revealed word by word on the home page.
+  statement:
+    "I turn raw data into decisions people can act on. SQL, Python and Power BI for the analysis. A year leading software delivery for the tools that ship it.",
+  // Phase 2: set to { src, alt, width, height } to place a portrait in the hero.
+  portrait: null,
   bio: [
     "Business Data Analyst based in Dubai. I turn raw data into decision-ready insight using SQL, Python, and Power BI/Tableau, with a track record of building dashboards, automating reporting workflows, and delivering data-driven recommendations to operations and leadership teams across analytics, finance, and business operations settings. My foundation is statistical analysis, requirements gathering, and stakeholder communication: translating a business question into clear, actionable analysis.",
     "That analytical depth is backed by a year of real software delivery. As Technical Lead – Software Developer at Qlovix I led the development team across 3+ concurrent client engagements (React, Next.js, Node.js), owning architecture and acting as the technical point of contact for client stakeholders. That means closer collaboration with engineering and faster prototyping of data products. I bring a builder's mindset, shown through an AI-enabled venture seed funded by Aspire Institute, run live in market and delivered to Aspire Institute, and I'm comfortable working independently in fast-paced, ambiguous environments.",
@@ -60,6 +65,18 @@ export const RESUME = {
 // straight to your inbox (free key at web3forms.com). Without it the form
 // falls back to opening a pre-filled email.
 export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
+
+// Home "Highlights" bento: each tile points at a metric that already lives in
+// experience.js or projects.js, so the numbers can't drift. `wide` spans two
+// columns; keep the spans summing to whole rows of three.
+export const HIGHLIGHTS = [
+  { exp: "Meknoid Solutions Pvt. Ltd", wide: true },
+  { project: "churnsense", metric: 0 },
+  { project: "meridian", metric: 0 },
+  { project: "expenseaudit", metric: 0, wide: true },
+  { exp: "Qlovix" },
+  { project: "ecoflow", metric: 0, wide: true },
+];
 
 export const STATS = [
   { v: 1, s: " yr", l: "Technical Lead", d: "Software development at Qlovix, 3+ client engagements" },

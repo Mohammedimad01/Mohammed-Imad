@@ -10,21 +10,21 @@
   #root > .print-cv { display: block !important; }
 
   .print-cv {
-    font: 9.6pt/1.42 "DM Sans", "Segoe UI", Arial, sans-serif; color: #111;
+    font: 9.6pt/1.42 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Arial, sans-serif; color: #111;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .print-cv header { border-bottom: 1.2pt solid #111; padding-bottom: 6pt; margin-bottom: 8pt; }
-  .print-cv .pc-name { font: 400 24pt/1 "Cormorant Garamond", Georgia, serif; letter-spacing: -0.01em; }
+  .print-cv .pc-name { font: 600 22pt/1 -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif; letter-spacing: -0.03em; }
   .print-cv .pc-head { margin-top: 3pt; font-size: 10.5pt; }
   .print-cv .pc-contact { margin-top: 3pt; font-size: 8.4pt; color: #444; }
   .print-cv h2 {
-    margin: 10pt 0 4pt; font: 600 8pt/1 "JetBrains Mono", Consolas, monospace; letter-spacing: 0.14em;
-    text-transform: uppercase; color: #1f3d7a; border-bottom: 0.5pt solid #bbb; padding-bottom: 3pt;
+    margin: 10pt 0 4pt; font: 600 8pt/1 -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif; letter-spacing: 0.08em;
+    text-transform: uppercase; color: #0071e3; border-bottom: 0.5pt solid #bbb; padding-bottom: 3pt;
   }
   .print-cv section { break-inside: auto; }
   .print-cv .pc-item { margin-bottom: 5pt; break-inside: avoid; }
   .print-cv .pc-row { display: flex; gap: 4pt; }
-  .print-cv .pc-row span { margin-left: auto; font: 8pt "JetBrains Mono", Consolas, monospace; color: #555; white-space: nowrap; padding-left: 8pt; }
+  .print-cv .pc-row span { margin-left: auto; font: 8pt -apple-system, BlinkMacSystemFont, "Inter", Arial, sans-serif; color: #555; white-space: nowrap; padding-left: 8pt; }
   .print-cv ul { list-style: disc; padding-left: 12pt; margin-top: 2pt; }
   .print-cv li { margin-bottom: 1pt; }
   .print-cv p { margin-top: 2pt; }

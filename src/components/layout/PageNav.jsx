@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { PAGES } from "../../data/pages";
 import { useRouter } from "../../router/RouterContext";
 import Link from "../../router/Link";
@@ -13,25 +13,23 @@ export default function PageNav() {
   const next = PAGES[i + 1];
 
   return (
-    <nav className="pnav wrap" aria-label="Pages">
-      {prev ? (
-        <Link to={prev.path} className="pnav__link">
-          <small>
-            <ArrowLeft size={12} aria-hidden="true" /> Previous
-          </small>
-          <span>{prev.label}</span>
-        </Link>
-      ) : (
-        <span />
-      )}
-      {next && (
-        <Link to={next.path} className="pnav__link pnav__link--next">
-          <small>
-            Next <ArrowRight size={12} aria-hidden="true" />
-          </small>
-          <span>{next.label}</span>
-        </Link>
-      )}
+    <nav className="pnav" aria-label="Pages">
+      <div className="wrap pnav__inner">
+        {prev ? (
+          <Link to={prev.path} className="pnav__link">
+            <small>Previous</small>
+            <span><ChevronLeft size={20} strokeWidth={2} aria-hidden="true" /> {prev.label}</span>
+          </Link>
+        ) : (
+          <span />
+        )}
+        {next && (
+          <Link to={next.path} className="pnav__link pnav__link--next">
+            <small>Next</small>
+            <span>{next.label} <ChevronRight size={20} strokeWidth={2} aria-hidden="true" /></span>
+          </Link>
+        )}
+      </div>
     </nav>
   );
 }
