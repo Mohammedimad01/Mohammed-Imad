@@ -67,7 +67,7 @@ export const SKILL_TABS = [
   {
     id: "ai",
     label: "AI / ML",
-    blurb: "Models and agents with the guardrails a business can actually trust.",
+    blurb: "Models and agents with the guardrails a business can actually trust, and AI coding tools used to move faster, never in place of judgement.",
     radar: [
       { s: "Machine Learning", v: 82 },
       { s: "Generative AI", v: 84 },
@@ -76,7 +76,10 @@ export const SKILL_TABS = [
       { s: "RAG & Agents", v: 80 },
       { s: "Explainability", v: 76 },
     ],
-    skills: ["Prompt Engineering", "NLP / Sentiment Analysis", "Machine Learning", "Generative AI Applications", "API Integration", "Computer Vision", "Agile/Scrum", "JIRA"],
+    skills: [
+      "Prompt Engineering", "NLP / Sentiment Analysis", "Machine Learning", "Generative AI Applications", "API Integration", "Computer Vision",
+      "AI-Assisted Development", "Claude Code", "Cursor", "OpenAI Codex", "Google Gemini", "Grok", "Agile/Scrum", "JIRA",
+    ],
   },
 ];
 

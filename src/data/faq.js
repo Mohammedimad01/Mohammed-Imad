@@ -18,7 +18,7 @@ export const FAQ = [
   },
   {
     q: "Which tools and skills does he use?",
-    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics, Alteryx and ETL. AI: machine learning, NLP and sentiment analysis, generative AI applications and prompt engineering. Development: React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, REST APIs, FastAPI and Docker, deployed on Vercel and Netlify. Business: financial modelling, market research, stakeholder management and hypothesis-driven analysis.",
+    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics, Alteryx and ETL. AI: machine learning, NLP and sentiment analysis, generative AI applications and prompt engineering. Development: React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, REST APIs, FastAPI and Docker, deployed on Vercel and Netlify. AI-assisted development: Claude Code, Cursor, OpenAI Codex, Google Gemini and Grok, used mainly to accelerate coding and, where it helps, Python scripting and data cleaning; the analysis, validation and conclusions are his own. Business: financial modelling, market research, stakeholder management and hypothesis-driven analysis.",
   },
   {
     q: "What are his notable projects?",

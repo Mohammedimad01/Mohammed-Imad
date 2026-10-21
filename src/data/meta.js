@@ -51,7 +51,7 @@ export const CONTACT = {
 const RESUME_FILE = "/resume/Mohammed-Imad-Thotan-Resume.pdf";
 export const RESUME = {
   path: RESUME_FILE,
-  version: "2026-10-20",
+  version: "2026-10-21",
   get href() {
     return `${this.path}?v=${this.version}`;
   },
