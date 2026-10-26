@@ -111,7 +111,7 @@ export const PROJECTS = [
     type: "Generative AI · Healthcare",
     category: "ai",
     role: "Developer",
-    status: "Live · Next.js web app",
+    status: "Sep 2026",
     summary: "Turns dense medical reports into plain-language explanations, with safety rules enforced in code.",
     problem: "Patients receive lab reports full of jargon, abbreviations and reference ranges they can't interpret, leaving them anxious or unprepared for their next appointment.",
     approach: "Built Ivo first as a Python and Streamlit app on Google Gemini that reads text, PDF (PyPDF2) and scanned-image (Tesseract OCR) reports, then rebuilt it as a Next.js, React and TypeScript web app on Netlify with the same prompts and safety rules. Seven tools sit in one interface: Ask Ivo chat, Report Analyzer, Symptom Check with urgency levels and red flags, Health Trends across reports, Visit Prep guides, Find a Doctor, and Learn.",

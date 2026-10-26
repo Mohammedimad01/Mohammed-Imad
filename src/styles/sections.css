@@ -43,6 +43,7 @@
   padding: calc(var(--nav-h) + clamp(72px, 13vh, 150px)) 0 clamp(72px, 9vw, 120px);
 }
 .hero__intro { will-change: transform, opacity; }
+.hero__avail { margin-bottom: clamp(24px, 3.4vw, 36px); }
 .hero__title { font-size: var(--t-hero); line-height: 1.03; letter-spacing: -0.045em; }
 .hero__line { display: block; }
 .hero__line--muted { color: var(--ink-3); }

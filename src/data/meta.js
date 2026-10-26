@@ -10,6 +10,7 @@ export const PROFILE = {
   location: "Dubai, UAE",
   availability: "Available now · Analyst, front-end and Next.js roles in the UAE",
   availabilityShort: "Open to work",
+  availabilityHero: "Available immediately · Open to work",
   intro:
     "I turn raw data into decision-ready insight with SQL, Python and Power BI, backed by a year as Technical Lead – Software Developer at Qlovix. Based in Dubai.",
   // The one-breath version, revealed word by word on the home page.

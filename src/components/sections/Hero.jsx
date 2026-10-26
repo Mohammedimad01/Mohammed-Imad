@@ -48,6 +48,9 @@ export default function Hero() {
     <section id="top" ref={root} className="hero" aria-label="Introduction">
       <div className="wrap hero__wrap">
         <div className="hero__intro">
+          <p className="avail hero__avail rise" style={{ "--i": 0 }}>
+            <span className="avail__dot" aria-hidden="true" /> {PROFILE.availabilityHero}
+          </p>
           <h1 className="hero__title">
             <span className="hero__line rise" style={{ "--i": 1 }}>{PROFILE.name}.</span>
             <span className="hero__line hero__line--muted rise" style={{ "--i": 2 }}>{PROFILE.headline}.</span>
