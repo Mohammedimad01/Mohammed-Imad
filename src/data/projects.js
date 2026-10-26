@@ -256,7 +256,7 @@ export const PROJECTS = [
     type: "People Analytics · HR Dashboard",
     category: "analytics",
     role: "Analyst & developer",
-    status: "Oct 2026",
+    status: "Mar 2026",
     summary: "An HR analytics dashboard for a hospital group, ending in five findings HR leadership can act on.",
     problem: "Healthcare HR teams track headcount, attrition, hiring, licence compliance and engagement in separate spreadsheets, so risks that cut clinical capacity, like nurse turnover or a lapsed licence, surface late.",
     approach: "Built a seven-report people-analytics dashboard for a fictional UAE healthcare group (one hospital, eight clinics, ~1,200 staff) on a seeded month-by-month simulation, so exits, requisitions, hires and headcount reconcile. Defined 17 KPIs (annualised attrition, time to hire, offer acceptance, eNPS, 1-on-1 coverage and more) as pure functions with 27 unit tests, and added global date, site and department filters, an employee directory with CSV export, and a command palette.",
