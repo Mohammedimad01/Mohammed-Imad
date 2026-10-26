@@ -3,6 +3,7 @@
 //   <id>-visual.webp  the picture alone, shown on the site; sizes below
 export const COVER_SIZES = {
   "ai-db-agent": [960, 492],
+  "analyst-iq": [960, 560],
   "churnsense": [960, 591],
   "ecoflow": [960, 501],
   "expenseaudit": [960, 472],
@@ -16,6 +17,7 @@ export const COVER_SIZES = {
 };
 
 const ALT = {
+  "analyst-iq": "Analyst IQ retail overview: net revenue, gross profit, margin, orders and other KPIs against the previous 90 days, a weekly revenue and profit trend, and revenue by channel",
   meridian: "Meridian People Analytics workforce overview: headcount, attrition, time to hire, onboarding, compliance and eNPS KPIs, a headcount trend and attrition by department",
   churnsense: "ChurnSense AI: Power BI executive overview of high-risk customers and churn by contract, with the Streamlit risk-scoring app",
   "play-store": "Google Play Store analytics: executive summary dashboard with average rating, installs, satisfaction index and negative review share",

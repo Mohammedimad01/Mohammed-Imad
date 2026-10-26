@@ -122,6 +122,11 @@
 .feat__card:hover .more { text-decoration: underline; text-underline-offset: 3px; }
 .feat__img { display: block; margin: auto 16px 16px; border-radius: var(--r); overflow: hidden; background: #0b0f19; }
 .feat__img img { width: 100%; height: auto; transform-origin: 50% 60%; }
+/* An odd card out spans the row, with its text beside the picture. */
+.feat__item:last-child:nth-child(odd) { grid-column: 1 / -1; }
+.feat__item:last-child:nth-child(odd) .feat__card { flex-direction: row; align-items: center; }
+.feat__item:last-child:nth-child(odd) .feat__text { flex: 1 1 0; }
+.feat__item:last-child:nth-child(odd) .feat__img { flex: 1.25 1 0; margin: 16px; }
 .feat__all { margin-top: clamp(44px, 5vw, 64px); text-align: center; }
 
 /* ── Quick answers ─────────────────────────────────────────────────────── */
@@ -414,6 +419,8 @@
   .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 16px; }
   .bento, .feat, .works, .principles, .honours, .form__grid { grid-template-columns: minmax(0, 1fr); }
   .bento__tile--wide { grid-column: auto; }
+  .feat__item:last-child:nth-child(odd) .feat__card { flex-direction: column; align-items: stretch; }
+  .feat__item:last-child:nth-child(odd) .feat__img { flex: none; margin: auto 16px 16px; }
   .bento__tile { min-height: 0; }
   .principles { gap: 32px; }
   .ledger__row { grid-template-columns: minmax(0, 1fr); gap: 14px; }

@@ -15,6 +15,29 @@ export const PROJECT_FILTERS = [
 
 export const PROJECTS = [
   {
+    id: "analyst-iq",
+    name: "Analyst IQ",
+    shortName: "Analyst IQ Retail Analytics",
+    tag: "AI-assisted retail analytics platform · verified KPIs first, AI interpretation second",
+    type: "Retail Analytics · AI-Assisted BI",
+    category: "analytics",
+    role: "Sole developer",
+    status: "Oct 2026",
+    summary: "A retail analytics platform where AI explains only the numbers it can verify.",
+    problem: "Small retailers have plenty of sales exports but no time to analyse them, and general-purpose AI tools readily invent numbers. They need answers they can trust.",
+    approach: "Built a full-stack platform that turns a CSV or Excel sales export into a live analytics workspace. Every row is validated on import. A single deterministic metrics module computes 11 KPIs for the dashboards, reports, AI prompts and automation. Five statistical detectors flag what changed. Google Gemini then explains the verified results in plain English, and a grounding layer checks every number it writes against the source metrics. Unverifiable statements are removed, and a failed headline rejects the whole insight. Four n8n workflows send weekly KPI emails, daily anomaly alerts, monthly PDF reports and import notices.",
+    impact: "Shipped a live product with 10 pages, 27 API endpoints, PDF and CSV reports, and 136 automated tests that run in CI against a real PostgreSQL database. Tuning cut anomaly false positives from 44 flags to 12, and every high-severity flag matched a planted event. Switching to Core bulk inserts cut a 35,000-line import from over 10 minutes to about 70 seconds. It runs entirely on free tiers.",
+    metrics: [
+      { v: "44 → 12", l: "anomaly flags after detector tuning" },
+      { v: "~70 s", l: "35,000-line import, down from 10+ min" },
+      { v: "136", l: "automated tests in CI" },
+      { v: "11", l: "deterministic KPIs, AI-verified" },
+    ],
+    pipeline: ["CSV / Excel sales export", "Row-level validation & import", "Deterministic metrics engine (11 KPIs)", "5 statistical anomaly detectors", "Gemini explanation + number verification", "Dashboards, reports & n8n automation"],
+    tools: ["Next.js", "TypeScript", "Tailwind CSS", "Recharts", "FastAPI", "Python", "pandas", "PostgreSQL", "Google Gemini", "n8n", "GitHub Actions"],
+    links: { demo: "https://analyst-iq-frontend.vercel.app" },
+  },
+  {
     id: "meridian",
     name: "Meridian People Analytics",
     tag: "HR analytics dashboard · ~1,200-person UAE healthcare group",

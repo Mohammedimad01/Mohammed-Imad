@@ -25,7 +25,7 @@ export const PAGES = [
     label: "Work",
     title: "Case Studies | Mohammed Imad Thotan, Business Data Analyst",
     description:
-      "Eleven case studies by Mohammed Imad Thotan: people analytics, BI dashboards and statistical analysis first, then AI apps, machine learning and ventures.",
+      "Twelve case studies by Mohammed Imad Thotan: retail and people analytics, BI dashboards and statistical analysis first, then AI apps, machine learning and ventures.",
   },
   {
     id: "skills",
@@ -62,4 +62,4 @@ export const NOT_FOUND = {
 };
 
 // Case studies featured on the home page.
-export const FEATURED_PROJECTS = ["meridian", "superstore", "play-store", "ivo"];
+export const FEATURED_PROJECTS = ["meridian", "analyst-iq", "superstore", "play-store", "ivo"];

@@ -13,7 +13,7 @@ import Link from "../../router/Link";
 
 const WORDS = ["", "One", "Two", "Three", "Four", "Five", "Six"];
 
-// Two-by-two bento of the home page's featured case studies.
+// Two-column bento of the home page's featured case studies.
 export default function FeaturedWork() {
   const { openProject } = useUI();
   const { reducedMotion } = usePrefs();
@@ -44,7 +44,7 @@ export default function FeaturedWork() {
           title={`${WORDS[featured.length] || featured.length} case studies.`}
           accent="Start to finish."
           id="featured-title"
-          lede="People analytics, BI dashboards, statistical analysis and a generative-AI app, each with the problem, the method and a measurable result."
+          lede="Retail and people analytics, BI dashboards, statistical analysis and a generative-AI app, each with the problem, the method and a measurable result."
         />
         <ul className="feat">
           {featured.map((p, i) => {
