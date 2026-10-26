@@ -10,9 +10,7 @@ export default function CtaBand() {
   return (
     <section className="cta section" aria-labelledby="cta-title">
       <Reveal className="wrap wrap--narrow cta__inner">
-        <p className="avail">
-          <span className="avail__dot" aria-hidden="true" /> {PROFILE.availabilityShort}
-        </p>
+        <p className="avail">{PROFILE.availabilityShort}</p>
         <h2 className="cta__title" id="cta-title">
           Let&apos;s talk.
         </h2>

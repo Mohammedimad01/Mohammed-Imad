@@ -24,16 +24,10 @@
 
 /* Availability pill */
 .avail {
-  display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px 7px 13px;
+  display: inline-flex; align-items: center; padding: 7px 15px;
   border-radius: var(--pill); background: var(--bg-2);
   font-size: var(--t-small); font-weight: 500; letter-spacing: -0.01em; color: var(--ink-2);
 }
-.avail__dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex: none; }
-.avail__dot::after {
-  content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--ok);
-  animation: ping 2.6s var(--ease) infinite;
-}
-@keyframes ping { 0% { transform: scale(0.5); opacity: 0.9; } 70%, 100% { transform: scale(1.7); opacity: 0; } }
 
 .more--lg { font-size: clamp(17px, 1.5vw, 19px); }
 
@@ -43,7 +37,7 @@
   padding: calc(var(--nav-h) + clamp(72px, 13vh, 150px)) 0 clamp(72px, 9vw, 120px);
 }
 .hero__intro { will-change: transform, opacity; }
-.hero__avail { margin-bottom: clamp(24px, 3.4vw, 36px); padding-inline: 15px; }
+.hero__avail { margin-bottom: clamp(24px, 3.4vw, 36px); }
 .hero__title { font-size: var(--t-hero); line-height: 1.03; letter-spacing: -0.045em; }
 .hero__line { display: block; }
 .hero__line--muted { color: var(--ink-3); }
