@@ -22,7 +22,7 @@ export const FAQ = [
   },
   {
     q: "What are his notable projects?",
-    a: "Meridian People Analytics is an HR analytics dashboard for a ~1,200-person UAE healthcare group, with 17 unit-tested KPIs and five findings, including nursing attrition at 2.2× the rest of the workforce. The Superstore Sales & Profit Performance Dashboard analysed 5,000+ orders and $2.3M in sales in Power BI and traced profit leakage to over-discounting. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. Ivo AI Health Companion is a Next.js and Gemini web app that turns medical reports into plain-language explanations, with safety rules enforced in code. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
+    a: "Analyst IQ is an AI-assisted retail analytics platform built with Next.js, FastAPI, PostgreSQL and Google Gemini: it computes 11 deterministic KPIs, flags statistical anomalies and has Gemini explain only numbers it can verify, backed by 136 automated tests. The Superstore Sales & Profit Performance Dashboard analysed 5,000+ orders and $2.3M in sales in Power BI and traced profit leakage to over-discounting. The Google Play Store Product Intelligence Platform analysed 10,841 apps and 64,296 reviews and showed that app metadata explains under 1% of rating variance. Ivo AI Health Companion is a Next.js and Gemini web app that turns medical reports into plain-language explanations, with safety rules enforced in code. EcoFlow won 1st place in an Entrepreneurship & Product Innovation Challenge.",
   },
   {
     q: "How can I contact Mohammed Imad Thotan?",
