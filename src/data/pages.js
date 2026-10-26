@@ -62,4 +62,4 @@ export const NOT_FOUND = {
 };
 
 // Case studies featured on the home page.
-export const FEATURED_PROJECTS = ["meridian", "analyst-iq", "superstore", "play-store", "ivo"];
+export const FEATURED_PROJECTS = ["analyst-iq", "superstore", "play-store", "ivo"];

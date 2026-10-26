@@ -69,7 +69,7 @@ export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 // columns; keep the spans summing to whole rows of three.
 export const HIGHLIGHTS = [
   { exp: "Meknoid Solutions Pvt. Ltd", wide: true },
-  { project: "meridian", metric: 0 },
+  { project: "analyst-iq", metric: 0 },
   { project: "play-store", metric: 0 },
   { project: "superstore", metric: 0, wide: true },
   { exp: "Qlovix" },
