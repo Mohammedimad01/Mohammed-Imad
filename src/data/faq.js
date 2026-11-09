@@ -6,11 +6,11 @@
 export const FAQ = [
   {
     q: "Who is Mohammed Imad Thotan?",
-    a: "Mohammed Imad Thotan is a Business Data Analyst based in Dubai, UAE. He turns raw data into decision-ready insight using SQL, Python, Power BI and Tableau, backed by a year as Technical Lead – Software Developer at Qlovix. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10).",
+    a: "Mohammed Imad Thotan is a Business Technology Analyst based in Dubai, UAE. He bridges business and technology to implement AI, improve processes and turn data into decisions using SQL, Python and Power BI, backed by a year as Technical Lead – Software Developer at Qlovix. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10).",
   },
   {
     q: "What roles is Mohammed Imad Thotan looking for?",
-    a: "He is open to three kinds of role in the UAE: Business / Data Analyst (including Business Analyst, Data Analyst and BI positions), Front-end Developer (React and Next.js), and SaaS Software Developer building Next.js products. He is based in Dubai and available to start now.",
+    a: "He is open to Business Technology Analyst, Business Analyst, Data Analyst, Business Data Analyst, Analytics Consultant and Analytics Developer roles in the UAE. He is based in Dubai and available to start now.",
   },
   {
     q: "What experience does he have?",
@@ -18,7 +18,7 @@ export const FAQ = [
   },
   {
     q: "Which tools and skills does he use?",
-    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics, Alteryx and ETL. AI: machine learning, NLP and sentiment analysis, generative AI applications and prompt engineering. Development: React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, REST APIs, FastAPI and Docker, deployed on Vercel and Netlify. AI-assisted development: Claude Code, Cursor, OpenAI Codex, Google Gemini and Grok, used mainly to accelerate coding and, where it helps, Python scripting and data cleaning; the analysis, validation and conclusions are his own. Business: financial modelling, market research, stakeholder management and hypothesis-driven analysis.",
+    a: "Analytics: SQL, Python, R, SAS, Excel, Google Sheets, Power BI, Tableau, BigQuery, Looker Studio, Fabric Analytics, Alteryx and ETL. AI implementation: LLM integration, AI workflow automation with n8n, AI output validation, prompt engineering, machine learning and NLP. Development: React.js, Next.js, TypeScript, JavaScript, Tailwind CSS, Node.js, REST APIs, FastAPI and Docker, deployed on Vercel and Netlify. AI-assisted development: Claude Code, Cursor, OpenAI Codex, Google Gemini and Grok, used mainly to accelerate coding and, where it helps, Python scripting and data cleaning; the analysis, validation and conclusions are his own. Business analysis: requirements gathering, user stories, UAT, process mapping, process improvement, stakeholder management and JIRA, plus financial modelling and market research.",
   },
   {
     q: "What are his notable projects?",

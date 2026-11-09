@@ -7,15 +7,15 @@ export const PAGES = [
     id: "home",
     path: "/",
     label: "Home",
-    title: "Mohammed Imad Thotan | Business Data Analyst, Dubai",
+    title: "Mohammed Imad Thotan | Business Technology Analyst, Dubai",
     description:
-      "Mohammed Imad Thotan is a Business Data Analyst in Dubai, UAE: SQL, Python, Power BI and Tableau, plus a year leading software delivery. Case studies and résumé.",
+      "Mohammed Imad Thotan is a Business Technology Analyst in Dubai, UAE: AI implementation, process improvement, SQL, Python and Power BI. Case studies and résumé.",
   },
   {
     id: "experience",
     path: "/experience/",
     label: "Experience",
-    title: "Experience | Mohammed Imad Thotan, Business Data Analyst",
+    title: "Experience | Mohammed Imad Thotan, Business Technology Analyst",
     description:
       "Experience of Mohammed Imad Thotan: Technical Lead – Software Developer at Qlovix, Data Analyst Intern at Meknoid Solutions, plus engineering, operations and finance internships.",
   },
@@ -23,7 +23,7 @@ export const PAGES = [
     id: "work",
     path: "/work/",
     label: "Work",
-    title: "Case Studies | Mohammed Imad Thotan, Business Data Analyst",
+    title: "Case Studies | Mohammed Imad Thotan, Business Technology Analyst",
     description:
       "Eleven case studies by Mohammed Imad Thotan: retail analytics, BI dashboards and statistical analysis first, then AI apps, machine learning and ventures.",
   },
@@ -33,7 +33,7 @@ export const PAGES = [
     label: "Skills",
     title: "Skills: SQL, Python, Power BI | Mohammed Imad Thotan",
     description:
-      "Skills of Mohammed Imad Thotan: SQL, Python, Power BI, Tableau and BigQuery, plus React, Next.js, TypeScript and Node.js, machine learning and business strategy.",
+      "Skills of Mohammed Imad Thotan: requirements, process improvement and AI implementation, plus SQL, Python, Power BI, Tableau, BigQuery, React and Next.js.",
   },
   {
     id: "education",
@@ -47,9 +47,9 @@ export const PAGES = [
     id: "contact",
     path: "/contact/",
     label: "Contact",
-    title: "Contact | Mohammed Imad Thotan, Business Data Analyst",
+    title: "Contact | Mohammed Imad Thotan, Business Technology Analyst",
     description:
-      "Contact Mohammed Imad Thotan, Business Data Analyst in Dubai: email, phone, LinkedIn or the message form. Open to analyst, front-end and Next.js roles.",
+      "Contact Mohammed Imad Thotan, Business Technology Analyst in Dubai: email, phone, LinkedIn or the message form. Open to business, data and analytics roles.",
   },
 ];
 
@@ -58,7 +58,7 @@ export const NOT_FOUND = {
   path: "/404/",
   label: "Not found",
   title: "Page not found | Mohammed Imad Thotan",
-  description: "This page doesn't exist. Head back to the portfolio of Mohammed Imad Thotan, Business Data Analyst in Dubai.",
+  description: "This page doesn't exist. Head back to the portfolio of Mohammed Imad Thotan, Business Technology Analyst in Dubai.",
 };
 
 // Case studies featured on the home page.

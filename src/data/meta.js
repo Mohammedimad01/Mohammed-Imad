@@ -6,34 +6,37 @@ export const SITE_URL = "https://mohammed-imad.vercel.app";
 
 export const PROFILE = {
   name: "Mohammed Imad Thotan",
-  headline: "Business Data Analyst",
+  headline: "Business Technology Analyst",
   location: "Dubai, UAE",
-  availability: "Available now · Analyst, front-end and Next.js roles in the UAE",
+  availability: "Available now · Business, data and analytics roles in the UAE",
   availabilityShort: "Open to work",
   availabilityHero: "Available immediately · Open to work",
   intro:
-    "I turn raw data into decision-ready insight with SQL, Python and Power BI, backed by a year as Technical Lead – Software Developer at Qlovix. Based in Dubai.",
+    "I bridge business and technology to implement AI, improve processes and turn data into decisions, backed by a year as Technical Lead – Software Developer at Qlovix. Based in Dubai.",
   // The one-breath version, revealed word by word on the home page.
   statement:
-    "I turn raw data into decisions people can act on. SQL, Python and Power BI for the analysis. A year leading software delivery for the tools that ship it.",
+    "I bridge business and technology. Requirements and process to frame the problem. SQL, Python and AI to solve it. A year leading software delivery to ship it.",
   // Phase 2: set to { src, alt, width, height } to place a portrait in the hero.
   portrait: null,
   bio: [
-    "Business Data Analyst based in Dubai. I turn raw data into decision-ready insight using SQL, Python, and Power BI/Tableau, with a track record of building dashboards, automating reporting workflows, and delivering data-driven recommendations to operations and leadership teams across analytics, finance, and business operations settings. My foundation is statistical analysis, requirements gathering, and stakeholder communication: translating a business question into clear, actionable analysis.",
-    "That analytical depth is backed by a year of real software delivery. As Technical Lead – Software Developer at Qlovix I led the development team across 3+ concurrent client engagements (React, Next.js, Node.js), owning architecture and acting as the technical point of contact for client stakeholders. That means closer collaboration with engineering and faster prototyping of data products. I bring a builder's mindset, shown through an AI-enabled venture seed funded by Aspire Institute, run live in market and delivered to Aspire Institute, and I'm comfortable working independently in fast-paced, ambiguous environments.",
+    "Business Technology Analyst based in Dubai. I bridge business and technology to implement AI, improve processes and turn data into decisions. I gather requirements, map how the work really runs, and translate it into KPIs, user stories and UAT test cases, then use SQL, Python and Power BI to show what the data supports. At Meknoid Solutions I mapped manual reporting processes and automated them in Python, cutting preparation time by about 70%.",
+    "That analysis is backed by a year of real software delivery. As Technical Lead – Software Developer at Qlovix I led a 4-developer team from requirements to production across 3+ concurrent client engagements, as the point of contact for client stakeholders. I also ship AI tools with checks a business can trust, from verifying every AI-generated number in Analyst IQ to enforcing no-diagnosis safety rules in Ivo. I bring a builder's mindset, shown through an AI-enabled venture seed funded by Aspire Institute, run live in market and delivered to Aspire Institute, and I'm comfortable working independently in fast-paced, ambiguous environments.",
   ],
   principles: [
-    { l: "Hypothesis-Driven Analysis", d: "Translate business questions into structured, testable analysis, and say clearly what the data does and doesn't support" },
-    { l: "Stakeholder Communication", d: "Requirements gathering up front; executive-ready dashboards, reports and presentations at the end" },
-    { l: "Builder's Mindset", d: "Automate the recurring work and ship the data product, from Python reporting pipelines to full-stack apps and AI agents" },
+    { l: "Business–Technology Translation", d: "Turn business questions into requirements, KPIs, user stories and UAT test cases a delivery team can build against" },
+    { l: "Process Improvement", d: "Map how the work actually runs, find the bottleneck, then standardise it or automate it" },
+    { l: "Trustworthy AI Implementation", d: "Put AI into real workflows with validation and guardrails, so every output can be checked against its source" },
   ],
   seeking:
-    "Open to analyst, front-end and Next.js software roles in the UAE. Based in Dubai and available to start. Let's talk about what your team needs.",
+    "Open to Business Technology Analyst, Business Analyst, Data Analyst and analytics roles in the UAE. Based in Dubai and available to start. Let's talk about what your team needs.",
   // The roles I'm open to, shown on the home page and the contact page.
   roles: [
-    { title: "Business / Data Analyst", detail: "Business Analyst, Data Analyst and BI roles", tools: "SQL · Python · Power BI · Tableau" },
-    { title: "Front-end Developer", detail: "Interfaces, dashboards and design systems", tools: "React · Next.js · JavaScript · CSS" },
-    { title: "SaaS Software Developer", detail: "Next.js products, from architecture to deployment", tools: "Next.js · Node.js · REST APIs · SQL" },
+    { title: "Business Technology Analyst", detail: "Bridging business and technology through AI implementation and process improvement", tools: "AI Implementation · Process Mapping · SQL · Python" },
+    { title: "Business Analyst", detail: "Requirements, user stories, UAT and stakeholder management", tools: "Requirements · User Stories · UAT · JIRA" },
+    { title: "Data Analyst", detail: "Data cleaning, analysis, dashboards and reporting automation", tools: "SQL · Python · Power BI · Tableau" },
+    { title: "Business Data Analyst", detail: "KPIs and analysis that answer the business question", tools: "KPI Development · SQL · Excel · Power BI" },
+    { title: "Analytics Consultant", detail: "Turning client questions into findings and recommendations", tools: "Statistical Analysis · Market Research · Power BI" },
+    { title: "Analytics Developer", detail: "Data pipelines, BI models and analytics applications", tools: "ETL · PostgreSQL · DAX · Python" },
   ],
 };
 
@@ -52,12 +55,12 @@ export const CONTACT = {
 const RESUME_FILE = "/resume/Mohammed-Imad-Thotan-Resume.pdf";
 export const RESUME = {
   path: RESUME_FILE,
-  version: "2026-10-26",
+  version: "2026-11-09",
   get href() {
     return `${this.path}?v=${this.version}`;
   },
   fileName: "Mohammed-Imad-Thotan-Resume.pdf",
-  updated: "Oct 2026",
+  updated: "Nov 2026",
 };
 
 // Optional: set VITE_WEB3FORMS_KEY in a .env file to deliver the contact form
