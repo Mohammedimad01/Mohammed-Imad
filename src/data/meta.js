@@ -72,9 +72,9 @@ export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 // experience.js or projects.js, so the numbers can't drift. `wide` spans two
 // columns; keep the spans summing to whole rows of three.
 export const HIGHLIGHTS = [
-  { exp: "Meknoid Solutions Pvt. Ltd", wide: true },
+  { exp: "Qlovix", l: "developers led, from requirements to production", wide: true },
   { project: "analyst-iq", metric: 0 },
-  { exp: "Qlovix", l: "developers led, from requirements to production" },
+  { exp: "Meknoid Solutions Pvt. Ltd" },
   { project: "superstore", metric: 0, wide: true },
   { project: "analyst-iq", metric: 2 },
   { project: "haqq", metric: 0, l: "languages, spoken answers", wide: true },
