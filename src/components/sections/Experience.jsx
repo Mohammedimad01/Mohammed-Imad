@@ -13,7 +13,7 @@ export default function Experience({ level = 2 }) {
           title="Where the work"
           accent="happened."
           id="exp-title"
-          lede="A year leading software delivery at Qlovix, built on analytics work that shipped dashboards and Python automation. The through-line: turning stakeholder requirements into working products and decision-ready insight."
+          lede="A year of software delivery at Qlovix, from developer to technical lead, built on analytics work that shipped dashboards and Python automation. The through-line: turning stakeholder requirements into working products and decision-ready insight."
         />
         <ol className="ledger">
           {EXPERIENCE.map((e) => (

@@ -64,7 +64,7 @@ export const SKILL_TABS = [
   {
     id: "fullstack",
     label: "Development",
-    blurb: "Hands-on React and Next.js, and a year leading the team that builds with them, so requirements turn into software that ships.",
+    blurb: "Hands-on React and Next.js from a year of client delivery at Qlovix, first as a developer and then as technical lead, so requirements turn into software that ships.",
     radar: [
       { s: "React", v: 85 },
       { s: "Next.js", v: 82 },
