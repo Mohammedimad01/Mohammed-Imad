@@ -11,7 +11,7 @@ export const EXPERIENCE = [
     mode: "Hybrid",
     metric: { v: "4", l: "developers led from requirements to production" },
     pts: [
-      "Promoted to lead the software development team; gathered business and reporting requirements across 3+ concurrent client engagements and translated them into KPIs, data structures, dashboard specifications and user stories with acceptance criteria",
+      "Gathered business and reporting requirements across 3+ concurrent client engagements and translated them into KPIs, data structures, dashboard specifications and user stories with acceptance criteria",
       "Led a 4-developer team from requirements to production as client lead, owning technical direction and architecture decisions and serving as the primary technical point of contact for client stakeholders",
       "Prepared test cases and test data for QA/UAT, and tracked delivery through risk/issue logs and client status reports",
       "Mentored developers and set engineering standards through code reviews across React.js, Next.js and Node.js codebases",
