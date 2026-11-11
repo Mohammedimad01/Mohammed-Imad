@@ -17,7 +17,7 @@ export const PAGES = [
     label: "Experience",
     title: "Experience | Mohammed Imad Thotan, Business Technology Analyst",
     description:
-      "Experience of Mohammed Imad Thotan: Software Developer promoted to Technical Lead at Qlovix, Data Analyst Intern at Meknoid Solutions, plus engineering, operations and finance internships.",
+      "Experience of Mohammed Imad Thotan: software development and technical leadership at Qlovix, Data Analyst Intern at Meknoid Solutions, plus engineering, operations and finance internships.",
   },
   {
     id: "work",

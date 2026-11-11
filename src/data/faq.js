@@ -6,7 +6,7 @@
 export const FAQ = [
   {
     q: "Who is Mohammed Imad Thotan?",
-    a: "Mohammed Imad Thotan is a Business Technology Analyst based in Dubai, UAE. He bridges business and technology to implement AI, improve processes and turn data into decisions using SQL, Python and Power BI, backed by a year of software delivery at Qlovix, where he was promoted to Technical Lead. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10).",
+    a: "Mohammed Imad Thotan is a Business Technology Analyst based in Dubai, UAE. He bridges business and technology to implement AI, improve processes and turn data into decisions using SQL, Python and Power BI, backed by a year building and leading software delivery at Qlovix. He holds a Bachelor of Business Administration in Business Analytics from Manipal Academy of Higher Education (GPA 8.9/10).",
   },
   {
     q: "What roles is Mohammed Imad Thotan looking for?",
@@ -14,7 +14,7 @@ export const FAQ = [
   },
   {
     q: "What experience does he have?",
-    a: "He has a year of professional experience at Qlovix (Sep 2025 - Sep 2026). He joined as a Software Developer building client web applications in React, Next.js and Node.js, and was promoted to Technical Lead – Software Developer in June 2026, leading a 4-developer team across 3+ concurrent client engagements. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations and project management at Rainbow Pipes, and in finance at MAHE.",
+    a: "He has a year of professional experience at Qlovix (Sep 2025 - Sep 2026). He built client web applications in React, Next.js and Node.js as a Software Developer, then, as Technical Lead – Software Developer, led a 4-developer team across 3+ concurrent client engagements, from requirements gathering and user stories through UAT and production. As a Data Analyst Intern at Meknoid Solutions he built Power BI and Excel dashboards and automated 3+ reporting workflows in Python, saving about 8 hours a week (a ~70% cut in report preparation time). He also interned in full-stack development at Zephyr Technologies, in business operations and project management at Rainbow Pipes, and in finance at MAHE.",
   },
   {
     q: "Which tools and skills does he use?",

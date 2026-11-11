@@ -12,7 +12,7 @@ export const PROFILE = {
   availabilityShort: "Open to work",
   availabilityHero: "Available immediately · Open to work",
   intro:
-    "I bridge business and technology to implement AI, improve processes and turn data into decisions, backed by a year of software delivery at Qlovix, where I was promoted to Technical Lead. Based in Dubai.",
+    "I bridge business and technology to implement AI, improve processes and turn data into decisions, backed by a year building and leading software delivery at Qlovix. Based in Dubai.",
   // The one-breath version, revealed word by word on the home page.
   statement:
     "I bridge business and technology. Requirements and process to frame the problem. SQL, Python and AI to solve it. A year in software delivery to ship it.",
@@ -20,7 +20,7 @@ export const PROFILE = {
   portrait: null,
   bio: [
     "Business Technology Analyst based in Dubai. I bridge business and technology to implement AI, improve processes and turn data into decisions. I gather requirements, map how the work really runs, and translate it into KPIs, user stories and UAT test cases, then use SQL, Python and Power BI to show what the data supports. At Meknoid Solutions I mapped manual reporting processes and automated them in Python, cutting preparation time by about 70%.",
-    "That analysis is backed by a year of real software delivery at Qlovix. I joined as a Software Developer building client applications in React, Next.js and Node.js, and was promoted to Technical Lead – Software Developer in June 2026, leading a 4-developer team from requirements to production across 3+ concurrent client engagements as the point of contact for client stakeholders. I also ship AI tools with checks a business can trust, from verifying every AI-generated number in Analyst IQ to enforcing no-diagnosis safety rules in Ivo. I bring a builder's mindset, shown through an AI-enabled venture seed funded by Aspire Institute, run live in market and delivered to Aspire Institute, and I'm comfortable working independently in fast-paced, ambiguous environments.",
+    "That analysis is backed by a year of real software delivery at Qlovix. I built client applications in React, Next.js and Node.js, then led a 4-developer team from requirements to production across 3+ concurrent client engagements, as the point of contact for client stakeholders. I also ship AI tools with checks a business can trust, from verifying every AI-generated number in Analyst IQ to enforcing no-diagnosis safety rules in Ivo. I bring a builder's mindset, shown through an AI-enabled venture seed funded by Aspire Institute, run live in market and delivered to Aspire Institute, and I'm comfortable working independently in fast-paced, ambiguous environments.",
   ],
   principles: [
     { l: "Business–Technology Translation", d: "Turn business questions into requirements, KPIs, user stories and UAT test cases a delivery team can build against" },
@@ -81,7 +81,7 @@ export const HIGHLIGHTS = [
 ];
 
 export const STATS = [
-  { v: 1, s: " yr", l: "At Qlovix", d: "Software Developer, promoted to Technical Lead in Jun 2026" },
+  { v: 1, s: " yr", l: "Software delivery", d: "Requirements to production across 3+ client engagements" },
   { v: 70, s: "%", l: "Less report prep", d: "~8 hrs/week saved via Python automation" },
   { v: 6, s: "", l: "Roles", d: "Developer, tech lead + 4 internships across analytics, engineering, ops & finance" },
   { v: PROJECTS.length, s: "", l: "Projects", d: "Analytics, BI, AI apps and ventures" },
