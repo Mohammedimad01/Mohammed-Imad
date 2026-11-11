@@ -5,15 +5,16 @@ import { SKILL_TABS } from "../../data/skills";
 import SectionHeader from "../common/SectionHeader";
 import Reveal from "../common/Reveal";
 
-// Resolve each tile to a figure that already exists in the data.
+// Resolve each tile to a figure that already exists in the data; `l` rewords
+// its label for this grid only.
 const tiles = HIGHLIGHTS.map((h) => {
   if (h.exp) {
     const e = EXPERIENCE.find((x) => x.co === h.exp);
-    return e && { v: e.metric.v, l: e.metric.l, src: `${e.role}, ${e.co.replace(/ Pvt\. Ltd$/, "")}`, wide: h.wide };
+    return e && { v: e.metric.v, l: h.l || e.metric.l, src: `${e.role}, ${e.co.replace(/ Pvt\. Ltd$/, "")}`, wide: h.wide };
   }
   const p = PROJECTS.find((x) => x.id === h.project);
   const m = p?.metrics[h.metric];
-  return m && { v: m.v, l: m.l, src: p.shortName || p.name, wide: h.wide };
+  return m && { v: m.v, l: h.l || m.l, src: p.shortName || p.name, wide: h.wide };
 }).filter(Boolean);
 
 // The analytics toolkit, strongest first.

@@ -74,10 +74,10 @@ export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 export const HIGHLIGHTS = [
   { exp: "Meknoid Solutions Pvt. Ltd", wide: true },
   { project: "analyst-iq", metric: 0 },
-  { project: "play-store", metric: 0 },
+  { exp: "Qlovix", l: "developers led, from requirements to production" },
   { project: "superstore", metric: 0, wide: true },
-  { exp: "Qlovix" },
-  { project: "ivo", metric: 0, wide: true },
+  { project: "analyst-iq", metric: 2 },
+  { project: "haqq", metric: 0, l: "languages, spoken answers", wide: true },
 ];
 
 export const STATS = [
